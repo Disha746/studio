@@ -13,9 +13,11 @@ import SoftwareDeveloperIntro from "@/components/career-compass/SoftwareDevelope
 import DataScientistIntro from "@/components/career-compass/DataScientistIntro";
 import DoctorIntro from "@/components/career-compass/DoctorIntro";
 import GraphicDesignerIntro from "@/components/career-compass/GraphicDesignerIntro";
+import ContentCreatorIntro from "@/components/career-compass/ContentCreatorIntro";
+import { Button } from "@/components/ui/button";
 
 type Step = "welcome" | "quiz" | "suggestions" | "details" | "intro";
-type Career = 'id' | 'sd' | 'ds' | 'dr' | 'gd';
+type Career = 'id' | 'sd' | 'ds' | 'dr' | 'gd' | 'cc';
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -44,19 +46,24 @@ export default function Home() {
       gd: 0, // graphicDesigner
       dr: 0, // doctor
       ds: 0, // dataScientist
+      cc: 0, // contentCreator
     };
 
     answers.forEach(answer => {
       const question = quizQuestions.find(q => q.id === answer.questionId);
       if (question?.options) {
-        const selectedOption = question.options.find(opt => opt.value === answer.value);
-        if (selectedOption) {
-          scores.sd += selectedOption.scores.softwareDeveloper;
-          scores.id += selectedOption.scores.interiorDesigner;
-          scores.gd += selectedOption.scores.graphicDesigner;
-          scores.dr += selectedOption.scores.doctor;
-          scores.ds += selectedOption.scores.dataScientist;
-        }
+        const answerValues = Array.isArray(answer.value) ? answer.value : [answer.value];
+        answerValues.forEach(value => {
+            const selectedOption = question.options.find(opt => opt.value === value);
+            if (selectedOption) {
+                scores.sd += selectedOption.scores.softwareDeveloper;
+                scores.id += selectedOption.scores.interiorDesigner;
+                scores.gd += selectedOption.scores.graphicDesigner;
+                scores.dr += selectedOption.scores.doctor;
+                scores.ds += selectedOption.scores.dataScientist;
+                scores.cc += selectedOption.scores.contentCreator;
+            }
+        });
       }
     });
 
@@ -119,17 +126,19 @@ export default function Home() {
         }
         switch (topCareer) {
           case 'id':
-            return <CareerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={true} />;
+            return <CareerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
           case 'sd':
-            return <SoftwareDeveloperIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={true}/>;
+            return <SoftwareDeveloperIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
           case 'ds':
-            return <DataScientistIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={true}/>;
+            return <DataScientistIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
           case 'dr':
-            return <DoctorIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={true}/>;
+            return <DoctorIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
           case 'gd':
-            return <GraphicDesignerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={true}/>;
+            return <GraphicDesignerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
+          case 'cc':
+            return <ContentCreatorIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
           default:
-            return <CareerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={true}/>;
+            return <CareerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
         }
       case "suggestions":
         return (

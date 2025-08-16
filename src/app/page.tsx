@@ -21,9 +21,10 @@ import AthleteIntro from "@/components/career-compass/AthleteIntro";
 import CharteredAccountantIntro from "@/components/career-compass/CharteredAccountantIntro";
 import CivilServantIntro from "@/components/career-compass/CivilServantIntro";
 import MediaAndMassCommIntro from "@/components/career-compass/MediaAndMassCommIntro";
+import LawyerIntro from "@/components/career-compass/LawyerIntro";
 
 type Step = "welcome" | "quiz" | "suggestions" | "details" | "intro";
-type Career = 'id' | 'sd' | 'ds' | 'dr' | 'gd' | 'cc' | 'pm' | 'at' | 'ca' | 'cs' | 'mmc';
+type Career = 'id' | 'sd' | 'ds' | 'dr' | 'gd' | 'cc' | 'pm' | 'at' | 'ca' | 'cs' | 'mmc' | 'lw';
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -58,6 +59,7 @@ export default function Home() {
       ca: 0, // charteredAccountant
       cs: 0, // civilServant
       mmc: 0, // mediaAndMassComm
+      lw: 0, // lawyer
     };
 
     answers.forEach(answer => {
@@ -78,6 +80,7 @@ export default function Home() {
                 scores.ca += selectedOption.scores.charteredAccountant;
                 scores.cs += selectedOption.scores.civilServant;
                 scores.mmc += selectedOption.scores.mediaAndMassComm;
+                scores.lw += selectedOption.scores.lawyer;
             }
         });
       }
@@ -172,6 +175,8 @@ export default function Home() {
             return <CivilServantIntro onBack={handleBackToWelcome} />;
           case 'mmc':
             return <MediaAndMassCommIntro onBack={handleBackToWelcome} />;
+          case 'lw':
+            return <LawyerIntro onBack={handleBackToWelcome} />;
           default:
             return <CareerIntro onBack={handleBackToWelcome} />;
         }

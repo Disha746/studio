@@ -57,7 +57,6 @@ export default function WelcomeStep({ onSubmit, onViewIntro }: WelcomeStepProps)
         <CardTitle className="font-headline">Let's Get Started</CardTitle>
         <CardDescription>
           Tell us a little about yourself to personalize your career guidance.
-          Or, learn more about a career in Interior Design first.
         </CardDescription>
       </CardHeader>
       <Form {...form}>
@@ -91,11 +90,7 @@ export default function WelcomeStep({ onSubmit, onViewIntro }: WelcomeStepProps)
             />
           </CardContent>
           <CardFooter className="flex-col sm:flex-row gap-2">
-            <Button type="button" variant="outline" onClick={onViewIntro} className="w-full sm:w-auto">
-                <Info />
-                Learn About Careers
-            </Button>
-            <Button type="submit" className="w-full sm:flex-1">
+            <Button type="submit" className="w-full">
               Start Quiz
               <ArrowRight />
             </Button>

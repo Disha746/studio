@@ -97,7 +97,6 @@ export default function Home() {
             onSelectOccupation={handleSelectOccupation}
             onSuggestionsGenerated={handleSuggestionsGenerated}
             suggestions={suggestions}
-            onRestart={handleRestart}
           />
         );
       case "details":

@@ -21,7 +21,6 @@ type SuggestionsStepProps = {
   onSelectOccupation: (occupation: string) => void;
   onSuggestionsGenerated: (suggestions: string[]) => void;
   suggestions: string[];
-  onRestart: () => void;
 };
 
 export default function SuggestionsStep({
@@ -30,7 +29,6 @@ export default function SuggestionsStep({
   onSelectOccupation,
   onSuggestionsGenerated,
   suggestions,
-  onRestart
 }: SuggestionsStepProps) {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
@@ -110,11 +108,6 @@ export default function SuggestionsStep({
             </div>
         )}
       </CardContent>
-      <CardFooter>
-        <Button onClick={onRestart} variant="ghost" className="w-full">
-            <RefreshCw /> Start Over
-        </Button>
-      </CardFooter>
     </Card>
   );
 }

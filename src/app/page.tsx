@@ -8,6 +8,7 @@ import QuizStep from "@/components/career-compass/QuizStep";
 import SuggestionsStep from "@/components/career-compass/SuggestionsStep";
 import OccupationDetailsStep from "@/components/career-compass/OccupationDetailsStep";
 import { Compass } from "lucide-react";
+import { quizQuestions } from "@/lib/quiz-questions";
 
 type Step = "welcome" | "quiz" | "suggestions" | "details";
 
@@ -17,7 +18,6 @@ export default function Home() {
     country: "",
     age: 0,
   });
-  const [quizAnswers, setQuizAnswers] = useState<QuizAnswer[]>([]);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [selectedOccupation, setSelectedOccupation] = useState<string | null>(
     null
@@ -29,12 +29,42 @@ export default function Home() {
   };
 
   const handleQuizComplete = (answers: QuizAnswer[]) => {
-    setQuizAnswers(answers);
-    setStep("suggestions");
-  };
+    const scores: { [key: string]: number } = {
+        softwareDeveloper: 0,
+        interiorDesigner: 0,
+        graphicDesigner: 0,
+        doctor: 0,
+        dataScientist: 0,
+        contentCreator: 0,
+        productManager: 0,
+        athlete: 0,
+        charteredAccountant: 0,
+        civilServant: 0,
+        mediaAndMassComm: 0,
+        lawyer: 0,
+        astrologer: 0,
+        meteorologist: 0,
+    };
 
-  const handleSuggestionsGenerated = (newSuggestions: string[]) => {
-    setSuggestions(newSuggestions);
+    answers.forEach(answer => {
+        const question = quizQuestions.find(q => q.id === answer.questionId);
+        if (question && question.options) {
+            const answerValues = Array.isArray(answer.value) ? answer.value : [answer.value];
+            answerValues.forEach(value => {
+                const option = question.options.find(o => o.value === value);
+                if (option) {
+                    for (const career in option.scores) {
+                        if (scores[career] !== undefined) {
+                            scores[career] += option.scores[career as keyof typeof scores] || 0;
+                        }
+                    }
+                }
+            });
+        }
+    });
+
+    const sortedCareers = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+    setSuggestions(sortedCareers.slice(0, 2));
     setStep("suggestions");
   };
 
@@ -51,7 +81,6 @@ export default function Home() {
   const handleBackToWelcome = () => {
     setStep("welcome");
     setUserData({ country: "", age: 0 });
-    setQuizAnswers([]);
     setSuggestions([]);
     setSelectedOccupation(null);
   }
@@ -65,11 +94,8 @@ export default function Home() {
       case "suggestions":
         return (
           <SuggestionsStep
-            quizAnswers={quizAnswers}
-            userData={userData}
-            onSelectOccupation={handleSelectOccupation}
-            onSuggestionsGenerated={handleSuggestionsGenerated}
             suggestions={suggestions}
+            onSelectOccupation={handleSelectOccupation}
           />
         );
       case "details":

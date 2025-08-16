@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -21,7 +22,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, Info } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const formSchema = z.object({
   country: z.string().min(2, {
@@ -35,15 +36,14 @@ const formSchema = z.object({
 
 type WelcomeStepProps = {
   onSubmit: (country: string, age: number) => void;
-  onViewIntro: () => void;
 };
 
-export default function WelcomeStep({ onSubmit, onViewIntro }: WelcomeStepProps) {
+export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       country: "",
-      age: undefined,
+      age: 0,
     },
   });
 
@@ -82,7 +82,13 @@ export default function WelcomeStep({ onSubmit, onViewIntro }: WelcomeStepProps)
                 <FormItem>
                   <FormLabel>Age</FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="e.g. 25" {...field} />
+                    <Input
+                      type="number"
+                      placeholder="e.g. 25"
+                      {...field}
+                      value={field.value === 0 ? "" : field.value}
+                      onChange={(e) => field.onChange(e.target.valueAsNumber || 0)}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

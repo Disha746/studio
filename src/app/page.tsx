@@ -14,10 +14,11 @@ import DataScientistIntro from "@/components/career-compass/DataScientistIntro";
 import DoctorIntro from "@/components/career-compass/DoctorIntro";
 import GraphicDesignerIntro from "@/components/career-compass/GraphicDesignerIntro";
 import ContentCreatorIntro from "@/components/career-compass/ContentCreatorIntro";
+import ProductManagerIntro from "@/components/career-compass/ProductManagerIntro";
 import { Button } from "@/components/ui/button";
 
 type Step = "welcome" | "quiz" | "suggestions" | "details" | "intro";
-type Career = 'id' | 'sd' | 'ds' | 'dr' | 'gd' | 'cc';
+type Career = 'id' | 'sd' | 'ds' | 'dr' | 'gd' | 'cc' | 'pm';
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -40,13 +41,14 @@ export default function Home() {
   const handleQuizComplete = (answers: QuizAnswer[]) => {
     setQuizAnswers(answers);
     
-    const scores = {
+    const scores: Record<Career, number> = {
       sd: 0, // softwareDeveloper
       id: 0, // interiorDesigner
       gd: 0, // graphicDesigner
       dr: 0, // doctor
       ds: 0, // dataScientist
       cc: 0, // contentCreator
+      pm: 0, // productManager
     };
 
     answers.forEach(answer => {
@@ -62,6 +64,7 @@ export default function Home() {
                 scores.dr += selectedOption.scores.doctor;
                 scores.ds += selectedOption.scores.dataScientist;
                 scores.cc += selectedOption.scores.contentCreator;
+                scores.pm += selectedOption.scores.productManager;
             }
         });
       }
@@ -137,6 +140,8 @@ export default function Home() {
             return <GraphicDesignerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
           case 'cc':
             return <ContentCreatorIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
+          case 'pm':
+            return <ProductManagerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
           default:
             return <CareerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
         }

@@ -12,6 +12,7 @@ export type Question = {
       doctor: number;
       dataScientist: number;
       contentCreator: number;
+      productManager: number;
     };
   }[];
 };
@@ -25,22 +26,22 @@ export const quizQuestions: Question[] = [
       {
         value: 'logical_deduction',
         label: 'Technical challenges requiring logical deduction and precise solutions',
-        scores: { softwareDeveloper: 3, interiorDesigner: 0, graphicDesigner: 1, doctor: 1, dataScientist: 2, contentCreator: 0 },
+        scores: { softwareDeveloper: 3, interiorDesigner: 0, graphicDesigner: 1, doctor: 1, dataScientist: 2, contentCreator: 0, productManager: 2 },
       },
       {
         value: 'data_interpretation',
         label: 'Analytical challenges that involve interpreting data and identifying patterns',
-        scores: { softwareDeveloper: 2, interiorDesigner: 1, graphicDesigner: 1, doctor: 2, dataScientist: 3, contentCreator: 1 },
+        scores: { softwareDeveloper: 2, interiorDesigner: 1, graphicDesigner: 1, doctor: 2, dataScientist: 3, contentCreator: 1, productManager: 3 },
       },
       {
         value: 'creative_ideation',
         label: 'Creative challenges that require brainstorming and novel ideas',
-        scores: { softwareDeveloper: 0, interiorDesigner: 3, graphicDesigner: 3, doctor: 0, dataScientist: 0, contentCreator: 3 },
+        scores: { softwareDeveloper: 0, interiorDesigner: 3, graphicDesigner: 3, doctor: 0, dataScientist: 0, contentCreator: 3, productManager: 2 },
       },
       {
         value: 'interpersonal_dynamics',
         label: 'Interpersonal challenges that involve negotiation and understanding different viewpoints',
-        scores: { softwareDeveloper: 0, interiorDesigner: 2, graphicDesigner: 1, doctor: 3, dataScientist: 1, contentCreator: 2 },
+        scores: { softwareDeveloper: 0, interiorDesigner: 2, graphicDesigner: 1, doctor: 3, dataScientist: 1, contentCreator: 2, productManager: 3 },
       },
     ],
   },
@@ -52,22 +53,22 @@ export const quizQuestions: Question[] = [
       {
         value: 'coding',
         label: 'Coding/building digital solutions',
-        scores: { softwareDeveloper: 3, interiorDesigner: 0, graphicDesigner: 0, doctor: 0, dataScientist: 2, contentCreator: 1 },
+        scores: { softwareDeveloper: 3, interiorDesigner: 0, graphicDesigner: 0, doctor: 0, dataScientist: 2, contentCreator: 1, productManager: 1 },
       },
       {
         value: 'troubleshooting',
         label: 'Troubleshooting and fixing complex technical issues',
-        scores: { softwareDeveloper: 3, interiorDesigner: 0, graphicDesigner: 0, doctor: 2, dataScientist: 1, contentCreator: 0 },
+        scores: { softwareDeveloper: 3, interiorDesigner: 0, graphicDesigner: 0, doctor: 2, dataScientist: 1, contentCreator: 0, productManager: 1 },
       },
       {
         value: 'analyzing_data',
         label: 'Analyzing data and creating reports',
-        scores: { softwareDeveloper: 1, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 3, contentCreator: 2 },
+        scores: { softwareDeveloper: 1, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 3, contentCreator: 2, productManager: 3 },
       },
       {
         value: 'designing_visuals',
         label: 'Designing visuals and user interfaces',
-        scores: { softwareDeveloper: 1, interiorDesigner: 3, graphicDesigner: 3, doctor: 0, dataScientist: 0, contentCreator: 3 },
+        scores: { softwareDeveloper: 1, interiorDesigner: 3, graphicDesigner: 3, doctor: 0, dataScientist: 0, contentCreator: 3, productManager: 2 },
       },
     ],
   },
@@ -79,22 +80,22 @@ export const quizQuestions: Question[] = [
       {
         value: 'innovate',
         label: 'Innovate and push technological boundaries',
-        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 2, contentCreator: 2 },
+        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 2, contentCreator: 2, productManager: 3 },
       },
       {
         value: 'efficiency',
         label: 'Make processes more efficient and effective',
-        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 1, doctor: 1, dataScientist: 3, contentCreator: 1 },
+        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 1, doctor: 1, dataScientist: 3, contentCreator: 1, productManager: 3 },
       },
       {
         value: 'expression',
         label: 'Express myself creatively',
-        scores: { softwareDeveloper: 0, interiorDesigner: 3, graphicDesigner: 3, doctor: 0, dataScientist: 0, contentCreator: 3 },
+        scores: { softwareDeveloper: 0, interiorDesigner: 3, graphicDesigner: 3, doctor: 0, dataScientist: 0, contentCreator: 3, productManager: 1 },
       },
       {
         value: 'help_others',
         label: 'Help others and improve their well-being',
-        scores: { softwareDeveloper: 0, interiorDesigner: 1, graphicDesigner: 0, doctor: 3, dataScientist: 1, contentCreator: 2 },
+        scores: { softwareDeveloper: 0, interiorDesigner: 1, graphicDesigner: 0, doctor: 3, dataScientist: 1, contentCreator: 2, productManager: 2 },
       },
     ],
   },
@@ -106,22 +107,22 @@ export const quizQuestions: Question[] = [
       {
         value: 'very_comfortable',
         label: 'I enjoy working with abstract ideas and creating logical frameworks.',
-        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 3, contentCreator: 1 },
+        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 3, contentCreator: 1, productManager: 3 },
       },
       {
         value: 'comfortable_with_examples',
         label: 'I can grasp abstract concepts when explained clearly, especially with examples.',
-        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 2, doctor: 2, dataScientist: 2, contentCreator: 2 },
+        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 2, doctor: 2, dataScientist: 2, contentCreator: 2, productManager: 2 },
       },
       {
         value: 'prefer_concrete',
         label: 'I prefer concrete, hands-on tasks and find abstract concepts challenging.',
-        scores: { softwareDeveloper: 0, interiorDesigner: 3, graphicDesigner: 2, doctor: 1, dataScientist: 0, contentCreator: 2 },
+        scores: { softwareDeveloper: 0, interiorDesigner: 3, graphicDesigner: 2, doctor: 1, dataScientist: 0, contentCreator: 2, productManager: 1 },
       },
       {
         value: 'motivated_by_complexity',
         label: 'I am motivated by understanding how complex systems work internally.',
-        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 0, doctor: 2, dataScientist: 2, contentCreator: 0 },
+        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 0, doctor: 2, dataScientist: 2, contentCreator: 0, productManager: 2 },
       },
     ],
   },
@@ -133,22 +134,22 @@ export const quizQuestions: Question[] = [
       {
         value: 'evolving',
         label: 'Processes are constantly evolving and being redefined',
-        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 2, doctor: 2, dataScientist: 3, contentCreator: 3 },
+        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 2, doctor: 2, dataScientist: 3, contentCreator: 3, productManager: 3 },
       },
       {
         value: 'structured',
         label: 'There is a clear structure and predictable workflow',
-        scores: { softwareDeveloper: 1, interiorDesigner: 2, graphicDesigner: 1, doctor: 3, dataScientist: 1, contentCreator: 0 },
+        scores: { softwareDeveloper: 1, interiorDesigner: 2, graphicDesigner: 1, doctor: 3, dataScientist: 1, contentCreator: 0, productManager: 1 },
       },
       {
         value: 'collaborative',
         label: 'Collaboration and teamwork are the primary focus',
-        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 2, doctor: 2, dataScientist: 2, contentCreator: 2 },
+        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 2, doctor: 2, dataScientist: 2, contentCreator: 2, productManager: 3 },
       },
       {
         value: 'independent',
         label: 'I can work independently with minimal supervision',
-        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 2, doctor: 1, dataScientist: 2, contentCreator: 3 },
+        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 2, doctor: 1, dataScientist: 2, contentCreator: 3, productManager: 2 },
       },
     ],
   },

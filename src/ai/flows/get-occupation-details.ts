@@ -2,7 +2,7 @@
 'use server';
 
 /**
- * @fileOverview This file defines a Genkit flow to get detailed information about an interior design occupation.
+ * @fileOverview This file defines a Genkit flow to get detailed information about an occupation.
  */
 
 import { ai } from '@/ai/genkit';
@@ -23,7 +23,7 @@ const prompt = ai.definePrompt({
   name: 'getOccupationDetailsPrompt',
   input: { schema: GetOccupationDetailsInputSchema },
   output: { schema: GetOccupationDetailsOutputSchema },
-  prompt: `You are a world-class, highly realistic career counselor specializing in the field of interior design.
+  prompt: `You are a world-class, highly realistic career counselor.
 
   A user wants to know more about the occupation: {{{occupation}}}.
 

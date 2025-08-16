@@ -1,14 +1,14 @@
 'use server';
 
-import { suggestInteriorOccupations } from '@/ai/flows/suggest-interior-occupations';
+import { suggestOccupations } from '@/ai/flows/suggest-interior-occupations';
 import { getOccupationDetails } from '@/ai/flows/get-occupation-details';
-import type { SuggestInteriorOccupationsInput } from '@/ai/flows/types';
+import type { SuggestOccupationsInput } from '@/ai/flows/types';
 import type { GetOccupationDetailsInput } from '@/ai/flows/types';
 
 
-export async function getSuggestionsAction(input: SuggestInteriorOccupationsInput) {
+export async function getSuggestionsAction(input: SuggestOccupationsInput) {
   try {
-    const result = await suggestInteriorOccupations(input);
+    const result = await suggestOccupations(input);
     return { success: true, data: result };
   } catch (error) {
     console.error(error);

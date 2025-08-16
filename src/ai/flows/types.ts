@@ -1,29 +1,29 @@
 import { z } from 'zod';
 
-export const SuggestInteriorOccupationsInputSchema = z.object({
+export const SuggestOccupationsInputSchema = z.object({
   quizResults: z
     .string()
     .describe('The results of the user quiz as a string.'),
   country: z.string().describe('The country of the user.'),
   age: z.number().describe('The age of the user.'),
 });
-export type SuggestInteriorOccupationsInput = z.infer<
-  typeof SuggestInteriorOccupationsInputSchema
+export type SuggestOccupationsInput = z.infer<
+  typeof SuggestOccupationsInputSchema
 >;
 
-export const SuggestInteriorOccupationsOutputSchema = z.object({
+export const SuggestOccupationsOutputSchema = z.object({
   suggestedOccupations: z
     .array(z.string())
     .describe(
-      'A list of suggested interior design occupations based on the quiz results.'
+      'A list of suggested occupations based on the quiz results.'
     ),
 });
-export type SuggestInteriorOccupationsOutput = z.infer<
-  typeof SuggestInteriorOccupationsOutputSchema
+export type SuggestOccupationsOutput = z.infer<
+  typeof SuggestOccupationsOutputSchema
 >;
 
 export const GetOccupationDetailsInputSchema = z.object({
-  occupation: z.string().describe('The name of the interior design occupation.'),
+  occupation: z.string().describe('The name of the occupation.'),
 });
 export type GetOccupationDetailsInput = z.infer<typeof GetOccupationDetailsInputSchema>;
 

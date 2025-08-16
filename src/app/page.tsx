@@ -11,8 +11,9 @@ import CareerIntro from "@/components/career-compass/CareerIntro";
 import ChooseIntroStep from "@/components/career-compass/ChooseIntroStep";
 import SoftwareDeveloperIntro from "@/components/career-compass/SoftwareDeveloperIntro";
 import DataScientistIntro from "@/components/career-compass/DataScientistIntro";
+import DoctorIntro from "@/components/career-compass/DoctorIntro";
 
-type Step = "welcome" | "quiz" | "suggestions" | "details" | "choose-intro" | "intro-id" | "intro-sd" | "intro-ds";
+type Step = "welcome" | "quiz" | "suggestions" | "details" | "choose-intro" | "intro-id" | "intro-sd" | "intro-ds" | "intro-dr";
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -58,13 +59,15 @@ export default function Home() {
     setSelectedOccupation(null);
   }
 
-  const handleViewIntro = (career: 'id' | 'sd' | 'ds') => {
+  const handleViewIntro = (career: 'id' | 'sd' | 'ds' | 'dr') => {
     if (career === 'id') {
       setStep("intro-id");
     } else if (career === 'sd') {
       setStep("intro-sd");
-    } else {
+    } else if (career === 'ds') {
       setStep("intro-ds");
+    } else {
+      setStep("intro-dr");
     }
   }
 
@@ -113,6 +116,8 @@ export default function Home() {
         return <SoftwareDeveloperIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={quizAnswers.length > 0} />;
       case "intro-ds":
         return <DataScientistIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={quizAnswers.length > 0} />;
+      case "intro-dr":
+        return <DoctorIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={quizAnswers.length > 0} />;
       default:
         return <WelcomeStep onSubmit={handleWelcomeSubmit} onViewIntro={() => handleViewIntro('id')}/>;
     }

@@ -2,10 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ArrowRight, Briefcase, Code, BarChart } from "lucide-react";
+import { ArrowRight, Briefcase, Code, BarChart, Stethoscope } from "lucide-react";
 
 type ChooseIntroStepProps = {
-    onSelectIntro: (career: 'id' | 'sd' | 'ds') => void;
+    onSelectIntro: (career: 'id' | 'sd' | 'ds' | 'dr') => void;
 };
 
 export default function ChooseIntroStep({ onSelectIntro }: ChooseIntroStepProps) {
@@ -42,6 +42,16 @@ export default function ChooseIntroStep({ onSelectIntro }: ChooseIntroStepProps)
                 <div>
                     <div className="font-semibold">Data Scientist</div>
                     <div className="text-sm font-normal text-muted-foreground">Focus on interpreting data, statistics, and machine learning.</div>
+                </div>
+            </div>
+            <ArrowRight className="ml-auto" />
+        </Button>
+        <Button onClick={() => onSelectIntro('dr')} className="w-full h-auto py-4" variant="outline">
+             <div className="flex items-center text-left">
+                <Stethoscope className="w-6 h-6 mr-4 text-primary" />
+                <div>
+                    <div className="font-semibold">Doctor</div>
+                    <div className="text-sm font-normal text-muted-foreground">Focus on patient care, medical science, and helping others.</div>
                 </div>
             </div>
             <ArrowRight className="ml-auto" />

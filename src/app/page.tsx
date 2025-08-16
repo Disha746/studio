@@ -1,32 +1,15 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type { QuizAnswer } from "@/lib/types";
-import { quizQuestions } from "@/lib/quiz-questions";
 import WelcomeStep from "@/components/career-compass/WelcomeStep";
 import QuizStep from "@/components/career-compass/QuizStep";
 import SuggestionsStep from "@/components/career-compass/SuggestionsStep";
 import OccupationDetailsStep from "@/components/career-compass/OccupationDetailsStep";
 import { Compass } from "lucide-react";
-import CareerIntro from "@/components/career-compass/CareerIntro";
-import SoftwareDeveloperIntro from "@/components/career-compass/SoftwareDeveloperIntro";
-import DataScientistIntro from "@/components/career-compass/DataScientistIntro";
-import DoctorIntro from "@/components/career-compass/DoctorIntro";
-import GraphicDesignerIntro from "@/components/career-compass/GraphicDesignerIntro";
-import ContentCreatorIntro from "@/components/career-compass/ContentCreatorIntro";
-import ProductManagerIntro from "@/components/career-compass/ProductManagerIntro";
-import { Button } from "@/components/ui/button";
-import AthleteIntro from "@/components/career-compass/AthleteIntro";
-import CharteredAccountantIntro from "@/components/career-compass/CharteredAccountantIntro";
-import CivilServantIntro from "@/components/career-compass/CivilServantIntro";
-import MediaAndMassCommIntro from "@/components/career-compass/MediaAndMassCommIntro";
-import LawyerIntro from "@/components/career-compass/LawyerIntro";
-import AstrologerIntro from "@/components/career-compass/AstrologerIntro";
-import MeteorologistIntro from "@/components/career-compass/MeteorologistIntro";
 
-type Step = "welcome" | "quiz" | "suggestions" | "details" | "intro";
-type Career = 'id' | 'sd' | 'ds' | 'dr' | 'gd' | 'cc' | 'pm' | 'at' | 'ca' | 'cs' | 'mmc' | 'lw' | 'as' | 'mt';
+type Step = "welcome" | "quiz" | "suggestions" | "details";
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -39,7 +22,6 @@ export default function Home() {
   const [selectedOccupation, setSelectedOccupation] = useState<string | null>(
     null
   );
-  const [topCareer, setTopCareer] = useState<Career | null>(null);
 
   const handleWelcomeSubmit = (country: string, age: number) => {
     setUserData({ country, age });
@@ -48,72 +30,8 @@ export default function Home() {
 
   const handleQuizComplete = (answers: QuizAnswer[]) => {
     setQuizAnswers(answers);
-    
-    const scores: Record<Career, number> = {
-      sd: 0, // softwareDeveloper
-      id: 0, // interiorDesigner
-      gd: 0, // graphicDesigner
-      dr: 0, // doctor
-      ds: 0, // dataScientist
-      cc: 0, // contentCreator
-      pm: 0, // productManager
-      at: 0, // athlete
-      ca: 0, // charteredAccountant
-      cs: 0, // civilServant
-      mmc: 0, // mediaAndMassComm
-      lw: 0, // lawyer
-      as: 0, // astrologer
-      mt: 0, // meteorologist
-    };
-
-    answers.forEach(answer => {
-      const question = quizQuestions.find(q => q.id === answer.questionId);
-      if (question?.options) {
-        const answerValues = Array.isArray(answer.value) ? answer.value : [answer.value];
-        answerValues.forEach(value => {
-            const selectedOption = question.options.find(opt => opt.value === value);
-            if (selectedOption) {
-                scores.sd += selectedOption.scores.softwareDeveloper;
-                scores.id += selectedOption.scores.interiorDesigner;
-                scores.gd += selectedOption.scores.graphicDesigner;
-                scores.dr += selectedOption.scores.doctor;
-                scores.ds += selectedOption.scores.dataScientist;
-                scores.cc += selectedOption.scores.contentCreator;
-                scores.pm += selectedOption.scores.productManager;
-                scores.at += selectedOption.scores.athlete;
-                scores.ca += selectedOption.scores.charteredAccountant;
-                scores.cs += selectedOption.scores.civilServant;
-                scores.mmc += selectedOption.scores.mediaAndMassComm;
-                scores.lw += selectedOption.scores.lawyer;
-                scores.as += selectedOption.scores.astrologer;
-                scores.mt += selectedOption.scores.meteorologist;
-            }
-        });
-      }
-    });
-
-    let highestScore = -1;
-    let bestCareer: Career | null = null;
-    
-    for (const career in scores) {
-      if (scores[career as Career] > highestScore) {
-        highestScore = scores[career as Career];
-        bestCareer = career as Career;
-      }
-    }
-    
-    setTopCareer(bestCareer);
-    setStep("intro");
+    setStep("suggestions");
   };
-
-  useEffect(() => {
-    if (step === 'intro' && topCareer) {
-        const timer = setTimeout(() => {
-            handleProceedToSuggestions();
-        }, 5000); // 5 seconds
-        return () => clearTimeout(timer);
-    }
-  }, [step, topCareer]);
 
   const handleSuggestionsGenerated = (newSuggestions: string[]) => {
     setSuggestions(newSuggestions);
@@ -136,11 +54,6 @@ export default function Home() {
     setQuizAnswers([]);
     setSuggestions([]);
     setSelectedOccupation(null);
-    setTopCareer(null);
-  }
-
-  const handleProceedToSuggestions = () => {
-    setStep("suggestions");
   }
 
   const renderStep = () => {
@@ -149,47 +62,6 @@ export default function Home() {
         return <WelcomeStep onSubmit={handleWelcomeSubmit} />;
       case "quiz":
         return <QuizStep onComplete={handleQuizComplete} />;
-      case "intro":
-        if (!topCareer) {
-          return (
-            <div className="text-center p-8">
-              <p>Could not determine a top career. Please try the quiz again.</p>
-              <Button onClick={handleBackToWelcome} className="mt-4">Retake Quiz</Button>
-            </div>
-          );
-        }
-        switch (topCareer) {
-          case 'id':
-            return <CareerIntro onBack={handleBackToWelcome} />;
-          case 'sd':
-            return <SoftwareDeveloperIntro onBack={handleBackToWelcome} />;
-          case 'ds':
-            return <DataScientistIntro onBack={handleBackToWelcome} />;
-          case 'dr':
-            return <DoctorIntro onBack={handleBackToWelcome} />;
-          case 'gd':
-            return <GraphicDesignerIntro onBack={handleBackToWelcome} />;
-          case 'cc':
-            return <ContentCreatorIntro onBack={handleBackToWelcome} />;
-          case 'pm':
-            return <ProductManagerIntro onBack={handleBackToWelcome} />;
-          case 'at':
-            return <AthleteIntro onBack={handleBackToWelcome} />;
-          case 'ca':
-            return <CharteredAccountantIntro onBack={handleBackToWelcome} />;
-          case 'cs':
-            return <CivilServantIntro onBack={handleBackToWelcome} />;
-          case 'mmc':
-            return <MediaAndMassCommIntro onBack={handleBackToWelcome} />;
-          case 'lw':
-            return <LawyerIntro onBack={handleBackToWelcome} />;
-          case 'as':
-            return <AstrologerIntro onBack={handleBackToWelcome} />;
-          case 'mt':
-            return <MeteorologistIntro onBack={handleBackToWelcome} />;
-          default:
-            return <CareerIntro onBack={handleBackToWelcome} />;
-        }
       case "suggestions":
         return (
           <SuggestionsStep

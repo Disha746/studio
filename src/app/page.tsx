@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -19,9 +20,10 @@ import { Button } from "@/components/ui/button";
 import AthleteIntro from "@/components/career-compass/AthleteIntro";
 import CharteredAccountantIntro from "@/components/career-compass/CharteredAccountantIntro";
 import CivilServantIntro from "@/components/career-compass/CivilServantIntro";
+import MediaAndMassCommIntro from "@/components/career-compass/MediaAndMassCommIntro";
 
 type Step = "welcome" | "quiz" | "suggestions" | "details" | "intro";
-type Career = 'id' | 'sd' | 'ds' | 'dr' | 'gd' | 'cc' | 'pm' | 'at' | 'ca' | 'cs';
+type Career = 'id' | 'sd' | 'ds' | 'dr' | 'gd' | 'cc' | 'pm' | 'at' | 'ca' | 'cs' | 'mmc';
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -55,6 +57,7 @@ export default function Home() {
       at: 0, // athlete
       ca: 0, // charteredAccountant
       cs: 0, // civilServant
+      mmc: 0, // mediaAndMassComm
     };
 
     answers.forEach(answer => {
@@ -74,6 +77,7 @@ export default function Home() {
                 scores.at += selectedOption.scores.athlete;
                 scores.ca += selectedOption.scores.charteredAccountant;
                 scores.cs += selectedOption.scores.civilServant;
+                scores.mmc += selectedOption.scores.mediaAndMassComm;
             }
         });
       }
@@ -166,6 +170,8 @@ export default function Home() {
             return <CharteredAccountantIntro onBack={handleBackToWelcome} />;
           case 'cs':
             return <CivilServantIntro onBack={handleBackToWelcome} />;
+          case 'mmc':
+            return <MediaAndMassCommIntro onBack={handleBackToWelcome} />;
           default:
             return <CareerIntro onBack={handleBackToWelcome} />;
         }

@@ -12,8 +12,9 @@ import ChooseIntroStep from "@/components/career-compass/ChooseIntroStep";
 import SoftwareDeveloperIntro from "@/components/career-compass/SoftwareDeveloperIntro";
 import DataScientistIntro from "@/components/career-compass/DataScientistIntro";
 import DoctorIntro from "@/components/career-compass/DoctorIntro";
+import GraphicDesignerIntro from "@/components/career-compass/GraphicDesignerIntro";
 
-type Step = "welcome" | "quiz" | "suggestions" | "details" | "choose-intro" | "intro-id" | "intro-sd" | "intro-ds" | "intro-dr";
+type Step = "welcome" | "quiz" | "suggestions" | "details" | "choose-intro" | "intro-id" | "intro-sd" | "intro-ds" | "intro-dr" | "intro-gd";
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -60,15 +61,17 @@ export default function Home() {
     setSelectedOccupation(null);
   }
 
-  const handleViewIntro = (career: 'id' | 'sd' | 'ds' | 'dr') => {
+  const handleViewIntro = (career: 'id' | 'sd' | 'ds' | 'dr' | 'gd') => {
     if (career === 'id') {
       setStep("intro-id");
     } else if (career === 'sd') {
       setStep("intro-sd");
     } else if (career === 'ds') {
       setStep("intro-ds");
-    } else {
+    } else if (career === 'dr') {
       setStep("intro-dr");
+    } else if (career === 'gd') {
+      setStep("intro-gd");
     }
   }
 
@@ -88,7 +91,7 @@ export default function Home() {
   const renderStep = () => {
     switch (step) {
       case "welcome":
-        return <WelcomeStep onSubmit={handleWelcomeSubmit} onViewIntro={() => handleViewIntro('id')} />;
+        return <WelcomeStep onSubmit={handleWelcomeSubmit} />;
       case "quiz":
         return <QuizStep onComplete={handleQuizComplete} />;
       case "choose-intro":
@@ -119,8 +122,10 @@ export default function Home() {
         return <DataScientistIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} />;
       case "intro-dr":
         return <DoctorIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} />;
+      case "intro-gd":
+        return <GraphicDesignerIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} />;
       default:
-        return <WelcomeStep onSubmit={handleWelcomeSubmit} onViewIntro={() => handleViewIntro('id')}/>;
+        return <WelcomeStep onSubmit={handleWelcomeSubmit} />;
     }
   };
 

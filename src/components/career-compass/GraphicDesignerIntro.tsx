@@ -1,11 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ArrowLeft, Brush, CheckCircle, XCircle, Rocket, Wrench } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { ArrowLeft, Brush, CheckCircle, XCircle, Rocket, Wrench, ArrowRight } from "lucide-react";
 
 type GraphicDesignerIntroProps = {
     onBack?: () => void;
+    onProceed?: () => void;
+    showProceed?: boolean;
 };
 
 const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
@@ -18,7 +20,7 @@ const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: str
     </div>
 )
 
-export default function GraphicDesignerIntro({ onBack }: GraphicDesignerIntroProps) {
+export default function GraphicDesignerIntro({ onBack, onProceed, showProceed = false }: GraphicDesignerIntroProps) {
   return (
     <Card>
       <CardHeader>
@@ -79,6 +81,14 @@ export default function GraphicDesignerIntro({ onBack }: GraphicDesignerIntroPro
         </InfoCard>
 
       </CardContent>
+       {showProceed && onProceed && (
+        <CardFooter>
+            <Button onClick={onProceed} className="w-full">
+                See My Suggestions
+                <ArrowRight />
+            </Button>
+        </CardFooter>
+      )}
     </Card>
   );
 }

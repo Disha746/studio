@@ -2,19 +2,20 @@
 
 import { useState } from "react";
 import type { QuizAnswer } from "@/lib/types";
+import { quizQuestions } from "@/lib/quiz-questions";
 import WelcomeStep from "@/components/career-compass/WelcomeStep";
 import QuizStep from "@/components/career-compass/QuizStep";
 import SuggestionsStep from "@/components/career-compass/SuggestionsStep";
 import OccupationDetailsStep from "@/components/career-compass/OccupationDetailsStep";
 import { Compass } from "lucide-react";
 import CareerIntro from "@/components/career-compass/CareerIntro";
-import ChooseIntroStep from "@/components/career-compass/ChooseIntroStep";
 import SoftwareDeveloperIntro from "@/components/career-compass/SoftwareDeveloperIntro";
 import DataScientistIntro from "@/components/career-compass/DataScientistIntro";
 import DoctorIntro from "@/components/career-compass/DoctorIntro";
 import GraphicDesignerIntro from "@/components/career-compass/GraphicDesignerIntro";
 
-type Step = "welcome" | "quiz" | "suggestions" | "details" | "choose-intro" | "intro-id" | "intro-sd" | "intro-ds" | "intro-dr" | "intro-gd";
+type Step = "welcome" | "quiz" | "suggestions" | "details" | "intro";
+type Career = 'id' | 'sd' | 'ds' | 'dr' | 'gd';
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -27,6 +28,7 @@ export default function Home() {
   const [selectedOccupation, setSelectedOccupation] = useState<string | null>(
     null
   );
+  const [topCareer, setTopCareer] = useState<Career | null>(null);
 
   const handleWelcomeSubmit = (country: string, age: number) => {
     setUserData({ country, age });
@@ -35,7 +37,41 @@ export default function Home() {
 
   const handleQuizComplete = (answers: QuizAnswer[]) => {
     setQuizAnswers(answers);
-    setStep("choose-intro");
+    
+    const scores = {
+      sd: 0, // softwareDeveloper
+      id: 0, // interiorDesigner
+      gd: 0, // graphicDesigner
+      dr: 0, // doctor
+      ds: 0, // dataScientist
+    };
+
+    answers.forEach(answer => {
+      const question = quizQuestions.find(q => q.id === answer.questionId);
+      if (question?.options) {
+        const selectedOption = question.options.find(opt => opt.value === answer.value);
+        if (selectedOption) {
+          scores.sd += selectedOption.scores.softwareDeveloper;
+          scores.id += selectedOption.scores.interiorDesigner;
+          scores.gd += selectedOption.scores.graphicDesigner;
+          scores.dr += selectedOption.scores.doctor;
+          scores.ds += selectedOption.scores.dataScientist;
+        }
+      }
+    });
+
+    let highestScore = -1;
+    let bestCareer: Career | null = null;
+    
+    for (const career in scores) {
+      if (scores[career as Career] > highestScore) {
+        highestScore = scores[career as Career];
+        bestCareer = career as Career;
+      }
+    }
+    
+    setTopCareer(bestCareer);
+    setStep("intro");
   };
 
   const handleSuggestionsGenerated = (newSuggestions: string[]) => {
@@ -53,40 +89,18 @@ export default function Home() {
     setStep("suggestions");
   };
   
-  const handleRestart = () => {
+  const handleBackToWelcome = () => {
     setStep("welcome");
     setUserData({ country: "", age: 0 });
     setQuizAnswers([]);
     setSuggestions([]);
     setSelectedOccupation(null);
-  }
-
-  const handleViewIntro = (career: 'id' | 'sd' | 'ds' | 'dr' | 'gd') => {
-    if (career === 'id') {
-      setStep("intro-id");
-    } else if (career === 'sd') {
-      setStep("intro-sd");
-    } else if (career === 'ds') {
-      setStep("intro-ds");
-    } else if (career === 'dr') {
-      setStep("intro-dr");
-    } else if (career === 'gd') {
-      setStep("intro-gd");
-    }
+    setTopCareer(null);
   }
 
   const handleProceedToSuggestions = () => {
     setStep("suggestions");
   }
-
-  const handleBackToWelcome = () => {
-    setStep("welcome");
-  }
-
-  const handleBackToChooseIntro = () => {
-    setStep("choose-intro");
-  }
-
 
   const renderStep = () => {
     switch (step) {
@@ -94,8 +108,29 @@ export default function Home() {
         return <WelcomeStep onSubmit={handleWelcomeSubmit} />;
       case "quiz":
         return <QuizStep onComplete={handleQuizComplete} />;
-      case "choose-intro":
-        return <ChooseIntroStep onSelectIntro={handleViewIntro} onProceed={handleProceedToSuggestions} />;
+      case "intro":
+        if (!topCareer) {
+          return (
+            <div className="text-center p-8">
+              <p>Could not determine a top career. Please try the quiz again.</p>
+              <Button onClick={handleBackToWelcome} className="mt-4">Retake Quiz</Button>
+            </div>
+          );
+        }
+        switch (topCareer) {
+          case 'id':
+            return <CareerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={true} />;
+          case 'sd':
+            return <SoftwareDeveloperIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={true}/>;
+          case 'ds':
+            return <DataScientistIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={true}/>;
+          case 'dr':
+            return <DoctorIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={true}/>;
+          case 'gd':
+            return <GraphicDesignerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={true}/>;
+          default:
+            return <CareerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={true}/>;
+        }
       case "suggestions":
         return (
           <SuggestionsStep
@@ -114,16 +149,6 @@ export default function Home() {
             onBack={handleBackToSuggestions}
           />
         );
-      case "intro-id":
-        return <CareerIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} />;
-      case "intro-sd":
-        return <SoftwareDeveloperIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} />;
-      case "intro-ds":
-        return <DataScientistIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} />;
-      case "intro-dr":
-        return <DoctorIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} />;
-      case "intro-gd":
-        return <GraphicDesignerIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} />;
       default:
         return <WelcomeStep onSubmit={handleWelcomeSubmit} />;
     }

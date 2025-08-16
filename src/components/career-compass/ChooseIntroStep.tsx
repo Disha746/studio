@@ -1,19 +1,20 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { ArrowRight, Briefcase, Code, BarChart, Stethoscope } from "lucide-react";
 
 type ChooseIntroStepProps = {
     onSelectIntro: (career: 'id' | 'sd' | 'ds' | 'dr') => void;
+    onProceed: () => void;
 };
 
-export default function ChooseIntroStep({ onSelectIntro }: ChooseIntroStepProps) {
+export default function ChooseIntroStep({ onSelectIntro, onProceed }: ChooseIntroStepProps) {
   return (
     <Card>
       <CardHeader>
         <CardTitle className="font-headline text-2xl sm:text-3xl">Quiz Complete!</CardTitle>
-        <CardDescription>Based on your answers, you might be interested in one of these fields. Choose one to learn more before seeing your specific job suggestions.</CardDescription>
+        <CardDescription>Based on your answers, you might be interested in one of these fields. Choose one to learn more, or proceed to see your specific job suggestions.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <Button onClick={() => onSelectIntro('id')} className="w-full h-auto py-4" variant="outline">
@@ -57,6 +58,12 @@ export default function ChooseIntroStep({ onSelectIntro }: ChooseIntroStepProps)
             <ArrowRight className="ml-auto" />
         </Button>
       </CardContent>
+      <CardFooter>
+        <Button onClick={onProceed} className="w-full">
+            Proceed to Suggestions
+            <ArrowRight />
+        </Button>
+      </CardFooter>
     </Card>
   );
 }

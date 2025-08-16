@@ -8,11 +8,10 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Loader2, Wand2, RefreshCw, Lightbulb } from "lucide-react";
+import { Loader2, Wand2, Lightbulb } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 type SuggestionsStepProps = {
@@ -34,7 +33,10 @@ export default function SuggestionsStep({
   const { toast } = useToast();
 
   useEffect(() => {
-    if (suggestions.length > 0) return;
+    if (suggestions.length > 0) {
+        setIsLoading(false);
+        return;
+    };
 
     const fetchSuggestions = async () => {
       setIsLoading(true);
@@ -53,12 +55,12 @@ export default function SuggestionsStep({
           title: "Error",
           description: result.error,
         });
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
 
     fetchSuggestions();
-  }, [quizAnswers, userData, toast, onSuggestionsGenerated, suggestions.length]);
+  }, [quizAnswers, userData, toast, onSuggestionsGenerated, suggestions]);
 
   if (isLoading) {
     return (
@@ -82,8 +84,7 @@ export default function SuggestionsStep({
             Your Suggested Career Paths
         </CardTitle>
         <CardDescription>
-          Based on your quiz results, here are a few career paths in interior
-          design that might be a great fit for you.
+          Based on your quiz results, here are a few career paths that might be a great fit for you.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-3">

@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight, Stethoscope, CheckCircle, XCircle, Rocket, Sparkles, DollarSign, Clock, Wrench } from "lucide-react";
+import { ArrowLeft, Stethoscope, CheckCircle, XCircle, Rocket, DollarSign, Clock, Wrench } from "lucide-react";
 
 type DoctorIntroProps = {
     onBack?: () => void;
@@ -90,14 +90,6 @@ export default function DoctorIntro({ onBack, onProceed, showProceed = false }: 
         </InfoCard>
 
       </CardContent>
-       {showProceed && onProceed && (
-        <CardFooter>
-            <Button onClick={onProceed} className="w-full">
-                See My Suggestions
-                <ArrowRight />
-            </Button>
-        </CardFooter>
-      )}
     </Card>
   );
 }

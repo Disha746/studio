@@ -39,6 +39,7 @@ export default function Home() {
 
   const handleSuggestionsGenerated = (newSuggestions: string[]) => {
     setSuggestions(newSuggestions);
+    setStep("suggestions");
   };
 
   const handleSelectOccupation = (occupation: string) => {
@@ -91,7 +92,7 @@ export default function Home() {
       case "quiz":
         return <QuizStep onComplete={handleQuizComplete} />;
       case "choose-intro":
-        return <ChooseIntroStep onSelectIntro={handleViewIntro} />;
+        return <ChooseIntroStep onSelectIntro={handleViewIntro} onProceed={handleProceedToSuggestions} />;
       case "suggestions":
         return (
           <SuggestionsStep
@@ -111,13 +112,13 @@ export default function Home() {
           />
         );
       case "intro-id":
-        return <CareerIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={quizAnswers.length > 0} />;
+        return <CareerIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} />;
       case "intro-sd":
-        return <SoftwareDeveloperIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={quizAnswers.length > 0} />;
+        return <SoftwareDeveloperIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} />;
       case "intro-ds":
-        return <DataScientistIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={quizAnswers.length > 0} />;
+        return <DataScientistIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} />;
       case "intro-dr":
-        return <DoctorIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={quizAnswers.length > 0} />;
+        return <DoctorIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} />;
       default:
         return <WelcomeStep onSubmit={handleWelcomeSubmit} onViewIntro={() => handleViewIntro('id')}/>;
     }

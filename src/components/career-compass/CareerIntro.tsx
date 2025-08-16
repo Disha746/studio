@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight, Briefcase, CheckCircle, Rocket, Sparkles } from "lucide-react";
+import { ArrowLeft, Briefcase, CheckCircle, Rocket, Sparkles } from "lucide-react";
 
 type CareerIntroProps = {
     onBack?: () => void;
@@ -60,14 +60,6 @@ export default function CareerIntro({ onBack, onProceed, showProceed = false }: 
         </InfoCard>
 
       </CardContent>
-       {showProceed && onProceed && (
-        <CardFooter>
-            <Button onClick={onProceed} className="w-full">
-                See My Suggestions
-                <ArrowRight />
-            </Button>
-        </CardFooter>
-      )}
     </Card>
   );
 }

@@ -89,14 +89,6 @@ export default function ContentCreatorIntro({ onBack, onProceed }: ContentCreato
             </ul>
         </InfoCard>
       </CardContent>
-       {onProceed && (
-        <CardFooter>
-            <Button onClick={onProceed} className="w-full">
-                See My Suggestions
-                <ArrowRight />
-            </Button>
-        </CardFooter>
-      )}
     </Card>
   );
 }

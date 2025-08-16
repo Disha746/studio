@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { QuizAnswer } from "@/lib/types";
 import { quizQuestions } from "@/lib/quiz-questions";
 import WelcomeStep from "@/components/career-compass/WelcomeStep";
@@ -84,6 +84,15 @@ export default function Home() {
     setStep("intro");
   };
 
+  useEffect(() => {
+    if (step === 'intro' && topCareer) {
+        const timer = setTimeout(() => {
+            handleProceedToSuggestions();
+        }, 5000); // 5 seconds
+        return () => clearTimeout(timer);
+    }
+  }, [step, topCareer]);
+
   const handleSuggestionsGenerated = (newSuggestions: string[]) => {
     setSuggestions(newSuggestions);
     setStep("suggestions");
@@ -129,21 +138,21 @@ export default function Home() {
         }
         switch (topCareer) {
           case 'id':
-            return <CareerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
+            return <CareerIntro onBack={handleBackToWelcome} />;
           case 'sd':
-            return <SoftwareDeveloperIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
+            return <SoftwareDeveloperIntro onBack={handleBackToWelcome} />;
           case 'ds':
-            return <DataScientistIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
+            return <DataScientistIntro onBack={handleBackToWelcome} />;
           case 'dr':
-            return <DoctorIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
+            return <DoctorIntro onBack={handleBackToWelcome} />;
           case 'gd':
-            return <GraphicDesignerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
+            return <GraphicDesignerIntro onBack={handleBackToWelcome} />;
           case 'cc':
-            return <ContentCreatorIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
+            return <ContentCreatorIntro onBack={handleBackToWelcome} />;
           case 'pm':
-            return <ProductManagerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
+            return <ProductManagerIntro onBack={handleBackToWelcome} />;
           default:
-            return <CareerIntro onBack={handleBackToWelcome} onProceed={handleProceedToSuggestions} />;
+            return <CareerIntro onBack={handleBackToWelcome} />;
         }
       case "suggestions":
         return (

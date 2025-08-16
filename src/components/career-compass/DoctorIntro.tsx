@@ -6,8 +6,6 @@ import { ArrowLeft, Stethoscope, CheckCircle, XCircle, Rocket, DollarSign, Clock
 
 type DoctorIntroProps = {
     onBack?: () => void;
-    onProceed?: () => void;
-    showProceed?: boolean;
 };
 
 const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
@@ -20,7 +18,7 @@ const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: str
     </div>
 )
 
-export default function DoctorIntro({ onBack, onProceed, showProceed = false }: DoctorIntroProps) {
+export default function DoctorIntro({ onBack }: DoctorIntroProps) {
   return (
     <Card>
       <CardHeader>
@@ -90,14 +88,6 @@ export default function DoctorIntro({ onBack, onProceed, showProceed = false }: 
         </InfoCard>
 
       </CardContent>
-       {showProceed && onProceed && (
-        <CardFooter>
-            <Button onClick={onProceed} className="w-full">
-                See My Suggestions
-                <ArrowRight />
-            </Button>
-        </CardFooter>
-      )}
     </Card>
   );
 }

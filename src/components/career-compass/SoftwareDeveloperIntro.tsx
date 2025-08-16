@@ -6,8 +6,6 @@ import { ArrowLeft, Code, CheckCircle, Rocket, Sparkles, ArrowRight } from "luci
 
 type SoftwareDeveloperIntroProps = {
     onBack?: () => void;
-    onProceed?: () => void;
-    showProceed?: boolean;
 };
 
 const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
@@ -20,7 +18,7 @@ const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: str
     </div>
 )
 
-export default function SoftwareDeveloperIntro({ onBack, onProceed, showProceed = false }: SoftwareDeveloperIntroProps) {
+export default function SoftwareDeveloperIntro({ onBack }: SoftwareDeveloperIntroProps) {
   return (
     <Card>
       <CardHeader>
@@ -60,14 +58,6 @@ export default function SoftwareDeveloperIntro({ onBack, onProceed, showProceed 
         </InfoCard>
 
       </CardContent>
-      {showProceed && onProceed && (
-        <CardFooter>
-            <Button onClick={onProceed} className="w-full">
-                See My Suggestions
-                <ArrowRight />
-            </Button>
-        </CardFooter>
-      )}
     </Card>
   );
 }

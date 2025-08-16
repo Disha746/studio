@@ -6,8 +6,6 @@ import { ArrowLeft, BarChart, CheckCircle, XCircle, Rocket, DollarSign, Clock, W
 
 type DataScientistIntroProps = {
     onBack?: () => void;
-    onProceed?: () => void;
-    showProceed?: boolean;
 };
 
 const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
@@ -20,7 +18,7 @@ const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: str
     </div>
 )
 
-export default function DataScientistIntro({ onBack, onProceed, showProceed = false }: DataScientistIntroProps) {
+export default function DataScientistIntro({ onBack }: DataScientistIntroProps) {
   return (
     <Card>
       <CardHeader>
@@ -89,14 +87,6 @@ export default function DataScientistIntro({ onBack, onProceed, showProceed = fa
         </InfoCard>
 
       </CardContent>
-       {showProceed && onProceed && (
-        <CardFooter>
-            <Button onClick={onProceed} className="w-full">
-                See My Suggestions
-                <ArrowRight />
-            </Button>
-        </CardFooter>
-      )}
     </Card>
   );
 }

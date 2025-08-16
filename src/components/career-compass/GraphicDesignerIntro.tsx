@@ -6,8 +6,6 @@ import { ArrowLeft, Brush, CheckCircle, XCircle, Rocket, Wrench, ArrowRight } fr
 
 type GraphicDesignerIntroProps = {
     onBack?: () => void;
-    onProceed?: () => void;
-    showProceed?: boolean;
 };
 
 const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
@@ -20,7 +18,7 @@ const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: str
     </div>
 )
 
-export default function GraphicDesignerIntro({ onBack, onProceed, showProceed = false }: GraphicDesignerIntroProps) {
+export default function GraphicDesignerIntro({ onBack }: GraphicDesignerIntroProps) {
   return (
     <Card>
       <CardHeader>
@@ -81,14 +79,6 @@ export default function GraphicDesignerIntro({ onBack, onProceed, showProceed = 
         </InfoCard>
 
       </CardContent>
-       {showProceed && onProceed && (
-        <CardFooter>
-            <Button onClick={onProceed} className="w-full">
-                See My Suggestions
-                <ArrowRight />
-            </Button>
-        </CardFooter>
-      )}
     </Card>
   );
 }

@@ -18,9 +18,10 @@ import ProductManagerIntro from "@/components/career-compass/ProductManagerIntro
 import { Button } from "@/components/ui/button";
 import AthleteIntro from "@/components/career-compass/AthleteIntro";
 import CharteredAccountantIntro from "@/components/career-compass/CharteredAccountantIntro";
+import CivilServantIntro from "@/components/career-compass/CivilServantIntro";
 
 type Step = "welcome" | "quiz" | "suggestions" | "details" | "intro";
-type Career = 'id' | 'sd' | 'ds' | 'dr' | 'gd' | 'cc' | 'pm' | 'at' | 'ca';
+type Career = 'id' | 'sd' | 'ds' | 'dr' | 'gd' | 'cc' | 'pm' | 'at' | 'ca' | 'cs';
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -53,6 +54,7 @@ export default function Home() {
       pm: 0, // productManager
       at: 0, // athlete
       ca: 0, // charteredAccountant
+      cs: 0, // civilServant
     };
 
     answers.forEach(answer => {
@@ -71,6 +73,7 @@ export default function Home() {
                 scores.pm += selectedOption.scores.productManager;
                 scores.at += selectedOption.scores.athlete;
                 scores.ca += selectedOption.scores.charteredAccountant;
+                scores.cs += selectedOption.scores.civilServant;
             }
         });
       }
@@ -161,6 +164,8 @@ export default function Home() {
             return <AthleteIntro onBack={handleBackToWelcome} />;
           case 'ca':
             return <CharteredAccountantIntro onBack={handleBackToWelcome} />;
+          case 'cs':
+            return <CivilServantIntro onBack={handleBackToWelcome} />;
           default:
             return <CareerIntro onBack={handleBackToWelcome} />;
         }

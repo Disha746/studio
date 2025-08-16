@@ -27,7 +27,7 @@ export default function CareerIntro({ onBack, onProceed, showProceed = false }: 
         {onBack && (
             <Button onClick={onBack} variant="ghost" className="justify-start p-0 h-auto mb-2 text-muted-foreground hover:text-foreground">
                 <ArrowLeft />
-                Back to Start
+                Back
             </Button>
         )}
         <CardTitle className="font-headline text-2xl sm:text-3xl flex items-center gap-2"><Briefcase className="text-primary"/>A Career in Interior Design</CardTitle>

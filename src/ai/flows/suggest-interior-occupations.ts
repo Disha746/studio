@@ -28,7 +28,7 @@ const prompt = ai.definePrompt({
 
   Based on the quiz results of a user, suggest 3 occupations that might be a good fit for them.
 
-  If the user's answers strongly align with problem-solving, logical deduction, technical challenges, coding, and an interest in technology, you should suggest "Software Developer" as one of the occupations.
+  If the user's answers strongly align with problem-solving, logical deduction, technical challenges, coding, and an interest in technology, you MUST suggest "Software Developer" as one of the occupations.
 
   If the user's answers lean towards creativity, aesthetics, and spatial arrangement, you should suggest interior design-related occupations.
 

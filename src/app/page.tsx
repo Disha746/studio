@@ -8,8 +8,10 @@ import SuggestionsStep from "@/components/career-compass/SuggestionsStep";
 import OccupationDetailsStep from "@/components/career-compass/OccupationDetailsStep";
 import { Compass } from "lucide-react";
 import CareerIntro from "@/components/career-compass/CareerIntro";
+import ChooseIntroStep from "@/components/career-compass/ChooseIntroStep";
+import SoftwareDeveloperIntro from "@/components/career-compass/SoftwareDeveloperIntro";
 
-type Step = "welcome" | "quiz" | "suggestions" | "details" | "intro";
+type Step = "welcome" | "quiz" | "suggestions" | "details" | "choose-intro" | "intro-id" | "intro-sd";
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -30,7 +32,7 @@ export default function Home() {
 
   const handleQuizComplete = (answers: QuizAnswer[]) => {
     setQuizAnswers(answers);
-    setStep("intro");
+    setStep("choose-intro");
   };
 
   const handleSuggestionsGenerated = (newSuggestions: string[]) => {
@@ -55,8 +57,12 @@ export default function Home() {
     setSelectedOccupation(null);
   }
 
-  const handleViewIntro = () => {
-    setStep("intro");
+  const handleViewIntro = (career: 'id' | 'sd') => {
+    if (career === 'id') {
+      setStep("intro-id");
+    } else {
+      setStep("intro-sd");
+    }
   }
 
   const handleProceedToSuggestions = () => {
@@ -67,12 +73,19 @@ export default function Home() {
     setStep("welcome");
   }
 
+  const handleBackToChooseIntro = () => {
+    setStep("choose-intro");
+  }
+
+
   const renderStep = () => {
     switch (step) {
       case "welcome":
-        return <WelcomeStep onSubmit={handleWelcomeSubmit} onViewIntro={handleViewIntro} />;
+        return <WelcomeStep onSubmit={handleWelcomeSubmit} onViewIntro={() => handleViewIntro('id')} />;
       case "quiz":
         return <QuizStep onComplete={handleQuizComplete} />;
+      case "choose-intro":
+        return <ChooseIntroStep onSelectIntro={handleViewIntro} />;
       case "suggestions":
         return (
           <SuggestionsStep
@@ -92,10 +105,12 @@ export default function Home() {
             onBack={handleBackToSuggestions}
           />
         );
-      case "intro":
-        return <CareerIntro onBack={quizAnswers.length > 0 ? undefined : handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={quizAnswers.length > 0} />;
+      case "intro-id":
+        return <CareerIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={quizAnswers.length > 0} />;
+      case "intro-sd":
+        return <SoftwareDeveloperIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={quizAnswers.length > 0} />;
       default:
-        return <WelcomeStep onSubmit={handleWelcomeSubmit} onViewIntro={handleViewIntro}/>;
+        return <WelcomeStep onSubmit={handleWelcomeSubmit} onViewIntro={() => handleViewIntro('id')}/>;
     }
   };
 
@@ -110,7 +125,7 @@ export default function Home() {
             Career Compass
             </h1>
             <p className="mt-2 text-muted-foreground max-w-md">
-            Your AI-powered guide to a fulfilling career in interior design.
+            Your AI-powered guide to a fulfilling career.
             </p>
         </div>
         <div className="relative">

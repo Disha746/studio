@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Career Compass",
-  description: "Your guide to a career in interior design.",
+  description: "Your AI-powered guide to a fulfilling career.",
 };
 
 export default function RootLayout({

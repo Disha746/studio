@@ -93,7 +93,7 @@ export default function WelcomeStep({ onSubmit, onViewIntro }: WelcomeStepProps)
           <CardFooter className="flex-col sm:flex-row gap-2">
             <Button type="button" variant="outline" onClick={onViewIntro} className="w-full sm:w-auto">
                 <Info />
-                Learn About This Career
+                Learn About Careers
             </Button>
             <Button type="submit" className="w-full sm:flex-1">
               Start Quiz

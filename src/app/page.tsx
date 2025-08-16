@@ -10,8 +10,9 @@ import { Compass } from "lucide-react";
 import CareerIntro from "@/components/career-compass/CareerIntro";
 import ChooseIntroStep from "@/components/career-compass/ChooseIntroStep";
 import SoftwareDeveloperIntro from "@/components/career-compass/SoftwareDeveloperIntro";
+import DataScientistIntro from "@/components/career-compass/DataScientistIntro";
 
-type Step = "welcome" | "quiz" | "suggestions" | "details" | "choose-intro" | "intro-id" | "intro-sd";
+type Step = "welcome" | "quiz" | "suggestions" | "details" | "choose-intro" | "intro-id" | "intro-sd" | "intro-ds";
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -57,11 +58,13 @@ export default function Home() {
     setSelectedOccupation(null);
   }
 
-  const handleViewIntro = (career: 'id' | 'sd') => {
+  const handleViewIntro = (career: 'id' | 'sd' | 'ds') => {
     if (career === 'id') {
       setStep("intro-id");
-    } else {
+    } else if (career === 'sd') {
       setStep("intro-sd");
+    } else {
+      setStep("intro-ds");
     }
   }
 
@@ -109,6 +112,8 @@ export default function Home() {
         return <CareerIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={quizAnswers.length > 0} />;
       case "intro-sd":
         return <SoftwareDeveloperIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={quizAnswers.length > 0} />;
+      case "intro-ds":
+        return <DataScientistIntro onBack={quizAnswers.length > 0 ? handleBackToChooseIntro : handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={quizAnswers.length > 0} />;
       default:
         return <WelcomeStep onSubmit={handleWelcomeSubmit} onViewIntro={() => handleViewIntro('id')}/>;
     }

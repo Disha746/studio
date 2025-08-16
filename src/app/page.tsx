@@ -23,9 +23,10 @@ import CivilServantIntro from "@/components/career-compass/CivilServantIntro";
 import MediaAndMassCommIntro from "@/components/career-compass/MediaAndMassCommIntro";
 import LawyerIntro from "@/components/career-compass/LawyerIntro";
 import AstrologerIntro from "@/components/career-compass/AstrologerIntro";
+import MeteorologistIntro from "@/components/career-compass/MeteorologistIntro";
 
 type Step = "welcome" | "quiz" | "suggestions" | "details" | "intro";
-type Career = 'id' | 'sd' | 'ds' | 'dr' | 'gd' | 'cc' | 'pm' | 'at' | 'ca' | 'cs' | 'mmc' | 'lw' | 'as';
+type Career = 'id' | 'sd' | 'ds' | 'dr' | 'gd' | 'cc' | 'pm' | 'at' | 'ca' | 'cs' | 'mmc' | 'lw' | 'as' | 'mt';
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -62,6 +63,7 @@ export default function Home() {
       mmc: 0, // mediaAndMassComm
       lw: 0, // lawyer
       as: 0, // astrologer
+      mt: 0, // meteorologist
     };
 
     answers.forEach(answer => {
@@ -84,6 +86,7 @@ export default function Home() {
                 scores.mmc += selectedOption.scores.mediaAndMassComm;
                 scores.lw += selectedOption.scores.lawyer;
                 scores.as += selectedOption.scores.astrologer;
+                scores.mt += selectedOption.scores.meteorologist;
             }
         });
       }
@@ -182,6 +185,8 @@ export default function Home() {
             return <LawyerIntro onBack={handleBackToWelcome} />;
           case 'as':
             return <AstrologerIntro onBack={handleBackToWelcome} />;
+          case 'mt':
+            return <MeteorologistIntro onBack={handleBackToWelcome} />;
           default:
             return <CareerIntro onBack={handleBackToWelcome} />;
         }

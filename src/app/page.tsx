@@ -7,8 +7,9 @@ import QuizStep from "@/components/career-compass/QuizStep";
 import SuggestionsStep from "@/components/career-compass/SuggestionsStep";
 import OccupationDetailsStep from "@/components/career-compass/OccupationDetailsStep";
 import { Compass } from "lucide-react";
+import CareerIntro from "@/components/career-compass/CareerIntro";
 
-type Step = "welcome" | "quiz" | "suggestions" | "details";
+type Step = "welcome" | "quiz" | "suggestions" | "details" | "intro";
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -54,10 +55,18 @@ export default function Home() {
     setSelectedOccupation(null);
   }
 
+  const handleViewIntro = () => {
+    setStep("intro");
+  }
+
+  const handleBackToWelcome = () => {
+    setStep("welcome");
+  }
+
   const renderStep = () => {
     switch (step) {
       case "welcome":
-        return <WelcomeStep onSubmit={handleWelcomeSubmit} />;
+        return <WelcomeStep onSubmit={handleWelcomeSubmit} onViewIntro={handleViewIntro} />;
       case "quiz":
         return <QuizStep onComplete={handleQuizComplete} />;
       case "suggestions":
@@ -79,8 +88,10 @@ export default function Home() {
             onBack={handleBackToSuggestions}
           />
         );
+      case "intro":
+        return <CareerIntro onBack={handleBackToWelcome} />;
       default:
-        return <WelcomeStep onSubmit={handleWelcomeSubmit} />;
+        return <WelcomeStep onSubmit={handleWelcomeSubmit} onViewIntro={handleViewIntro}/>;
     }
   };
 

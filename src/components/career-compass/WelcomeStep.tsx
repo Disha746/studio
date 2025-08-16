@@ -21,7 +21,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Info } from "lucide-react";
 
 const formSchema = z.object({
   country: z.string().min(2, {
@@ -35,9 +35,10 @@ const formSchema = z.object({
 
 type WelcomeStepProps = {
   onSubmit: (country: string, age: number) => void;
+  onViewIntro: () => void;
 };
 
-export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
+export default function WelcomeStep({ onSubmit, onViewIntro }: WelcomeStepProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -56,6 +57,7 @@ export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
         <CardTitle className="font-headline">Let's Get Started</CardTitle>
         <CardDescription>
           Tell us a little about yourself to personalize your career guidance.
+          Or, learn more about a career in Interior Design first.
         </CardDescription>
       </CardHeader>
       <Form {...form}>
@@ -88,8 +90,12 @@ export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
               )}
             />
           </CardContent>
-          <CardFooter>
-            <Button type="submit" className="w-full">
+          <CardFooter className="flex-col sm:flex-row gap-2">
+            <Button type="button" variant="outline" onClick={onViewIntro} className="w-full sm:w-auto">
+                <Info />
+                Learn About This Career
+            </Button>
+            <Button type="submit" className="w-full sm:flex-1">
               Start Quiz
               <ArrowRight />
             </Button>

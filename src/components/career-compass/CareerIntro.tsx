@@ -1,11 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ArrowLeft, Briefcase, CheckCircle, Rocket, Sparkles } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { ArrowLeft, ArrowRight, Briefcase, CheckCircle, Rocket, Sparkles } from "lucide-react";
 
 type CareerIntroProps = {
-    onBack: () => void;
+    onBack?: () => void;
+    onProceed?: () => void;
+    showProceed?: boolean;
 };
 
 const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
@@ -18,14 +20,16 @@ const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: str
     </div>
 )
 
-export default function CareerIntro({ onBack }: CareerIntroProps) {
+export default function CareerIntro({ onBack, onProceed, showProceed = false }: CareerIntroProps) {
   return (
     <Card>
       <CardHeader>
-        <Button onClick={onBack} variant="ghost" className="justify-start p-0 h-auto mb-2 text-muted-foreground hover:text-foreground">
-            <ArrowLeft />
-            Back to Start
-        </Button>
+        {onBack && (
+            <Button onClick={onBack} variant="ghost" className="justify-start p-0 h-auto mb-2 text-muted-foreground hover:text-foreground">
+                <ArrowLeft />
+                Back to Start
+            </Button>
+        )}
         <CardTitle className="font-headline text-2xl sm:text-3xl flex items-center gap-2"><Briefcase className="text-primary"/>A Career in Interior Design</CardTitle>
         <CardDescription>An overview of what it means to be an Interior Designer or Spatial Planner.</CardDescription>
       </CardHeader>
@@ -56,6 +60,14 @@ export default function CareerIntro({ onBack }: CareerIntroProps) {
         </InfoCard>
 
       </CardContent>
+       {showProceed && onProceed && (
+        <CardFooter>
+            <Button onClick={onProceed} className="w-full">
+                See My Suggestions
+                <ArrowRight />
+            </Button>
+        </CardFooter>
+      )}
     </Card>
   );
 }

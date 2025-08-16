@@ -30,7 +30,7 @@ export default function Home() {
 
   const handleQuizComplete = (answers: QuizAnswer[]) => {
     setQuizAnswers(answers);
-    setStep("suggestions");
+    setStep("intro");
   };
 
   const handleSuggestionsGenerated = (newSuggestions: string[]) => {
@@ -57,6 +57,10 @@ export default function Home() {
 
   const handleViewIntro = () => {
     setStep("intro");
+  }
+
+  const handleProceedToSuggestions = () => {
+    setStep("suggestions");
   }
 
   const handleBackToWelcome = () => {
@@ -89,7 +93,7 @@ export default function Home() {
           />
         );
       case "intro":
-        return <CareerIntro onBack={handleBackToWelcome} />;
+        return <CareerIntro onBack={quizAnswers.length > 0 ? undefined : handleBackToWelcome} onProceed={handleProceedToSuggestions} showProceed={quizAnswers.length > 0} />;
       default:
         return <WelcomeStep onSubmit={handleWelcomeSubmit} onViewIntro={handleViewIntro}/>;
     }

@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { ArrowLeft, Check, Lightbulb, Stethoscope } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { toast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { Separator } from "@/components/ui/separator";
 
 interface DoctorActivityProps {
@@ -29,6 +29,7 @@ const mythBustingQuestions = [
 ];
 
 export default function DoctorActivity({ onBack }: DoctorActivityProps) {
+    const { toast } = useToast();
     const [stage, setStage] = useState<Stage>("intro");
     const [answers, setAnswers] = useState<Record<number, string>>({});
     const [score, setScore] = useState(0);

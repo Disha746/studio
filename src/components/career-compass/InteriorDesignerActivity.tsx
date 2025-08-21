@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { ArrowLeft, Check, Lightbulb, Palette, Sofa, Lamp, LayoutTemplate, Sparkles } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { toast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
@@ -36,6 +36,7 @@ const mythBustingQuestions = [
 
 
 export default function InteriorDesignerActivity({ onBack }: InteriorDesignerActivityProps) {
+    const { toast } = useToast();
     const [stage, setStage] = useState<Stage>("intro");
     const [answers, setAnswers] = useState<Record<string, string>>({});
     
@@ -69,16 +70,24 @@ export default function InteriorDesignerActivity({ onBack }: InteriorDesignerAct
                     <CardContent className="space-y-6">
                         <Image src="https://placehold.co/600x400.png" alt="Living room to be redesigned" width={600} height={400} className="rounded-lg mb-4" data-ai-hint="living room" />
                         <InfoCard icon={<Palette className="w-5 h-5 text-accent"/>} title="Color Palette">
-                            <RadioGroup onValueChange={(val) => handleAnswerChange('color', val)}><div className="flex flex-wrap gap-4">{["Calm & Serene", "Modern & Bold", "Earthy & Natural", "Vibrant & Energetic"].map(o => <div key={o} className="flex items-center space-x-2"><RadioGroupItem value={o} id={o}/><Label htmlFor={o}>{o}</Label></div>)}</RadioGroup>
+                            <RadioGroup onValueChange={(val) => handleAnswerChange('color', val)} className="flex flex-wrap gap-4">
+                                {["Calm & Serene", "Modern & Bold", "Earthy & Natural", "Vibrant & Energetic"].map(o => <div key={o} className="flex items-center space-x-2"><RadioGroupItem value={o} id={o}/><Label htmlFor={o}>{o}</Label></div>)}
+                            </RadioGroup>
                         </InfoCard>
                         <InfoCard icon={<Sofa className="w-5 h-5 text-accent"/>} title="Furniture Style">
-                            <RadioGroup onValueChange={(val) => handleAnswerChange('furniture', val)}><div className="flex flex-wrap gap-4">{["Minimalist", "Mid-Century Modern", "Industrial", "Bohemian"].map(o => <div key={o} className="flex items-center space-x-2"><RadioGroupItem value={o} id={o}/><Label htmlFor={o}>{o}</Label></div>)}</RadioGroup>
+                           <RadioGroup onValueChange={(val) => handleAnswerChange('furniture', val)} className="flex flex-wrap gap-4">
+                                {["Minimalist", "Mid-Century Modern", "Industrial", "Bohemian"].map(o => <div key={o} className="flex items-center space-x-2"><RadioGroupItem value={o} id={o}/><Label htmlFor={o}>{o}</Label></div>)}
+                            </RadioGroup>
                         </InfoCard>
                         <InfoCard icon={<Lamp className="w-5 h-5 text-accent"/>} title="Lighting">
-                            <RadioGroup onValueChange={(val) => handleAnswerChange('lighting', val)}><div className="flex flex-wrap gap-4">{["Ambient & Soft", "Task-Oriented & Bright", "Accent & Dramatic", "Natural Light Maximization"].map(o => <div key={o} className="flex items-center space-x-2"><RadioGroupItem value={o} id={o}/><Label htmlFor={o}>{o}</Label></div>)}</RadioGroup>
+                            <RadioGroup onValueChange={(val) => handleAnswerChange('lighting', val)} className="flex flex-wrap gap-4">
+                                {["Ambient & Soft", "Task-Oriented & Bright", "Accent & Dramatic", "Natural Light Maximization"].map(o => <div key={o} className="flex items-center space-x-2"><RadioGroupItem value={o} id={o}/><Label htmlFor={o}>{o}</Label></div>)}
+                            </RadioGroup>
                         </InfoCard>
                         <InfoCard icon={<LayoutTemplate className="w-5 h-5 text-accent"/>} title="Layout Consideration">
-                            <RadioGroup onValueChange={(val) => handleAnswerChange('layout', val)}><div className="flex flex-wrap gap-4">{["Open Plan for Socializing", "Zoned for Different Activities", "Focused on a Central Feature"].map(o => <div key={o} className="flex items-center space-x-2"><RadioGroupItem value={o} id={o}/><Label htmlFor={o}>{o}</Label></div>)}</RadioGroup>
+                           <RadioGroup onValueChange={(val) => handleAnswerChange('layout', val)} className="flex flex-wrap gap-4">
+                                {["Open Plan for Socializing", "Zoned for Different Activities", "Focused on a Central Feature"].map(o => <div key={o} className="flex items-center space-x-2"><RadioGroupItem value={o} id={o}/><Label htmlFor={o}>{o}</Label></div>)}
+                            </RadioGroup>
                         </InfoCard>
                     </CardContent>
                     <CardFooter>
@@ -210,9 +219,13 @@ export default function InteriorDesignerActivity({ onBack }: InteriorDesignerAct
     return (
         <Card>
             <CardHeader className="p-4">
-                 <Button onClick={stage === 'intro' ? onBack : () => {
-                     setStage('intro');
-                     setAnswers({});
+                 <Button onClick={() => {
+                    if (stage === 'intro') {
+                        onBack();
+                    } else {
+                        setStage('intro');
+                        setAnswers({});
+                    }
                  }} variant="ghost" className="justify-start p-0 h-auto mb-2 text-muted-foreground hover:text-foreground">
                     <ArrowLeft />
                     Back

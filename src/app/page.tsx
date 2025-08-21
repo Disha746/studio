@@ -121,7 +121,7 @@ export default function Home() {
           />
         );
       case "activity":
-        if (activity === 'contentCreator') {
+        if (activity === 'contentcreator') {
           return <ContentCreatorActivity onBack={handleBackToDetails} />;
         }
         return null; // Or a default activity component

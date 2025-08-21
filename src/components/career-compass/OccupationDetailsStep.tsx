@@ -52,7 +52,8 @@ export default function OccupationDetailsStep({
   const IntroComponent = occupationComponentMap[occupation]
 
   if (IntroComponent) {
-    return <IntroComponent onBack={onBack} onProceed={() => onStartActivity(occupation.toLowerCase().replace(/\s+/g, ''))} />
+    const activityName = occupation.toLowerCase().replace(/\s+/g, '');
+    return <IntroComponent onBack={onBack} onProceed={() => onStartActivity(activityName)} />
   }
 
   // Fallback for AI-generated details

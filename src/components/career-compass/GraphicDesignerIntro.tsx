@@ -9,9 +9,10 @@ import InfoCard from "./InfoCard";
 
 type GraphicDesignerIntroProps = {
     onBack?: () => void;
+    onProceed?: () => void;
 };
 
-export default function GraphicDesignerIntro({ onBack }: GraphicDesignerIntroProps) {
+export default function GraphicDesignerIntro({ onBack, onProceed }: GraphicDesignerIntroProps) {
   return (
     <Card>
       <CardHeader>
@@ -72,6 +73,14 @@ export default function GraphicDesignerIntro({ onBack }: GraphicDesignerIntroPro
         </InfoCard>
 
       </CardContent>
+      {onProceed && (
+        <CardFooter>
+            <Button onClick={onProceed} className="w-full">
+                Try a hands-on activity
+                <ArrowRight />
+            </Button>
+        </CardFooter>
+        )}
     </Card>
   );
 }

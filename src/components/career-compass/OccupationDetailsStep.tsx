@@ -53,7 +53,7 @@ export default function OccupationDetailsStep({
   const activityName = occupation.toLowerCase().replace(/\s+/g, '');
 
   if (IntroComponent) {
-    const hasActivity = ['interiordesigner', 'doctor', 'contentcreator'].includes(activityName);
+    const hasActivity = ['interiordesigner', 'doctor', 'contentcreator', 'graphicdesigner'].includes(activityName);
     return <IntroComponent onBack={onBack} onProceed={hasActivity ? () => onStartActivity(activityName) : undefined} />
   }
 
@@ -74,3 +74,5 @@ export default function OccupationDetailsStep({
     </Card>
   );
 }
+
+    

@@ -11,6 +11,7 @@ import { quizQuestions } from "@/lib/quiz-questions";
 import ContentCreatorActivity from "@/components/career-compass/ContentCreatorActivity";
 import DoctorActivity from "@/components/career-compass/DoctorActivity";
 import InteriorDesignerActivity from "@/components/career-compass/InteriorDesignerActivity";
+import GraphicDesignerActivity from "@/components/career-compass/GraphicDesignerActivity";
 import type { QuizAnswer } from "@/lib/types";
 
 
@@ -131,6 +132,8 @@ export default function Home() {
               return <DoctorActivity onBack={handleBackToDetails} />
           case 'interiordesigner':
               return <InteriorDesignerActivity onBack={handleBackToDetails} />
+          case 'graphicdesigner':
+              return <GraphicDesignerActivity onBack={handleBackToDetails} />
           default:
             // Fallback or loading state while activity is being determined
             return null;
@@ -161,3 +164,5 @@ export default function Home() {
     </main>
   );
 }
+
+    

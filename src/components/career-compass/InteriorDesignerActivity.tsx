@@ -54,7 +54,7 @@ export default function InteriorDesignerActivity({ onBack }: InteriorDesignerAct
                         <CardDescription>Interior design is about transforming spaces into functional, aesthetic, and inspiring environments. Let's get creative!</CardDescription>
                     </CardHeader>
                     <CardContent className="text-center space-y-4">
-                        <Image src="https://placehold.co/600x300.png" alt="Before and after of a designed room" width={600} height={300} className="rounded-lg" data-ai-hint="living room interior design" />
+                        <Image src="https://placehold.co/600x400.png" alt="Empty room with potential for design" width={600} height={400} className="rounded-lg" data-ai-hint="empty room" />
                         <Button onClick={() => setStage("makeover")}>Start Your First Design Project</Button>
                     </CardContent>
                     </>

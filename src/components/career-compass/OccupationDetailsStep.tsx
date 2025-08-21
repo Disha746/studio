@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -22,9 +23,10 @@ import MeteorologistIntro from "./MeteorologistIntro";
 type OccupationDetailsStepProps = {
   occupation: string;
   onBack: () => void;
+  onStartActivity: (activityName: string) => void;
 };
 
-const occupationComponentMap: Record<string, React.ComponentType<{ onBack: () => void }>> = {
+const occupationComponentMap: Record<string, React.ComponentType<any>> = {
   "Interior Designer": CareerIntro,
   "Software Developer": SoftwareDeveloperIntro,
   "Graphic Designer": GraphicDesignerIntro,
@@ -44,12 +46,13 @@ const occupationComponentMap: Record<string, React.ComponentType<{ onBack: () =>
 export default function OccupationDetailsStep({
   occupation,
   onBack,
+  onStartActivity,
 }: OccupationDetailsStepProps) {
 
   const IntroComponent = occupationComponentMap[occupation]
 
   if (IntroComponent) {
-    return <IntroComponent onBack={onBack}/>
+    return <IntroComponent onBack={onBack} onProceed={() => onStartActivity(occupation.toLowerCase().replace(/\s+/g, ''))} />
   }
 
   // Fallback for AI-generated details

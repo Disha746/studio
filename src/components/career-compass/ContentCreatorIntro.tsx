@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -89,6 +90,14 @@ export default function ContentCreatorIntro({ onBack, onProceed }: ContentCreato
             </ul>
         </InfoCard>
       </CardContent>
+       {onProceed && (
+        <CardFooter>
+            <Button onClick={onProceed} className="w-full">
+                Explore a Day in the Life
+                <ArrowRight />
+            </Button>
+        </CardFooter>
+        )}
     </Card>
   );
 }

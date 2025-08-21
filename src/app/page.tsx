@@ -9,8 +9,9 @@ import SuggestionsStep from "@/components/career-compass/SuggestionsStep";
 import OccupationDetailsStep from "@/components/career-compass/OccupationDetailsStep";
 import { Compass } from "lucide-react";
 import { quizQuestions } from "@/lib/quiz-questions";
+import ContentCreatorActivity from "@/components/career-compass/ContentCreatorActivity";
 
-type Step = "welcome" | "quiz" | "suggestions" | "details";
+type Step = "welcome" | "quiz" | "suggestions" | "details" | "activity";
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -22,6 +23,7 @@ export default function Home() {
   const [selectedOccupation, setSelectedOccupation] = useState<string | null>(
     null
   );
+  const [activity, setActivity] = useState<string | null>(null);
 
   const handleWelcomeSubmit = (country: string, age: number) => {
     setUserData({ country, age });
@@ -85,6 +87,16 @@ export default function Home() {
     setSelectedOccupation(null);
   }
 
+  const handleStartActivity = (activityName: string) => {
+    setActivity(activityName);
+    setStep("activity");
+  }
+
+  const handleBackToDetails = () => {
+    setActivity(null);
+    setStep("details");
+  }
+
   const renderStep = () => {
     switch (step) {
       case "welcome":
@@ -104,8 +116,14 @@ export default function Home() {
           <OccupationDetailsStep
             occupation={selectedOccupation}
             onBack={handleBackToSuggestions}
+            onStartActivity={handleStartActivity}
           />
         );
+      case "activity":
+        if (activity === 'contentCreator') {
+          return <ContentCreatorActivity onBack={handleBackToDetails} />;
+        }
+        return null; // Or a default activity component
       default:
         return <WelcomeStep onSubmit={handleWelcomeSubmit} />;
     }

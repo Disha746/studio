@@ -35,7 +35,7 @@ interface InfoCardProps {
     children: ReactNode;
 }
 
-const InfoCard = ({ icon, title, children }: InfoCardProps) => (
+const InfoCard: React.FC<InfoCardProps> = ({ icon, title, children }) => (
     <div className="bg-secondary/50 rounded-lg p-4 mt-4">
         <h3 className="font-headline text-lg flex items-center gap-2 mb-2">
             {icon}

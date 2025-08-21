@@ -1,10 +1,10 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import { ArrowLeft, Check, Lightbulb, Palette, Sofa, Lamp, LayoutTemplate, Briefcase, Sparkles } from "lucide-react";
+import { ArrowLeft, Check, Lightbulb, Palette, Sofa, Lamp, LayoutTemplate, Sparkles } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
@@ -29,7 +29,13 @@ const mythBustingQuestions = [
     { id: 5, text: "Interior design is a purely subjective field with no rules.", answer: "Fact", explanation: "While creative, design adheres to principles like balance, scale, proportion, color theory, ergonomics, and often building regulations." }
 ];
 
-const InfoCard = ({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) => (
+interface InfoCardProps {
+    icon: ReactNode;
+    title: string;
+    children: ReactNode;
+}
+
+const InfoCard = ({ icon, title, children }: InfoCardProps) => (
     <div className="bg-secondary/50 rounded-lg p-4 mt-4">
         <h3 className="font-headline text-lg flex items-center gap-2 mb-2">
             {icon}
@@ -225,5 +231,3 @@ export default function InteriorDesignerActivity({ onBack }: { onBack: () => voi
         </Card>
     );
 }
-
-    

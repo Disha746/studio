@@ -12,6 +12,7 @@ import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
+import InfoCard from "./InfoCard";
 
 type Stage = "intro" | "makeover" | "consultation" | "mythbusting" | "reflection" | "results";
 
@@ -26,24 +27,8 @@ const mythBustingQuestions = [
     { id: 2, text: "You need a fine arts degree to be an interior designer.", answer: "Myth", explanation: "While art skills are important, degrees in Interior Design, Architecture, or related fields are more common and cover technical and practical aspects." },
     { id: 3, text: "Good interior design is all about following trends.", answer: "Myth", explanation: "Timeless design principles, client needs, and functionality often take precedence over fleeting trends." },
     { id: 4, text: "Clients always know exactly what they want from the start.", answer: "Myth", explanation: "Designers often help clients clarify their vision, explore possibilities, and discover preferences they didn't realize they had." },
-    { id: 5, text: "Interior design is a purely subjective field with no rules.", answer: "Fact", explanation: "While creative, design adheres to principles like balance, scale, proportion, color theory, ergonomics, and often building regulations." }
+    { id: 5, text: "Interior design is a purely subjective field with no rules.", answer: "Myth", explanation: "While creative, design adheres to principles like balance, scale, proportion, color theory, ergonomics, and often building regulations." }
 ];
-
-interface InfoCardProps {
-    icon: ReactNode;
-    title: string;
-    children: ReactNode;
-}
-
-const InfoCard: React.FC<InfoCardProps> = ({ icon, title, children }) => (
-    <div className="bg-secondary/50 rounded-lg p-4 mt-4">
-        <h3 className="font-headline text-lg flex items-center gap-2 mb-2">
-            {icon}
-            {title}
-        </h3>
-        {children}
-    </div>
-);
 
 
 export default function InteriorDesignerActivity({ onBack }: { onBack: () => void }) {
@@ -222,7 +207,10 @@ export default function InteriorDesignerActivity({ onBack }: { onBack: () => voi
     return (
         <Card>
             <CardHeader className="p-4">
-                 <Button onClick={stage === 'intro' ? onBack : () => setStage('intro')} variant="ghost" className="justify-start p-0 h-auto mb-2 text-muted-foreground hover:text-foreground">
+                 <Button onClick={stage === 'intro' ? onBack : () => {
+                     setStage('intro');
+                     setAnswers({});
+                 }} variant="ghost" className="justify-start p-0 h-auto mb-2 text-muted-foreground hover:text-foreground">
                     <ArrowLeft />
                     Back
                 </Button>
@@ -231,3 +219,5 @@ export default function InteriorDesignerActivity({ onBack }: { onBack: () => voi
         </Card>
     );
 }
+
+    

@@ -1,22 +1,14 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { ArrowLeft, CheckCircle, Clock, DollarSign, Dumbbell, Rocket, Trophy, XCircle } from "lucide-react";
+import InfoCard from "./InfoCard";
 
 type AthleteIntroProps = {
     onBack?: () => void;
 };
-
-const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
-    <div className="bg-secondary/50 rounded-lg p-4">
-        <h3 className="font-headline text-lg flex items-center gap-2 mb-2">
-            {icon}
-            {title}
-        </h3>
-        {children}
-    </div>
-)
 
 export default function AthleteIntro({ onBack }: AthleteIntroProps) {
   return (
@@ -80,3 +72,5 @@ export default function AthleteIntro({ onBack }: AthleteIntroProps) {
     </Card>
   );
 }
+
+    

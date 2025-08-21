@@ -1,22 +1,15 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { ArrowLeft, Code, CheckCircle, Rocket, Sparkles, ArrowRight } from "lucide-react";
+import InfoCard from "./InfoCard";
+
 
 type SoftwareDeveloperIntroProps = {
     onBack?: () => void;
 };
-
-const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
-    <div className="bg-secondary/50 rounded-lg p-4">
-        <h3 className="font-headline text-lg flex items-center gap-2 mb-2">
-            {icon}
-            {title}
-        </h3>
-        {children}
-    </div>
-)
 
 export default function SoftwareDeveloperIntro({ onBack }: SoftwareDeveloperIntroProps) {
   return (
@@ -61,3 +54,5 @@ export default function SoftwareDeveloperIntro({ onBack }: SoftwareDeveloperIntr
     </Card>
   );
 }
+
+    

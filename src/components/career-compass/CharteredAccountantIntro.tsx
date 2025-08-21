@@ -4,20 +4,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ArrowLeft, CheckCircle, XCircle, Rocket, DollarSign, Clock, BookOpen, Briefcase } from "lucide-react";
+import InfoCard from "./InfoCard";
+
 
 type CharteredAccountantIntroProps = {
     onBack?: () => void;
 };
-
-const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
-    <div className="bg-secondary/50 rounded-lg p-4">
-        <h3 className="font-headline text-lg flex items-center gap-2 mb-2">
-            {icon}
-            {title}
-        </h3>
-        {children}
-    </div>
-)
 
 export default function CharteredAccountantIntro({ onBack }: CharteredAccountantIntroProps) {
   return (
@@ -75,3 +67,5 @@ export default function CharteredAccountantIntro({ onBack }: CharteredAccountant
     </Card>
   );
 }
+
+    

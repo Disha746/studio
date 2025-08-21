@@ -4,21 +4,13 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { ArrowLeft, Stethoscope, CheckCircle, XCircle, Rocket, DollarSign, Clock, Wrench, ArrowRight } from "lucide-react";
+import InfoCard from "./InfoCard";
+
 
 type DoctorIntroProps = {
     onBack?: () => void;
     onProceed?: () => void;
 };
-
-const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
-    <div className="bg-secondary/50 rounded-lg p-4">
-        <h3 className="font-headline text-lg flex items-center gap-2 mb-2">
-            {icon}
-            {title}
-        </h3>
-        {children}
-    </div>
-)
 
 export default function DoctorIntro({ onBack, onProceed }: DoctorIntroProps) {
   return (
@@ -100,3 +92,5 @@ export default function DoctorIntro({ onBack, onProceed }: DoctorIntroProps) {
     </Card>
   );
 }
+
+    

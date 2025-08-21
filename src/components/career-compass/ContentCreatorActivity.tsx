@@ -9,20 +9,11 @@ import { Label } from "@/components/ui/label";
 import { ArrowLeft, CheckCircle, Film, Lightbulb, Upload } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import InfoCard from "./InfoCard";
 
 type ContentCreatorActivityProps = {
     onBack: () => void;
 };
-
-const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
-    <div className="bg-secondary/50 rounded-lg p-4 mt-4">
-        <h3 className="font-headline text-lg flex items-center gap-2 mb-2">
-            {icon}
-            {title}
-        </h3>
-        {children}
-    </div>
-)
 
 export default function ContentCreatorActivity({ onBack }: ContentCreatorActivityProps) {
     const [videoFile, setVideoFile] = useState<File | null>(null);
@@ -151,3 +142,5 @@ export default function ContentCreatorActivity({ onBack }: ContentCreatorActivit
     </Card>
   );
 }
+
+    

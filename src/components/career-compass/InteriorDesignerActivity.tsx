@@ -29,7 +29,7 @@ const mythBustingQuestions = [
     { id: 5, text: "Interior design is a purely subjective field with no rules.", answer: "Fact", explanation: "While creative, design adheres to principles like balance, scale, proportion, color theory, ergonomics, and often building regulations." }
 ];
 
-const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
+const InfoCard = ({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) => (
     <div className="bg-secondary/50 rounded-lg p-4 mt-4">
         <h3 className="font-headline text-lg flex items-center gap-2 mb-2">
             {icon}
@@ -225,3 +225,5 @@ export default function InteriorDesignerActivity({ onBack }: { onBack: () => voi
         </Card>
     );
 }
+
+    

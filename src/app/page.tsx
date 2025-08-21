@@ -11,6 +11,7 @@ import { Compass } from "lucide-react";
 import { quizQuestions } from "@/lib/quiz-questions";
 import ContentCreatorActivity from "@/components/career-compass/ContentCreatorActivity";
 import DoctorActivity from "@/components/career-compass/DoctorActivity";
+import InteriorDesignerActivity from "@/components/career-compass/InteriorDesignerActivity";
 
 type Step = "welcome" | "quiz" | "suggestions" | "details" | "activity";
 
@@ -127,6 +128,9 @@ export default function Home() {
         }
         if (activity === 'doctor') {
             return <DoctorActivity onBack={handleBackToDetails} />
+        }
+        if (activity === 'interiordesigner') {
+            return <InteriorDesignerActivity onBack={handleBackToDetails} />
         }
         return null; // Or a default activity component
       default:

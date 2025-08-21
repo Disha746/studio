@@ -4,7 +4,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ArrowLeft, Briefcase } from "lucide-react";
-import CareerIntro from "./CareerIntro";
+import InteriorDesignerIntro from "./InteriorDesignerIntro";
 import SoftwareDeveloperIntro from "./SoftwareDeveloperIntro";
 import GraphicDesignerIntro from "./GraphicDesignerIntro";
 import DoctorIntro from "./DoctorIntro";
@@ -27,7 +27,7 @@ type OccupationDetailsStepProps = {
 };
 
 const occupationComponentMap: Record<string, React.ComponentType<any>> = {
-  "Interior Designer": CareerIntro,
+  "Interior Designer": InteriorDesignerIntro,
   "Software Developer": SoftwareDeveloperIntro,
   "Graphic Designer": GraphicDesignerIntro,
   "Doctor": DoctorIntro,

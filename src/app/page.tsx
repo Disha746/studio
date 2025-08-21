@@ -10,6 +10,7 @@ import OccupationDetailsStep from "@/components/career-compass/OccupationDetails
 import { Compass } from "lucide-react";
 import { quizQuestions } from "@/lib/quiz-questions";
 import ContentCreatorActivity from "@/components/career-compass/ContentCreatorActivity";
+import DoctorActivity from "@/components/career-compass/DoctorActivity";
 
 type Step = "welcome" | "quiz" | "suggestions" | "details" | "activity";
 
@@ -123,6 +124,9 @@ export default function Home() {
       case "activity":
         if (activity === 'contentcreator') {
           return <ContentCreatorActivity onBack={handleBackToDetails} />;
+        }
+        if (activity === 'doctor') {
+            return <DoctorActivity onBack={handleBackToDetails} />
         }
         return null; // Or a default activity component
       default:

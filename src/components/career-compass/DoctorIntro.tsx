@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,7 @@ import { ArrowLeft, Stethoscope, CheckCircle, XCircle, Rocket, DollarSign, Clock
 
 type DoctorIntroProps = {
     onBack?: () => void;
+    onProceed?: () => void;
 };
 
 const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
@@ -18,7 +20,7 @@ const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: str
     </div>
 )
 
-export default function DoctorIntro({ onBack }: DoctorIntroProps) {
+export default function DoctorIntro({ onBack, onProceed }: DoctorIntroProps) {
   return (
     <Card>
       <CardHeader>
@@ -86,8 +88,15 @@ export default function DoctorIntro({ onBack }: DoctorIntroProps) {
                 <li><span className="font-semibold text-foreground/90">Resilience & Time Management:</span> Handle long hours, high stress, and emotionally taxing situations.</li>
             </ul>
         </InfoCard>
-
       </CardContent>
+       {onProceed && (
+        <CardFooter>
+            <Button onClick={onProceed} className="w-full">
+                Try a hands-on activity
+                <ArrowRight />
+            </Button>
+        </CardFooter>
+        )}
     </Card>
   );
 }

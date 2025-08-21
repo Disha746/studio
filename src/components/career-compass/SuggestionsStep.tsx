@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -5,14 +6,16 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Lightbulb, Wand2 } from "lucide-react";
+import { ArrowLeft, Lightbulb, Wand2 } from "lucide-react";
 
 type SuggestionsStepProps = {
   suggestions: string[];
   onSelectOccupation: (occupation: string) => void;
+  onBack: () => void;
 };
 
 const occupationDisplayNames: Record<string, string> = {
@@ -35,6 +38,7 @@ const occupationDisplayNames: Record<string, string> = {
 export default function SuggestionsStep({
   suggestions,
   onSelectOccupation,
+  onBack,
 }: SuggestionsStepProps) {
 
   return (
@@ -70,6 +74,12 @@ export default function SuggestionsStep({
             </div>
         )}
       </CardContent>
+       <CardFooter>
+        <Button onClick={onBack} variant="ghost" className="text-muted-foreground hover:text-foreground">
+          <ArrowLeft />
+          Back to Start
+        </Button>
+      </CardFooter>
     </Card>
   );
 }

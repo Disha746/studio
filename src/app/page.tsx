@@ -108,6 +108,7 @@ export default function Home() {
           <SuggestionsStep
             suggestions={suggestions}
             onSelectOccupation={handleSelectOccupation}
+            onBack={handleBackToWelcome}
           />
         );
       case "details":

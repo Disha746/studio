@@ -8,13 +8,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, CheckCircle, Film, Lightbulb, Upload } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 type ContentCreatorActivityProps = {
     onBack: () => void;
 };
 
 const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
-    <div className="bg-secondary/50 rounded-lg p-4">
+    <div className="bg-secondary/50 rounded-lg p-4 mt-4">
         <h3 className="font-headline text-lg flex items-center gap-2 mb-2">
             {icon}
             {title}
@@ -25,6 +26,7 @@ const InfoCard = ({ icon, title, children }: { icon: React.ReactNode, title: str
 
 export default function ContentCreatorActivity({ onBack }: ContentCreatorActivityProps) {
     const [videoFile, setVideoFile] = useState<File | null>(null);
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const { toast } = useToast();
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,12 +61,53 @@ export default function ContentCreatorActivity({ onBack }: ContentCreatorActivit
             });
             return;
         }
-        // Placeholder for actual upload logic
+        setIsSubmitted(true);
+    }
+    
+    const handleFeedbackSubmit = () => {
         toast({
-            title: "Upload Successful!",
-            description: `Your video "${videoFile.name}" has been submitted.`,
+            title: "Feedback Submitted!",
+            description: "Thank you for your valuable insights.",
         });
         onBack();
+    }
+    
+    if (isSubmitted) {
+        return (
+             <Card>
+                <CardHeader>
+                    <CardTitle className="font-headline text-2xl sm:text-3xl">Your Creator Experience</CardTitle>
+                    <CardDescription>Now that you've completed your 30-second hook video, how did you feel about the process?</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                    <div className="space-y-2">
+                        <Label>How engaging did you find creating this video?</Label>
+                         <RadioGroup className="flex">
+                            {[1,2,3,4,5].map(i => <div key={i} className="flex items-center space-x-2"><RadioGroupItem value={String(i)} id={`engaging-${i}`}/><Label htmlFor={`engaging-${i}`}>{i}</Label></div>)}
+                        </RadioGroup>
+                    </div>
+                     <div className="space-y-2">
+                        <Label>How much did you enjoy the creative process?</Label>
+                        <RadioGroup className="flex">
+                            {[1,2,3,4,5].map(i => <div key={i} className="flex items-center space-x-2"><RadioGroupItem value={String(i)} id={`enjoy-${i}`}/><Label htmlFor={`enjoy-${i}`}>{i}</Label></div>)}
+                        </RadioGroup>
+                    </div>
+                     <div className="space-y-2">
+                        <Label>Did this activity give you a better understanding of what a content creator does?</Label>
+                        <RadioGroup>
+                            <div className="flex items-center space-x-2"><RadioGroupItem value="yes" id="yes"/><Label htmlFor="yes">Yes</Label></div>
+                            <div className="flex items-center space-x-2"><RadioGroupItem value="no" id="no"/><Label htmlFor="no">No</Label></div>
+                             <div className="flex items-center space-x-2"><RadioGroupItem value="somewhat" id="somewhat"/><Label htmlFor="somewhat">Somewhat</Label></div>
+                        </RadioGroup>
+                    </div>
+                </CardContent>
+                <CardFooter>
+                    <Button onClick={handleFeedbackSubmit} className="w-full">
+                        Submit Feedback & Continue
+                    </Button>
+                </CardFooter>
+            </Card>
+        )
     }
 
 
@@ -76,19 +119,20 @@ export default function ContentCreatorActivity({ onBack }: ContentCreatorActivit
             Back
         </Button>
         <CardTitle className="font-headline text-2xl sm:text-3xl flex items-center gap-2"><Film className="text-primary"/>The 30-Second Hook Challenge</CardTitle>
-        <CardDescription>Create a short, attention-grabbing video to practice your content creation skills.</CardDescription>
+        <CardDescription>Every great piece of content starts with a captivating hook. In this quick challenge, you'll step into the shoes of a content creator and craft a 30-second video designed to grab attention and make viewers want more!</CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div>
-            <p className="text-muted-foreground">One of the most crucial skills for a content creator is capturing your audience's attention from the very first second. Your task is to create a 30-second video introducing a topic you're passionate about. It could be anything: your favorite hobby, a book you love, a travel destination, or a skill you're learning. The goal is to make people want to know more!</p>
+            <h3 className="font-headline text-xl">Your 30-Second Spotlight</h3>
+            <p className="text-muted-foreground">Your task is to create a 30-second video introducing a topic you're passionate about. It could be anything: your favorite hobby, a book you love, a travel destination, or a skill you're learning. The goal is to make people want to know more!</p>
         </div>
 
-        <InfoCard icon={<Lightbulb className="w-5 h-5 text-accent"/>} title="Key Elements to Include">
+        <InfoCard icon={<Lightbulb className="w-5 h-5 text-accent"/>} title="Tips for a Great Hook">
             <ul className="list-none space-y-2 text-muted-foreground">
-                <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-green-500 mt-1 shrink-0"/><span><span className="font-semibold text-foreground/90">Catchy Opening:</span> A question, a surprising fact, or a strong visual.</span></li>
-                <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-green-500 mt-1 shrink-0"/><span><span className="font-semibold text-foreground/90">Clear Topic:</span> What are you talking about?</span></li>
-                <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-green-500 mt-1 shrink-0"/><span><span className="font-semibold text-foreground/90">Intriguing Teaser:</span> What will they learn or see if they watch more?</span></li>
-                <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-green-500 mt-1 shrink-0"/><span><span className="font-semibold text-foreground/90">Visuals & Audio:</span> Think about what you'll show and ensure your voice is clear.</span></li>
+                <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-green-500 mt-1 shrink-0"/><span>Start with a question or surprising fact.</span></li>
+                <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-green-500 mt-1 shrink-0"/><span>Show, don't just tell (visuals matter!).</span></li>
+                <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-green-500 mt-1 shrink-0"/><span>Speak with energy and passion.</span></li>
+                <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-green-500 mt-1 shrink-0"/><span>Keep it concise.</span></li>
             </ul>
         </InfoCard>
 

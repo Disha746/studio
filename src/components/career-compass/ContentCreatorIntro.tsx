@@ -93,7 +93,7 @@ export default function ContentCreatorIntro({ onBack, onProceed }: ContentCreato
        {onProceed && (
         <CardFooter>
             <Button onClick={onProceed} className="w-full">
-                Explore a Day in the Life
+                Try a hands-on activity
                 <ArrowRight />
             </Button>
         </CardFooter>

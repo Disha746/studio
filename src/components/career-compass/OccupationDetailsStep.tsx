@@ -49,11 +49,12 @@ export default function OccupationDetailsStep({
   onStartActivity,
 }: OccupationDetailsStepProps) {
 
-  const IntroComponent = occupationComponentMap[occupation]
+  const IntroComponent = occupationComponentMap[occupation];
+  const activityName = occupation.toLowerCase().replace(/\s+/g, '');
 
   if (IntroComponent) {
-    const activityName = occupation.toLowerCase().replace(/\s+/g, '');
-    return <IntroComponent onBack={onBack} onProceed={() => onStartActivity(activityName)} />
+    const hasActivity = ['interiordesigner', 'doctor', 'contentcreator'].includes(activityName);
+    return <IntroComponent onBack={onBack} onProceed={hasActivity ? () => onStartActivity(activityName) : undefined} />
   }
 
   // Fallback for AI-generated details

@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, CheckCircle, Film, Lightbulb, Upload } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "@/components/ui/use-toast";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import InfoCard from "./InfoCard";
 
@@ -18,7 +18,6 @@ type ContentCreatorActivityProps = {
 export default function ContentCreatorActivity({ onBack }: ContentCreatorActivityProps) {
     const [videoFile, setVideoFile] = useState<File | null>(null);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const { toast } = useToast();
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -142,5 +141,3 @@ export default function ContentCreatorActivity({ onBack }: ContentCreatorActivit
     </Card>
   );
 }
-
-    

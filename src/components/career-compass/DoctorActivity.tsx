@@ -7,10 +7,10 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { ArrowLeft, Check, Lightbulb, Stethoscope } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "@/components/ui/use-toast";
 import { Separator } from "@/components/ui/separator";
 
-type DoctorActivityProps = {
+interface DoctorActivityProps {
     onBack: () => void;
 };
 
@@ -32,7 +32,6 @@ export default function DoctorActivity({ onBack }: DoctorActivityProps) {
     const [stage, setStage] = useState<Stage>("intro");
     const [answers, setAnswers] = useState<Record<number, string>>({});
     const [score, setScore] = useState(0);
-    const { toast } = useToast();
 
     const handleAnswerChange = (questionId: number, value: string) => {
         setAnswers(prev => ({ ...prev, [questionId]: value }));
@@ -197,7 +196,7 @@ export default function DoctorActivity({ onBack }: DoctorActivityProps) {
             <CardHeader>
                 <Button onClick={stage === 'intro' ? onBack : () => setStage('intro')} variant="ghost" className="justify-start p-0 h-auto mb-2 text-muted-foreground hover:text-foreground">
                     <ArrowLeft />
-                    Back
+                    {stage === 'intro' ? 'Back' : 'Start Over'}
                 </Button>
                  <CardTitle className="font-headline text-2xl sm:text-3xl flex items-center gap-2"><Stethoscope className="text-primary"/>Your Path to Healing</CardTitle>
             </CardHeader>

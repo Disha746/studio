@@ -2,7 +2,6 @@
 "use client";
 
 import { useState } from "react";
-import type { QuizAnswer } from "@/lib/types";
 import WelcomeStep from "@/components/career-compass/WelcomeStep";
 import QuizStep from "@/components/career-compass/QuizStep";
 import SuggestionsStep from "@/components/career-compass/SuggestionsStep";
@@ -12,6 +11,8 @@ import { quizQuestions } from "@/lib/quiz-questions";
 import ContentCreatorActivity from "@/components/career-compass/ContentCreatorActivity";
 import DoctorActivity from "@/components/career-compass/DoctorActivity";
 import InteriorDesignerActivity from "@/components/career-compass/InteriorDesignerActivity";
+import type { QuizAnswer } from "@/lib/types";
+
 
 type Step = "welcome" | "quiz" | "suggestions" | "details" | "activity";
 
@@ -123,16 +124,17 @@ export default function Home() {
           />
         );
       case "activity":
-        if (activity === 'contentcreator') {
-          return <ContentCreatorActivity onBack={handleBackToDetails} />;
+        switch (activity) {
+          case 'contentcreator':
+            return <ContentCreatorActivity onBack={handleBackToDetails} />;
+          case 'doctor':
+              return <DoctorActivity onBack={handleBackToDetails} />
+          case 'interiordesigner':
+              return <InteriorDesignerActivity onBack={handleBackToDetails} />
+          default:
+            // Fallback or loading state while activity is being determined
+            return null;
         }
-        if (activity === 'doctor') {
-            return <DoctorActivity onBack={handleBackToDetails} />
-        }
-        if (activity === 'interiordesigner') {
-            return <InteriorDesignerActivity onBack={handleBackToDetails} />
-        }
-        return null; // Or a default activity component
       default:
         return <WelcomeStep onSubmit={handleWelcomeSubmit} />;
     }

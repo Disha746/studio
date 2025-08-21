@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { ArrowLeft, Check, Lightbulb, Palette, Sofa, Lamp, LayoutTemplate, Sparkles } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "@/components/ui/use-toast";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
@@ -15,6 +15,10 @@ import { Input } from "@/components/ui/input";
 import InfoCard from "./InfoCard";
 
 type Stage = "intro" | "makeover" | "consultation" | "mythbusting" | "reflection" | "results";
+
+interface InteriorDesignerActivityProps {
+    onBack: () => void;
+}
 
 const consultationQuestions = [
     { id: 1, text: "What kind of color palette would you suggest to achieve a professional yet comfortable feel?", options: ["Cool blues and grays for professionalism, with warm wood accents for comfort.", "Bright, energetic yellows and oranges to boost creativity.", "Muted earth tones and greens for a calming, natural vibe.", "Primarily black and white for a sleek, modern look."] },
@@ -31,11 +35,10 @@ const mythBustingQuestions = [
 ];
 
 
-export default function InteriorDesignerActivity({ onBack }: { onBack: () => void }) {
+export default function InteriorDesignerActivity({ onBack }: InteriorDesignerActivityProps) {
     const [stage, setStage] = useState<Stage>("intro");
     const [answers, setAnswers] = useState<Record<string, string>>({});
-    const { toast } = useToast();
-
+    
     const handleAnswerChange = (questionId: string, value: string) => {
         setAnswers(prev => ({ ...prev, [questionId]: value }));
     };
@@ -219,5 +222,3 @@ export default function InteriorDesignerActivity({ onBack }: { onBack: () => voi
         </Card>
     );
 }
-
-    

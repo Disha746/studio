@@ -2,16 +2,17 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ArrowLeft, CheckCircle, XCircle, Rocket, DollarSign, Clock, BookOpen, Tv } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { ArrowLeft, CheckCircle, XCircle, Rocket, DollarSign, Clock, BookOpen, Tv, ArrowRight } from "lucide-react";
 import InfoCard from "./InfoCard";
 
 
 type MediaAndMassCommIntroProps = {
     onBack?: () => void;
+    onProceed?: () => void;
 };
 
-export default function MediaAndMassCommIntro({ onBack }: MediaAndMassCommIntroProps) {
+export default function MediaAndMassCommIntro({ onBack, onProceed }: MediaAndMassCommIntroProps) {
   return (
     <Card>
       <CardHeader>
@@ -76,6 +77,14 @@ export default function MediaAndMassCommIntro({ onBack }: MediaAndMassCommIntroP
             </ul>
         </InfoCard>
       </CardContent>
+       {onProceed && (
+        <CardFooter>
+            <Button onClick={onProceed} className="w-full">
+                Try a hands-on activity
+                <ArrowRight />
+            </Button>
+        </CardFooter>
+        )}
     </Card>
   );
 }

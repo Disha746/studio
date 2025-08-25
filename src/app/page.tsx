@@ -19,6 +19,7 @@ import ProductManagerActivity from "@/components/career-compass/ProductManagerAc
 import CharteredAccountantActivity from "@/components/career-compass/CharteredAccountantActivity";
 import MediaAndMassCommActivity from "@/components/career-compass/MediaAndMassCommActivity";
 import LawyerActivity from "@/components/career-compass/LawyerActivity";
+import PharmacistActivity from "@/components/career-compass/PharmacistActivity";
 
 
 type Step = "welcome" | "quiz" | "suggestions" | "details" | "activity";
@@ -156,6 +157,8 @@ export default function Home() {
             return <MediaAndMassCommActivity onBack={handleBackToDetails} />;
           case 'lawyer':
             return <LawyerActivity onBack={handleBackToDetails} />;
+          case 'pharmacist':
+            return <PharmacistActivity onBack={handleBackToDetails} />;
           default:
             // Fallback or loading state while activity is being determined
             return null;

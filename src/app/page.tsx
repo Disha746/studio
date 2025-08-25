@@ -51,6 +51,7 @@ export default function Home() {
         astrologer: 0,
         meteorologist: 0,
         edTechSpecialist: 0,
+        pharmacist: 0,
     };
 
     answers.forEach(answer => {
@@ -165,5 +166,3 @@ export default function Home() {
     </main>
   );
 }
-
-    

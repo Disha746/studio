@@ -19,6 +19,7 @@ import LawyerIntro from "./LawyerIntro";
 import AstrologerIntro from "./AstrologerIntro";
 import MeteorologistIntro from "./MeteorologistIntro";
 import EdTechSpecialistIntro from "./EdTechSpecialistIntro";
+import PharmacistIntro from "./PharmacistIntro";
 
 
 type OccupationDetailsStepProps = {
@@ -43,6 +44,7 @@ const occupationComponentMap: Record<string, React.ComponentType<any>> = {
   "Astrologer": AstrologerIntro,
   "Meteorologist": MeteorologistIntro,
   "Educational Technology Specialist": EdTechSpecialistIntro,
+  "Pharmacist": PharmacistIntro,
 };
 
 export default function OccupationDetailsStep({

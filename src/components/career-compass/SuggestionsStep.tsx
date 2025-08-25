@@ -34,6 +34,7 @@ const occupationDisplayNames: Record<string, string> = {
     astrologer: "Astrologer",
     meteorologist: "Meteorologist",
     edTechSpecialist: "Educational Technology Specialist",
+    pharmacist: "Pharmacist",
 };
 
 export default function SuggestionsStep({

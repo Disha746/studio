@@ -90,6 +90,11 @@ export const quizQuestions: Question[] = [
         label: 'Designing visuals and user interfaces',
         scores: { softwareDeveloper: 1, interiorDesigner: 3, graphicDesigner: 3, doctor: 0, dataScientist: 0, contentCreator: 3, productManager: 2, athlete: 0, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 2, lawyer: 0, astrologer: 1, meteorologist: 0, edTechSpecialist: 3, pharmacist: 0 },
       },
+       {
+        value: 'medication_safety',
+        label: 'Ensuring medication safety and advising patients',
+        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 3, dataScientist: 0, contentCreator: 0, productManager: 1, athlete: 0, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 0, lawyer: 0, astrologer: 0, meteorologist: 0, edTechSpecialist: 0, pharmacist: 3 },
+      },
       {
         value: 'physical_training',
         label: 'Engaging in rigorous physical training and practice drills',
@@ -279,6 +284,33 @@ export const quizQuestions: Question[] = [
         value: 'depends',
         label: 'It depends on the situation and the team I am working with.',
         scores: { softwareDeveloper: 1, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 1, contentCreator: 1, productManager: 1, athlete: 1, charteredAccountant: 1, civilServant: 1, mediaAndMassComm: 1, lawyer: 1, astrologer: 1, meteorologist: 1, edTechSpecialist: 1, pharmacist: 1 },
+      }
+    ]
+  },
+   {
+    id: 8,
+    text: 'When accuracy is critical, such as in a medical prescription or financial report, how do you approach the task?',
+    type: 'mcq',
+    options: [
+      {
+        value: 'double_check',
+        label: 'I double-check my work and follow a strict verification process.',
+        scores: { softwareDeveloper: 2, interiorDesigner: 1, graphicDesigner: 1, doctor: 3, dataScientist: 2, contentCreator: 0, productManager: 1, athlete: 1, charteredAccountant: 3, civilServant: 2, mediaAndMassComm: 1, lawyer: 2, astrologer: 1, meteorologist: 2, edTechSpecialist: 1, pharmacist: 3 },
+      },
+      {
+        value: 'rely_on_system',
+        label: 'I rely on the system or software to catch errors for me.',
+        scores: { softwareDeveloper: 2, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 1, contentCreator: 1, productManager: 1, athlete: 0, charteredAccountant: 1, civilServant: 1, mediaAndMassComm: 1, lawyer: 0, astrologer: 1, meteorologist: 1, edTechSpecialist: 2, pharmacist: 0 },
+      },
+      {
+        value: 'get_second_opinion',
+        label: 'I prefer to get a second opinion from a colleague.',
+        scores: { softwareDeveloper: 1, interiorDesigner: 2, graphicDesigner: 2, doctor: 2, dataScientist: 2, contentCreator: 2, productManager: 2, athlete: 1, charteredAccountant: 2, civilServant: 2, mediaAndMassComm: 2, lawyer: 2, astrologer: 2, meteorologist: 2, edTechSpecialist: 2, pharmacist: 2 },
+      },
+      {
+        value: 'trust_instincts',
+        label: 'I am confident in my abilities and trust my instincts.',
+        scores: { softwareDeveloper: 1, interiorDesigner: 1, graphicDesigner: 2, doctor: 1, dataScientist: 1, contentCreator: 3, productManager: 2, athlete: 2, charteredAccountant: 1, civilServant: 1, mediaAndMassComm: 2, lawyer: 1, astrologer: 3, meteorologist: 1, edTechSpecialist: 1, pharmacist: 1 },
       }
     ]
   }

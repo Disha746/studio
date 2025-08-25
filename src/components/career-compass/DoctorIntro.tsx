@@ -92,5 +92,3 @@ export default function DoctorIntro({ onBack, onProceed }: DoctorIntroProps) {
     </Card>
   );
 }
-
-    

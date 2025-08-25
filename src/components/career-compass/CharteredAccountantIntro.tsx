@@ -2,16 +2,17 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ArrowLeft, CheckCircle, XCircle, Rocket, DollarSign, Clock, BookOpen, Briefcase } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { ArrowLeft, CheckCircle, XCircle, Rocket, DollarSign, Clock, BookOpen, Briefcase, ArrowRight } from "lucide-react";
 import InfoCard from "./InfoCard";
 
 
 type CharteredAccountantIntroProps = {
     onBack?: () => void;
+    onProceed?: () => void;
 };
 
-export default function CharteredAccountantIntro({ onBack }: CharteredAccountantIntroProps) {
+export default function CharteredAccountantIntro({ onBack, onProceed }: CharteredAccountantIntroProps) {
   return (
     <Card>
       <CardHeader>
@@ -64,8 +65,14 @@ export default function CharteredAccountantIntro({ onBack }: CharteredAccountant
             <p className="text-muted-foreground">The CA course in India is known for being relatively affordable compared to other professional courses like an MBA. The total cost, including ICAI registration fees, examination fees, and articleship fees, is</p>
         </InfoCard>
       </CardContent>
+      {onProceed && (
+        <CardFooter>
+            <Button onClick={onProceed} className="w-full">
+                Try a hands-on activity
+                <ArrowRight />
+            </Button>
+        </CardFooter>
+        )}
     </Card>
   );
 }
-
-    

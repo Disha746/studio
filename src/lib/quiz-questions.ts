@@ -35,33 +35,33 @@ export const quizQuestions: Question[] = [
     options: [
       {
         value: 'logical_deduction',
-        label: 'Technical challenges requiring logical deduction and precise solutions',
-        scores: { softwareDeveloper: 3, interiorDesigner: 0, graphicDesigner: 1, doctor: 1, dataScientist: 2, contentCreator: 0, productManager: 2, athlete: 1, charteredAccountant: 2, civilServant: 1, mediaAndMassComm: 0, lawyer: 1, astrologer: 0, meteorologist: 2, edTechSpecialist: 2, pharmacist: 2 },
+        label: 'A technical challenge requiring logical deduction and a precise, coded solution.',
+        scores: { softwareDeveloper: 3, interiorDesigner: 0, graphicDesigner: 0, doctor: 1, dataScientist: 2, contentCreator: 0, productManager: 1, athlete: 0, charteredAccountant: 1, civilServant: 1, mediaAndMassComm: 0, lawyer: 1, astrologer: 0, meteorologist: 2, edTechSpecialist: 1, pharmacist: 1 },
       },
       {
         value: 'data_interpretation',
-        label: 'Analytical challenges that involve interpreting data and identifying patterns',
-        scores: { softwareDeveloper: 2, interiorDesigner: 1, graphicDesigner: 1, doctor: 2, dataScientist: 3, contentCreator: 1, productManager: 3, athlete: 1, charteredAccountant: 3, civilServant: 2, mediaAndMassComm: 2, lawyer: 2, astrologer: 2, meteorologist: 3, edTechSpecialist: 2, pharmacist: 2 },
+        label: 'An analytical challenge that involves interpreting data, finding patterns, and making predictions.',
+        scores: { softwareDeveloper: 1, interiorDesigner: 1, graphicDesigner: 1, doctor: 2, dataScientist: 3, contentCreator: 1, productManager: 2, athlete: 0, charteredAccountant: 2, civilServant: 2, mediaAndMassComm: 1, lawyer: 2, astrologer: 2, meteorologist: 3, edTechSpecialist: 1, pharmacist: 1 },
       },
       {
         value: 'creative_ideation',
-        label: 'Creative challenges that require brainstorming and novel ideas',
-        scores: { softwareDeveloper: 0, interiorDesigner: 3, graphicDesigner: 3, doctor: 0, dataScientist: 0, contentCreator: 3, productManager: 2, athlete: 1, charteredAccountant: 0, civilServant: 1, mediaAndMassComm: 3, lawyer: 1, astrologer: 2, meteorologist: 0, edTechSpecialist: 3, pharmacist: 0 },
+        label: 'A creative challenge that requires brainstorming, visual aesthetics, and novel ideas.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 3, graphicDesigner: 3, doctor: 0, dataScientist: 0, contentCreator: 3, productManager: 1, athlete: 0, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 2, lawyer: 0, astrologer: 1, meteorologist: 0, edTechSpecialist: 2, pharmacist: 0 },
       },
       {
         value: 'interpersonal_dynamics',
-        label: 'Interpersonal challenges that involve negotiation and understanding different viewpoints',
-        scores: { softwareDeveloper: 0, interiorDesigner: 2, graphicDesigner: 1, doctor: 3, dataScientist: 1, contentCreator: 2, productManager: 3, athlete: 2, charteredAccountant: 1, civilServant: 3, mediaAndMassComm: 3, lawyer: 3, astrologer: 3, meteorologist: 1, edTechSpecialist: 3, pharmacist: 3 },
+        label: 'An interpersonal challenge that involves negotiation, understanding different viewpoints, and guiding people.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 1, graphicDesigner: 0, doctor: 3, dataScientist: 0, contentCreator: 1, productManager: 3, athlete: 1, charteredAccountant: 1, civilServant: 3, mediaAndMassComm: 2, lawyer: 3, astrologer: 3, meteorologist: 0, edTechSpecialist: 2, pharmacist: 3 },
       },
        {
         value: 'physical_challenge',
-        label: 'Physical challenges that test my endurance, strength, and coordination',
-        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 1, dataScientist: 0, contentCreator: 0, productManager: 0, athlete: 3, charteredAccountant: 0, civilServant: 1, mediaAndMassComm: 0, lawyer: 0, astrologer: 0, meteorologist: 1, edTechSpecialist: 0, pharmacist: 1 },
+        label: 'A physical challenge that tests my endurance, strength, and coordination.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 0, dataScientist: 0, contentCreator: 0, productManager: 0, athlete: 3, charteredAccountant: 0, civilServant: 1, mediaAndMassComm: 0, lawyer: 0, astrologer: 0, meteorologist: 0, edTechSpecialist: 0, pharmacist: 0 },
       },
       {
         value: 'structured_process',
-        label: 'Challenges that require a systematic, rule-based approach and attention to detail',
-        scores: { softwareDeveloper: 1, interiorDesigner: 1, graphicDesigner: 0, doctor: 2, dataScientist: 1, contentCreator: 0, productManager: 1, athlete: 0, charteredAccountant: 3, civilServant: 3, mediaAndMassComm: 1, lawyer: 3, astrologer: 1, meteorologist: 2, edTechSpecialist: 1, pharmacist: 3 },
+        label: 'A challenge that requires a systematic, rule-based approach and meticulous attention to detail.',
+        scores: { softwareDeveloper: 1, interiorDesigner: 0, graphicDesigner: 0, doctor: 2, dataScientist: 1, contentCreator: 0, productManager: 1, athlete: 0, charteredAccountant: 3, civilServant: 2, mediaAndMassComm: 0, lawyer: 3, astrologer: 1, meteorologist: 1, edTechSpecialist: 0, pharmacist: 3 },
       }
     ],
   },
@@ -72,59 +72,64 @@ export const quizQuestions: Question[] = [
     options: [
       {
         value: 'coding',
-        label: 'Coding/building digital solutions',
-        scores: { softwareDeveloper: 3, interiorDesigner: 0, graphicDesigner: 0, doctor: 0, dataScientist: 2, contentCreator: 1, productManager: 1, athlete: 0, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 0, lawyer: 0, astrologer: 0, meteorologist: 1, edTechSpecialist: 2, pharmacist: 0 },
+        label: 'Coding and building digital products or tools.',
+        scores: { softwareDeveloper: 3, interiorDesigner: 0, graphicDesigner: 1, doctor: 0, dataScientist: 2, contentCreator: 1, productManager: 1, athlete: 0, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 0, lawyer: 0, astrologer: 0, meteorologist: 1, edTechSpecialist: 2, pharmacist: 0 },
       },
       {
-        value: 'troubleshooting',
-        label: 'Troubleshooting and fixing complex technical issues',
-        scores: { softwareDeveloper: 3, interiorDesigner: 0, graphicDesigner: 0, doctor: 2, dataScientist: 1, contentCreator: 0, productManager: 1, athlete: 1, charteredAccountant: 1, civilServant: 1, mediaAndMassComm: 1, lawyer: 1, astrologer: 0, meteorologist: 2, edTechSpecialist: 3, pharmacist: 2 },
+        value: 'designing_spaces',
+        label: 'Designing physical spaces, focusing on aesthetics and functionality.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 3, graphicDesigner: 2, doctor: 0, dataScientist: 0, contentCreator: 1, productManager: 0, athlete: 0, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 0, lawyer: 0, astrologer: 0, meteorologist: 0, edTechSpecialist: 0, pharmacist: 0 },
       },
       {
         value: 'analyzing_data',
-        label: 'Analyzing data and creating reports',
-        scores: { softwareDeveloper: 1, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 3, contentCreator: 2, productManager: 3, athlete: 1, charteredAccountant: 3, civilServant: 2, mediaAndMassComm: 2, lawyer: 2, astrologer: 2, meteorologist: 3, edTechSpecialist: 2, pharmacist: 2 },
+        label: 'Analyzing complex data to find insights and drive business decisions.',
+        scores: { softwareDeveloper: 1, interiorDesigner: 0, graphicDesigner: 0, doctor: 1, dataScientist: 3, contentCreator: 1, productManager: 2, athlete: 0, charteredAccountant: 2, civilServant: 1, mediaAndMassComm: 1, lawyer: 1, astrologer: 1, meteorologist: 3, edTechSpecialist: 1, pharmacist: 1 },
       },
       {
-        value: 'designing_visuals',
-        label: 'Designing visuals and user interfaces',
-        scores: { softwareDeveloper: 1, interiorDesigner: 3, graphicDesigner: 3, doctor: 0, dataScientist: 0, contentCreator: 3, productManager: 2, athlete: 0, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 2, lawyer: 0, astrologer: 1, meteorologist: 0, edTechSpecialist: 3, pharmacist: 0 },
+        value: 'diagnosing_patients',
+        label: 'Diagnosing patient symptoms and developing treatment plans.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 3, dataScientist: 1, contentCreator: 0, productManager: 0, athlete: 0, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 0, lawyer: 0, astrologer: 0, meteorologist: 0, edTechSpecialist: 0, pharmacist: 1 },
       },
        {
         value: 'medication_safety',
-        label: 'Ensuring medication safety and advising patients',
-        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 3, dataScientist: 0, contentCreator: 0, productManager: 1, athlete: 0, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 0, lawyer: 0, astrologer: 0, meteorologist: 0, edTechSpecialist: 0, pharmacist: 3 },
+        label: 'Ensuring medication safety, checking for interactions, and advising patients on usage.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 2, dataScientist: 0, contentCreator: 0, productManager: 0, athlete: 0, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 0, lawyer: 0, astrologer: 0, meteorologist: 0, edTechSpecialist: 0, pharmacist: 3 },
       },
       {
         value: 'physical_training',
-        label: 'Engaging in rigorous physical training and practice drills',
-        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 1, dataScientist: 0, contentCreator: 0, productManager: 0, athlete: 3, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 0, lawyer: 0, astrologer: 0, meteorologist: 0, edTechSpecialist: 0, pharmacist: 0 },
+        label: 'Engaging in rigorous physical training and competing.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 0, dataScientist: 0, contentCreator: 0, productManager: 0, athlete: 3, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 0, lawyer: 0, astrologer: 0, meteorologist: 0, edTechSpecialist: 0, pharmacist: 0 },
       },
       {
         value: 'auditing_compliance',
-        label: 'Auditing records and ensuring regulatory compliance',
-        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 1, dataScientist: 1, contentCreator: 0, productManager: 1, athlete: 0, charteredAccountant: 3, civilServant: 2, mediaAndMassComm: 1, lawyer: 2, astrologer: 0, meteorologist: 1, edTechSpecialist: 0, pharmacist: 3 },
+        label: 'Auditing financial records and ensuring regulatory compliance.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 0, dataScientist: 1, contentCreator: 0, productManager: 0, athlete: 0, charteredAccountant: 3, civilServant: 1, mediaAndMassComm: 0, lawyer: 2, astrologer: 0, meteorologist: 0, edTechSpecialist: 0, pharmacist: 1 },
       },
       {
         value: 'public_policy',
-        label: 'Developing public policy and working on social welfare initiatives',
-        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 1, dataScientist: 1, contentCreator: 1, productManager: 1, athlete: 0, charteredAccountant: 1, civilServant: 3, mediaAndMassComm: 2, lawyer: 3, astrologer: 1, meteorologist: 1, edTechSpecialist: 2, pharmacist: 1 },
+        label: 'Developing public policy and working on social welfare initiatives.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 1, dataScientist: 0, contentCreator: 1, productManager: 1, athlete: 0, charteredAccountant: 0, civilServant: 3, mediaAndMassComm: 2, lawyer: 2, astrologer: 0, meteorologist: 1, edTechSpecialist: 1, pharmacist: 0 },
       },
       {
         value: 'crafting_narratives',
-        label: 'Crafting narratives, writing scripts, or reporting news',
-        scores: { softwareDeveloper: 0, interiorDesigner: 1, graphicDesigner: 1, doctor: 0, dataScientist: 0, contentCreator: 3, productManager: 1, athlete: 0, charteredAccountant: 0, civilServant: 1, mediaAndMassComm: 3, lawyer: 1, astrologer: 2, meteorologist: 0, edTechSpecialist: 3, pharmacist: 0 },
+        label: 'Crafting compelling narratives, writing scripts, or reporting news.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 1, graphicDesigner: 2, doctor: 0, dataScientist: 0, contentCreator: 3, productManager: 1, athlete: 0, charteredAccountant: 0, civilServant: 1, mediaAndMassComm: 3, lawyer: 1, astrologer: 1, meteorologist: 0, edTechSpecialist: 2, pharmacist: 0 },
       },
       {
         value: 'arguing_case',
-        label: 'Constructing arguments, debating, and advocating for a position',
-        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 1, dataScientist: 1, contentCreator: 1, productManager: 2, athlete: 1, charteredAccountant: 1, civilServant: 2, mediaAndMassComm: 2, lawyer: 3, astrologer: 1, meteorologist: 1, edTechSpecialist: 1, pharmacist: 0 },
+        label: 'Constructing arguments, debating, and advocating for a legal position.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 0, dataScientist: 0, contentCreator: 1, productManager: 1, athlete: 0, charteredAccountant: 1, civilServant: 2, mediaAndMassComm: 1, lawyer: 3, astrologer: 0, meteorologist: 0, edTechSpecialist: 0, pharmacist: 0 },
       },
       {
         value: 'interpreting_charts',
-        label: 'Interpreting symbolic charts and providing guidance to people',
-        scores: { softwareDeveloper: 0, interiorDesigner: 1, graphicDesigner: 1, doctor: 2, dataScientist: 1, contentCreator: 2, productManager: 1, athlete: 0, charteredAccountant: 0, civilServant: 1, mediaAndMassComm: 2, lawyer: 1, astrologer: 3, meteorologist: 2, edTechSpecialist: 1, pharmacist: 1 },
-      }
+        label: 'Interpreting symbolic charts and providing intuitive guidance to people.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 1, contentCreator: 2, productManager: 0, athlete: 0, charteredAccountant: 0, civilServant: 1, mediaAndMassComm: 1, lawyer: 0, astrologer: 3, meteorologist: 1, edTechSpecialist: 1, pharmacist: 0 },
+      },
+       {
+        value: 'designing_learning_tools',
+        label: 'Designing digital tools and curriculum to improve education.',
+        scores: { softwareDeveloper: 1, interiorDesigner: 0, graphicDesigner: 1, doctor: 0, dataScientist: 1, contentCreator: 2, productManager: 2, athlete: 0, charteredAccountant: 0, civilServant: 1, mediaAndMassComm: 1, lawyer: 0, astrologer: 0, meteorologist: 0, edTechSpecialist: 3, pharmacist: 0 },
+      },
     ],
   },
   {
@@ -134,43 +139,43 @@ export const quizQuestions: Question[] = [
     options: [
       {
         value: 'innovate',
-        label: 'Innovate and push technological boundaries',
-        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 2, contentCreator: 2, productManager: 3, athlete: 1, charteredAccountant: 0, civilServant: 1, mediaAndMassComm: 2, lawyer: 1, astrologer: 0, meteorologist: 2, edTechSpecialist: 3, pharmacist: 1 },
+        label: 'Innovate and build products that solve user problems.',
+        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 2, contentCreator: 2, productManager: 3, athlete: 0, charteredAccountant: 0, civilServant: 1, mediaAndMassComm: 1, lawyer: 0, astrologer: 0, meteorologist: 1, edTechSpecialist: 2, pharmacist: 0 },
       },
       {
         value: 'efficiency',
-        label: 'Make processes more efficient and effective',
-        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 1, doctor: 1, dataScientist: 3, contentCreator: 1, productManager: 3, athlete: 1, charteredAccountant: 2, civilServant: 2, mediaAndMassComm: 1, lawyer: 2, astrologer: 1, meteorologist: 3, edTechSpecialist: 3, pharmacist: 2 },
+        label: 'Analyze systems to make them more efficient and effective.',
+        scores: { softwareDeveloper: 2, interiorDesigner: 1, graphicDesigner: 0, doctor: 1, dataScientist: 3, contentCreator: 0, productManager: 2, athlete: 1, charteredAccountant: 2, civilServant: 2, mediaAndMassComm: 0, lawyer: 1, astrologer: 0, meteorologist: 3, edTechSpecialist: 1, pharmacist: 1 },
       },
       {
         value: 'expression',
-        label: 'Express myself creatively',
-        scores: { softwareDeveloper: 0, interiorDesigner: 3, graphicDesigner: 3, doctor: 0, dataScientist: 0, contentCreator: 3, productManager: 1, athlete: 1, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 3, lawyer: 1, astrologer: 2, meteorologist: 0, edTechSpecialist: 2, pharmacist: 0 },
+        label: 'Express myself creatively through visual or written mediums.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 3, graphicDesigner: 3, doctor: 0, dataScientist: 0, contentCreator: 3, productManager: 0, athlete: 0, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 3, lawyer: 0, astrologer: 1, meteorologist: 0, edTechSpecialist: 1, pharmacist: 0 },
       },
       {
         value: 'help_others',
-        label: 'Help others and improve their well-being',
-        scores: { softwareDeveloper: 0, interiorDesigner: 1, graphicDesigner: 0, doctor: 3, dataScientist: 1, contentCreator: 2, productManager: 2, athlete: 2, charteredAccountant: 1, civilServant: 3, mediaAndMassComm: 2, lawyer: 3, astrologer: 3, meteorologist: 2, edTechSpecialist: 3, pharmacist: 3 },
+        label: 'Directly help and care for people in a medical capacity.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 3, dataScientist: 0, contentCreator: 0, productManager: 0, athlete: 0, charteredAccountant: 0, civilServant: 1, mediaAndMassComm: 0, lawyer: 0, astrologer: 1, meteorologist: 0, edTechSpecialist: 0, pharmacist: 3 },
       },
        {
         value: 'compete_win',
-        label: 'Compete at the highest level and win',
-        scores: { softwareDeveloper: 1, interiorDesigner: 0, graphicDesigner: 0, doctor: 0, dataScientist: 1, contentCreator: 0, productManager: 1, athlete: 3, charteredAccountant: 1, civilServant: 0, mediaAndMassComm: 0, lawyer: 2, astrologer: 0, meteorologist: 0, edTechSpecialist: 0, pharmacist: 0 },
+        label: 'Compete at the highest level and push my physical limits.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 0, dataScientist: 0, contentCreator: 0, productManager: 0, athlete: 3, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 0, lawyer: 1, astrologer: 0, meteorologist: 0, edTechSpecialist: 0, pharmacist: 0 },
       },
       {
         value: 'provide_expertise',
-        label: 'Provide expert financial advice and ensure accuracy',
-        scores: { softwareDeveloper: 0, interiorDesigner: 1, graphicDesigner: 0, doctor: 1, dataScientist: 2, contentCreator: 0, productManager: 2, athlete: 0, charteredAccountant: 3, civilServant: 1, mediaAndMassComm: 0, lawyer: 2, astrologer: 1, meteorologist: 1, edTechSpecialist: 1, pharmacist: 3 },
+        label: 'Provide expert financial advice and ensure financial integrity.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 0, dataScientist: 1, contentCreator: 0, productManager: 1, athlete: 0, charteredAccountant: 3, civilServant: 1, mediaAndMassComm: 0, lawyer: 1, astrologer: 0, meteorologist: 0, edTechSpecialist: 0, pharmacist: 1 },
       },
       {
         value: 'serve_nation',
-        label: 'Serve the nation and contribute to its governance',
-        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 1, dataScientist: 0, contentCreator: 0, productManager: 0, athlete: 1, charteredAccountant: 1, civilServant: 3, mediaAndMassComm: 1, lawyer: 2, astrologer: 0, meteorologist: 2, edTechSpecialist: 2, pharmacist: 1 },
+        label: 'Serve the nation and contribute to its governance and development.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 1, dataScientist: 0, contentCreator: 0, productManager: 0, athlete: 0, charteredAccountant: 0, civilServant: 3, mediaAndMassComm: 1, lawyer: 2, astrologer: 0, meteorologist: 1, edTechSpecialist: 1, pharmacist: 0 },
       },
       {
-        value: 'inform_influence',
-        label: 'Inform or influence public opinion through storytelling',
-        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 1, doctor: 1, dataScientist: 1, contentCreator: 3, productManager: 2, athlete: 0, charteredAccountant: 0, civilServant: 2, mediaAndMassComm: 3, lawyer: 2, astrologer: 2, meteorologist: 1, edTechSpecialist: 3, pharmacist: 1 },
+        value: 'uphold_justice',
+        label: 'Uphold justice and advocate for others within a legal framework.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 0, graphicDesigner: 0, doctor: 0, dataScientist: 0, contentCreator: 0, productManager: 0, athlete: 0, charteredAccountant: 1, civilServant: 2, mediaAndMassComm: 1, lawyer: 3, astrologer: 0, meteorologist: 0, edTechSpecialist: 0, pharmacist: 0 },
       }
     ],
   },
@@ -181,28 +186,23 @@ export const quizQuestions: Question[] = [
     options: [
       {
         value: 'very_comfortable',
-        label: 'I enjoy working with abstract ideas and creating logical frameworks.',
-        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 3, contentCreator: 1, productManager: 3, athlete: 1, charteredAccountant: 2, civilServant: 2, mediaAndMassComm: 2, lawyer: 3, astrologer: 2, meteorologist: 3, edTechSpecialist: 2, pharmacist: 1 },
+        label: 'I love creating and working within logical frameworks and abstract systems.',
+        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 3, contentCreator: 0, productManager: 2, athlete: 0, charteredAccountant: 2, civilServant: 2, mediaAndMassComm: 0, lawyer: 3, astrologer: 2, meteorologist: 3, edTechSpecialist: 1, pharmacist: 1 },
       },
       {
         value: 'comfortable_with_examples',
-        label: 'I can grasp abstract concepts when explained clearly, especially with examples.',
-        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 2, doctor: 2, dataScientist: 2, contentCreator: 2, productManager: 2, athlete: 2, charteredAccountant: 2, civilServant: 2, mediaAndMassComm: 2, lawyer: 2, astrologer: 2, meteorologist: 2, edTechSpecialist: 3, pharmacist: 2 },
+        label: 'I grasp abstract concepts best when they are tied to real-world examples and applications.',
+        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 2, doctor: 2, dataScientist: 2, contentCreator: 2, productManager: 3, athlete: 2, charteredAccountant: 2, civilServant: 2, mediaAndMassComm: 2, lawyer: 2, astrologer: 2, meteorologist: 2, edTechSpecialist: 3, pharmacist: 2 },
       },
       {
         value: 'prefer_concrete',
-        label: 'I prefer concrete, hands-on tasks and find abstract concepts challenging.',
-        scores: { softwareDeveloper: 0, interiorDesigner: 3, graphicDesigner: 2, doctor: 1, dataScientist: 0, contentCreator: 2, productManager: 1, athlete: 3, charteredAccountant: 1, civilServant: 1, mediaAndMassComm: 1, lawyer: 0, astrologer: 1, meteorologist: 1, edTechSpecialist: 1, pharmacist: 3 },
-      },
-      {
-        value: 'motivated_by_complexity',
-        label: 'I am motivated by understanding how complex systems work internally.',
-        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 0, doctor: 2, dataScientist: 2, contentCreator: 0, productManager: 2, athlete: 1, charteredAccountant: 2, civilServant: 2, mediaAndMassComm: 1, lawyer: 2, astrologer: 3, meteorologist: 2, edTechSpecialist: 2, pharmacist: 2 },
+        label: 'I prefer concrete, hands-on tasks and find purely abstract thinking less engaging.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 3, graphicDesigner: 3, doctor: 2, dataScientist: 0, contentCreator: 3, productManager: 1, athlete: 3, charteredAccountant: 1, civilServant: 1, mediaAndMassComm: 3, lawyer: 1, astrologer: 1, meteorologist: 0, edTechSpecialist: 2, pharmacist: 3 },
       },
       {
         value: 'rule_based_systems',
-        label: 'I excel when working with well-defined rule-based systems like tax laws or accounting standards.',
-        scores: { softwareDeveloper: 1, interiorDesigner: 0, graphicDesigner: 0, doctor: 1, dataScientist: 1, contentCreator: 0, productManager: 1, athlete: 0, charteredAccountant: 3, civilServant: 3, mediaAndMassComm: 1, lawyer: 3, astrologer: 2, meteorologist: 2, edTechSpecialist: 1, pharmacist: 3 },
+        label: 'I excel when working with well-defined rule-based systems like tax laws or medication protocols.',
+        scores: { softwareDeveloper: 1, interiorDesigner: 0, graphicDesigner: 0, doctor: 2, dataScientist: 1, contentCreator: 0, productManager: 0, athlete: 0, charteredAccountant: 3, civilServant: 3, mediaAndMassComm: 0, lawyer: 3, astrologer: 1, meteorologist: 1, edTechSpecialist: 0, pharmacist: 3 },
       }
     ],
   },
@@ -213,23 +213,23 @@ export const quizQuestions: Question[] = [
     options: [
       {
         value: 'evolving',
-        label: 'Processes are constantly evolving and being redefined',
-        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 2, doctor: 2, dataScientist: 3, contentCreator: 3, productManager: 3, athlete: 2, charteredAccountant: 1, civilServant: 1, mediaAndMassComm: 3, lawyer: 2, astrologer: 2, meteorologist: 3, edTechSpecialist: 3, pharmacist: 1 },
+        label: 'Processes are constantly evolving and being redefined.',
+        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 2, doctor: 1, dataScientist: 3, contentCreator: 3, productManager: 3, athlete: 2, charteredAccountant: 0, civilServant: 1, mediaAndMassComm: 3, lawyer: 1, astrologer: 2, meteorologist: 2, edTechSpecialist: 3, pharmacist: 1 },
       },
       {
         value: 'structured',
-        label: 'There is a clear structure and predictable workflow',
-        scores: { softwareDeveloper: 1, interiorDesigner: 2, graphicDesigner: 1, doctor: 3, dataScientist: 1, contentCreator: 0, productManager: 1, athlete: 2, charteredAccountant: 3, civilServant: 3, mediaAndMassComm: 1, lawyer: 3, astrologer: 1, meteorologist: 2, edTechSpecialist: 1, pharmacist: 3 },
+        label: 'There is a clear structure, established protocols, and predictable workflow.',
+        scores: { softwareDeveloper: 1, interiorDesigner: 1, graphicDesigner: 0, doctor: 3, dataScientist: 1, contentCreator: 0, productManager: 1, athlete: 1, charteredAccountant: 3, civilServant: 3, mediaAndMassComm: 1, lawyer: 3, astrologer: 1, meteorologist: 2, edTechSpecialist: 1, pharmacist: 3 },
       },
       {
         value: 'collaborative',
-        label: 'Collaboration and teamwork are the primary focus',
-        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 2, doctor: 2, dataScientist: 2, contentCreator: 2, productManager: 3, athlete: 3, charteredAccountant: 2, civilServant: 2, mediaAndMassComm: 3, lawyer: 2, astrologer: 2, meteorologist: 2, edTechSpecialist: 3, pharmacist: 3 },
+        label: 'Collaboration and cross-functional teamwork are the primary focus.',
+        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 2, doctor: 2, dataScientist: 2, contentCreator: 2, productManager: 3, athlete: 3, charteredAccountant: 1, civilServant: 2, mediaAndMassComm: 2, lawyer: 2, astrologer: 1, meteorologist: 1, edTechSpecialist: 3, pharmacist: 2 },
       },
       {
         value: 'independent',
-        label: 'I can work independently with minimal supervision',
-        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 2, doctor: 1, dataScientist: 2, contentCreator: 3, productManager: 2, athlete: 2, charteredAccountant: 2, civilServant: 1, mediaAndMassComm: 2, lawyer: 2, astrologer: 3, meteorologist: 1, edTechSpecialist: 2, pharmacist: 2 },
+        label: 'I can work independently with a high degree of autonomy.',
+        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 2, doctor: 1, dataScientist: 2, contentCreator: 3, productManager: 1, athlete: 2, charteredAccountant: 2, civilServant: 1, mediaAndMassComm: 2, lawyer: 2, astrologer: 3, meteorologist: 1, edTechSpecialist: 2, pharmacist: 2 },
       },
     ],
   },
@@ -240,18 +240,18 @@ export const quizQuestions: Question[] = [
     options: [
         {
             value: 'fascinated',
-            label: 'Fascinated by them and believe they hold deep wisdom.',
+            label: 'Fascinated by them and believe they hold deep, intuitive wisdom.',
             scores: { softwareDeveloper: 0, interiorDesigner: 1, graphicDesigner: 1, doctor: 0, dataScientist: 0, contentCreator: 2, productManager: 0, athlete: 0, charteredAccountant: 0, civilServant: 1, mediaAndMassComm: 2, lawyer: 1, astrologer: 3, meteorologist: 0, edTechSpecialist: 1, pharmacist: 0 },
         },
         {
             value: 'curious',
             label: 'Curious about them from a historical or cultural perspective.',
-            scores: { softwareDeveloper: 1, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 1, contentCreator: 2, productManager: 1, athlete: 1, charteredAccountant: 1, civilServant: 2, mediaAndMassComm: 2, lawyer: 2, astrologer: 2, meteorologist: 1, edTechSpecialist: 2, pharmacist: 1 },
+            scores: { softwareDeveloper: 1, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 1, contentCreator: 2, productManager: 1, athlete: 1, charteredAccountant: 1, civilServant: 2, mediaAndMassComm: 2, lawyer: 2, astrologer: 1, meteorologist: 1, edTechSpecialist: 2, pharmacist: 1 },
         },
         {
             value: 'sceptical',
-            label: 'Skeptical and prefer evidence-based, scientific explanations.',
-            scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 1, doctor: 3, dataScientist: 3, contentCreator: 1, productManager: 2, athlete: 1, charteredAccountant: 2, civilServant: 1, mediaAndMassComm: 1, lawyer: 2, astrologer: 0, meteorologist: 3, edTechSpecialist: 3, pharmacist: 3 },
+            label: 'Skeptical and prefer evidence-based, scientific explanations for phenomena.',
+            scores: { softwareDeveloper: 3, interiorDesigner: 0, graphicDesigner: 0, doctor: 3, dataScientist: 3, contentCreator: 0, productManager: 2, athlete: 1, charteredAccountant: 2, civilServant: 1, mediaAndMassComm: 0, lawyer: 2, astrologer: 0, meteorologist: 3, edTechSpecialist: 2, pharmacist: 3 },
         },
         {
             value: 'neutral',
@@ -262,23 +262,23 @@ export const quizQuestions: Question[] = [
   },
   {
     id: 7,
-    text: 'How do you feel about working under high-pressure situations, like severe weather events?',
+    text: 'How do you feel about working under high-pressure situations with critical outcomes (e.g., public safety, health)?',
     type: 'mcq',
     options: [
       {
         value: 'thrive',
-        label: 'I thrive under pressure and enjoy making critical decisions.',
-        scores: { softwareDeveloper: 1, interiorDesigner: 0, graphicDesigner: 1, doctor: 3, dataScientist: 2, contentCreator: 1, productManager: 2, athlete: 3, charteredAccountant: 2, civilServant: 3, mediaAndMassComm: 2, lawyer: 3, astrologer: 1, meteorologist: 3, edTechSpecialist: 2, pharmacist: 2 },
+        label: 'I thrive under pressure and make clear, decisive decisions.',
+        scores: { softwareDeveloper: 1, interiorDesigner: 0, graphicDesigner: 0, doctor: 3, dataScientist: 1, contentCreator: 1, productManager: 2, athlete: 3, charteredAccountant: 2, civilServant: 3, mediaAndMassComm: 2, lawyer: 3, astrologer: 1, meteorologist: 3, edTechSpecialist: 1, pharmacist: 3 },
       },
       {
         value: 'handle_it',
-        label: 'I can handle pressure but prefer a more stable environment.',
-        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 2, doctor: 2, dataScientist: 2, contentCreator: 2, productManager: 2, athlete: 2, charteredAccountant: 2, civilServant: 2, mediaAndMassComm: 2, lawyer: 2, astrologer: 2, meteorologist: 2, edTechSpecialist: 3, pharmacist: 3 },
+        label: 'I can handle pressure but prefer a more stable, predictable environment.',
+        scores: { softwareDeveloper: 2, interiorDesigner: 2, graphicDesigner: 2, doctor: 2, dataScientist: 2, contentCreator: 2, productManager: 2, athlete: 2, charteredAccountant: 3, civilServant: 2, mediaAndMassComm: 2, lawyer: 2, astrologer: 2, meteorologist: 2, edTechSpecialist: 2, pharmacist: 2 },
       },
       {
         value: 'avoid_it',
-        label: 'I prefer to avoid high-pressure situations and work at a steady pace.',
-        scores: { softwareDeveloper: 2, interiorDesigner: 3, graphicDesigner: 2, doctor: 1, dataScientist: 1, contentCreator: 3, productManager: 1, athlete: 1, charteredAccountant: 1, civilServant: 1, mediaAndMassComm: 1, lawyer: 1, astrologer: 3, meteorologist: 1, edTechSpecialist: 2, pharmacist: 1 },
+        label: 'I prefer to avoid high-stakes, high-pressure situations and work at a steady pace.',
+        scores: { softwareDeveloper: 2, interiorDesigner: 3, graphicDesigner: 2, doctor: 0, dataScientist: 2, contentCreator: 3, productManager: 1, athlete: 0, charteredAccountant: 1, civilServant: 0, mediaAndMassComm: 1, lawyer: 0, astrologer: 3, meteorologist: 1, edTechSpecialist: 3, pharmacist: 1 },
       },
       {
         value: 'depends',
@@ -294,23 +294,23 @@ export const quizQuestions: Question[] = [
     options: [
       {
         value: 'double_check',
-        label: 'I double-check my work and follow a strict verification process.',
+        label: 'I meticulously double-check my work and follow a strict verification process.',
         scores: { softwareDeveloper: 2, interiorDesigner: 1, graphicDesigner: 1, doctor: 3, dataScientist: 2, contentCreator: 0, productManager: 1, athlete: 1, charteredAccountant: 3, civilServant: 2, mediaAndMassComm: 1, lawyer: 2, astrologer: 1, meteorologist: 2, edTechSpecialist: 1, pharmacist: 3 },
       },
       {
         value: 'rely_on_system',
-        label: 'I rely on the system or software to catch errors for me.',
-        scores: { softwareDeveloper: 2, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 1, contentCreator: 1, productManager: 1, athlete: 0, charteredAccountant: 1, civilServant: 1, mediaAndMassComm: 1, lawyer: 0, astrologer: 1, meteorologist: 1, edTechSpecialist: 2, pharmacist: 0 },
+        label: 'I use technology and systems to automate checks, but trust my own review.',
+        scores: { softwareDeveloper: 3, interiorDesigner: 1, graphicDesigner: 1, doctor: 1, dataScientist: 3, contentCreator: 1, productManager: 2, athlete: 0, charteredAccountant: 2, civilServant: 1, mediaAndMassComm: 1, lawyer: 1, astrologer: 0, meteorologist: 3, edTechSpecialist: 2, pharmacist: 1 },
       },
       {
         value: 'get_second_opinion',
-        label: 'I prefer to get a second opinion from a colleague.',
+        label: 'I prefer to get a second opinion from a colleague to ensure nothing is missed.',
         scores: { softwareDeveloper: 1, interiorDesigner: 2, graphicDesigner: 2, doctor: 2, dataScientist: 2, contentCreator: 2, productManager: 2, athlete: 1, charteredAccountant: 2, civilServant: 2, mediaAndMassComm: 2, lawyer: 2, astrologer: 2, meteorologist: 2, edTechSpecialist: 2, pharmacist: 2 },
       },
       {
         value: 'trust_instincts',
-        label: 'I am confident in my abilities and trust my instincts.',
-        scores: { softwareDeveloper: 1, interiorDesigner: 1, graphicDesigner: 2, doctor: 1, dataScientist: 1, contentCreator: 3, productManager: 2, athlete: 2, charteredAccountant: 1, civilServant: 1, mediaAndMassComm: 2, lawyer: 1, astrologer: 3, meteorologist: 1, edTechSpecialist: 1, pharmacist: 1 },
+        label: 'I am confident in my abilities and trust my creative or strategic instincts.',
+        scores: { softwareDeveloper: 0, interiorDesigner: 2, graphicDesigner: 3, doctor: 0, dataScientist: 0, contentCreator: 3, productManager: 3, athlete: 2, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 2, lawyer: 0, astrologer: 3, meteorologist: 0, edTechSpecialist: 2, pharmacist: 0 },
       }
     ]
   }

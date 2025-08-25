@@ -23,10 +23,19 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  education: z.string().min(2, { message: "Education level is required." }),
+  education: z.string({
+    required_error: "Please select an education level.",
+  }),
   country: z.string().min(2, {
     message: "Country must be at least 2 characters.",
   }),
@@ -45,7 +54,6 @@ export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      education: "",
       country: "",
       age: 0,
     },
@@ -85,9 +93,19 @@ export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Highest Level of Education</FormLabel>
-                  <FormControl>
-                    <Input placeholder="e.g. High School, Bachelor's Degree" {...field} />
-                  </FormControl>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select your education level" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="High School Student">High School Student</SelectItem>
+                      <SelectItem value="Junior College">Junior College</SelectItem>
+                      <SelectItem value="Graduate">Graduate</SelectItem>
+                      <SelectItem value="Working Professional">Working Professional</SelectItem>
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}

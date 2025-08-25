@@ -19,7 +19,9 @@ type Step = "welcome" | "quiz" | "suggestions" | "details" | "activity";
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
-  const [userData, setUserData] = useState<{ country: string; age: number }>({
+  const [userData, setUserData] = useState<{ name: string; education: string; country: string; age: number }>({
+    name: "",
+    education: "",
     country: "",
     age: 0,
   });
@@ -29,8 +31,8 @@ export default function Home() {
   );
   const [activity, setActivity] = useState<string | null>(null);
 
-  const handleWelcomeSubmit = (country: string, age: number) => {
-    setUserData({ country, age });
+  const handleWelcomeSubmit = (name: string, education: string, country: string, age: number) => {
+    setUserData({ name, education, country, age });
     setStep("quiz");
   };
 
@@ -88,7 +90,7 @@ export default function Home() {
   
   const handleBackToWelcome = () => {
     setStep("welcome");
-    setUserData({ country: "", age: 0 });
+    setUserData({ name: "", education: "", country: "", age: 0 });
     setSuggestions([]);
     setSelectedOccupation(null);
   }

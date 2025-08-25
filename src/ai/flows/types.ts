@@ -1,6 +1,9 @@
+
 import { z } from 'zod';
 
 export const SuggestOccupationsInputSchema = z.object({
+  name: z.string().describe("The user's name."),
+  education: z.string().describe("The user's highest level of education."),
   quizResults: z
     .string()
     .describe('The results of the user quiz as a string.'),

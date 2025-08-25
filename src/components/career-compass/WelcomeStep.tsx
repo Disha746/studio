@@ -25,6 +25,8 @@ import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
 
 const formSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  education: z.string().min(2, { message: "Education level is required." }),
   country: z.string().min(2, {
     message: "Country must be at least 2 characters.",
   }),
@@ -35,20 +37,22 @@ const formSchema = z.object({
 });
 
 type WelcomeStepProps = {
-  onSubmit: (country: string, age: number) => void;
+  onSubmit: (name: string, education: string, country: string, age: number) => void;
 };
 
 export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      name: "",
+      education: "",
       country: "",
       age: 0,
     },
   });
 
   function handleSubmit(values: z.infer<typeof formSchema>) {
-    onSubmit(values.country, values.age);
+    onSubmit(values.name, values.education, values.country, values.age);
   }
 
   return (
@@ -62,6 +66,32 @@ export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
           <CardContent className="space-y-4">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g. Jane Doe" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="education"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Highest Level of Education</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g. High School, Bachelor's Degree" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="country"

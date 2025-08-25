@@ -3,14 +3,15 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import { ArrowLeft, CheckCircle, Clock, DollarSign, Dumbbell, Rocket, Trophy, XCircle } from "lucide-react";
+import { ArrowLeft, CheckCircle, Clock, DollarSign, Dumbbell, Rocket, Trophy, XCircle, ArrowRight } from "lucide-react";
 import InfoCard from "./InfoCard";
 
 type AthleteIntroProps = {
     onBack?: () => void;
+    onProceed?: () => void;
 };
 
-export default function AthleteIntro({ onBack }: AthleteIntroProps) {
+export default function AthleteIntro({ onBack, onProceed }: AthleteIntroProps) {
   return (
     <Card>
       <CardHeader>
@@ -69,8 +70,14 @@ export default function AthleteIntro({ onBack }: AthleteIntroProps) {
         </InfoCard>
 
       </CardContent>
+        {onProceed && (
+            <CardFooter>
+                <Button onClick={onProceed} className="w-full">
+                    Try a hands-on activity
+                    <ArrowRight />
+                </Button>
+            </CardFooter>
+        )}
     </Card>
   );
 }
-
-    

@@ -2,16 +2,17 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ArrowLeft, CheckCircle, XCircle, Rocket, DollarSign, Clock, BookOpen, Scale } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { ArrowLeft, CheckCircle, XCircle, Rocket, DollarSign, Clock, BookOpen, Scale, ArrowRight } from "lucide-react";
 import InfoCard from "./InfoCard";
 
 
 type LawyerIntroProps = {
     onBack?: () => void;
+    onProceed?: () => void;
 };
 
-export default function LawyerIntro({ onBack }: LawyerIntroProps) {
+export default function LawyerIntro({ onBack, onProceed }: LawyerIntroProps) {
   return (
     <Card>
       <CardHeader>
@@ -76,8 +77,14 @@ export default function LawyerIntro({ onBack }: LawyerIntroProps) {
             </ul>
         </InfoCard>
       </CardContent>
+       {onProceed && (
+        <CardFooter>
+            <Button onClick={onProceed} className="w-full">
+                Try a hands-on activity
+                <ArrowRight />
+            </Button>
+        </CardFooter>
+        )}
     </Card>
   );
 }
-
-    

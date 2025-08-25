@@ -7,25 +7,18 @@
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'zod';
-import { SimulationInputSchema, SimulationOutputSchema, type SimulationInput, type SimulationOutput } from './types';
+import {
+  SimulationInputSchema,
+  SimulationOutputSchema,
+  type SimulationInput,
+  type SimulationOutput,
+} from './types';
 
-
-export async function getSimulationConsequence(
-  input: SimulationInput
-): Promise<SimulationOutput> {
-  const simulationFlow = ai.defineFlow(
-    {
-      name: 'simulationFlow',
-      inputSchema: SimulationInputSchema,
-      outputSchema: SimulationOutputSchema,
-    },
-    async (input) => {
-      const prompt = ai.definePrompt({
-        name: 'civilServantSimulationPrompt',
-        input: { schema: SimulationInputSchema },
-        output: { schema: SimulationOutputSchema },
-        prompt: `You are a simulation engine for a career counseling app. A user is playing the role of a District Collector during a flood crisis.
+const civilServantSimulationPrompt = ai.definePrompt({
+  name: 'civilServantSimulationPrompt',
+  input: { schema: SimulationInputSchema },
+  output: { schema: SimulationOutputSchema },
+  prompt: `You are a simulation engine for a career counseling app. A user is playing the role of a District Collector during a flood crisis.
 
 The Scenario: A severe flood has damaged houses and disrupted the community. You have limited funds available.
 
@@ -40,15 +33,25 @@ Your Task:
 1.  Generate a unique, non-judgmental consequence for the user's chosen action.
 2.  Provide a brief explanation that highlights how a civil servant must balance urgency, fairness, and resources in real-world situations. Do not judge the user's choice, but explain the trade-offs.
 `,
-      });
-      
-      const { output } = await prompt(input);
-      if (!output) {
-          throw new Error("Failed to get simulation consequence from AI.");
-      }
-      return output;
-    }
-  );
+});
 
+const simulationFlow = ai.defineFlow(
+  {
+    name: 'simulationFlow',
+    inputSchema: SimulationInputSchema,
+    outputSchema: SimulationOutputSchema,
+  },
+  async (input) => {
+    const { output } = await civilServantSimulationPrompt(input);
+    if (!output) {
+      throw new Error('Failed to get simulation consequence from AI.');
+    }
+    return output;
+  }
+);
+
+export async function getSimulationConsequence(
+  input: SimulationInput
+): Promise<SimulationOutput> {
   return await simulationFlow(input);
 }

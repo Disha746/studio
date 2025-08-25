@@ -53,3 +53,26 @@ export const GetOccupationDetailsOutputSchema = z.object({
     .describe('A flowchart-like progression of a typical career path in this occupation, with 3-5 steps.'),
 });
 export type GetOccupationDetailsOutput = z.infer<typeof GetOccupationDetailsOutputSchema>;
+
+export const SimulationInputSchema = z.object({
+  decision: z.string().describe("The user's decision choice (e.g., 'A', 'B', or 'C')."),
+});
+export type SimulationInput = z.infer<typeof SimulationInputSchema>;
+
+export const SimulationOutputSchema = z.object({
+  consequence: z.string().describe("The direct consequence of the user's decision."),
+  explanation: z.string().describe("The explanation of the trade-offs and complexities involved."),
+});
+export type SimulationOutput = z.infer<typeof SimulationOutputSchema>;
+
+export const ProductManagerSimulationInputSchema = z.object({
+  targetAudience: z.string().describe("The user's choice for the target audience (e.g., 'Students', 'Working Professionals', 'Families')."),
+  features: z.string().describe("The user's choice for the primary feature focus (e.g., 'Fast Delivery', 'Discounts', 'Premium Restaurants')."),
+  businessModel: z.string().describe("The user's choice for the business model (e.g., 'Subscription', 'Ads', 'Pay-per-order')."),
+});
+export type ProductManagerSimulationInput = z.infer<typeof ProductManagerSimulationInputSchema>;
+
+export const ProductManagerSimulationOutputSchema = z.object({
+  summary: z.string().describe("A summary explaining how the user's choices would affect the product's growth, revenue, and customer satisfaction, highlighting trade-offs."),
+});
+export type ProductManagerSimulationOutput = z.infer<typeof ProductManagerSimulationOutputSchema>;

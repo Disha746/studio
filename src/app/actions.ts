@@ -1,11 +1,9 @@
 'use server';
 
 import { getOccupationDetails } from '@/ai/flows/get-occupation-details';
-import type { GetOccupationDetailsInput } from '@/ai/flows/types';
 import { getSimulationConsequence } from '@/ai/flows/civil-servant-simulation';
-import type { SimulationInput } from '@/ai/flows/civil-servant-simulation';
 import { getProductManagerSimulationResult } from '@/ai/flows/product-manager-simulation';
-import type { ProductManagerSimulationInput } from '@/ai/flows/product-manager-simulation';
+import type { GetOccupationDetailsInput, SimulationInput, ProductManagerSimulationInput } from '@/ai/flows/types';
 
 export async function getDetailsAction(input: GetOccupationDetailsInput) {
     try {

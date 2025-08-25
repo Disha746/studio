@@ -6,19 +6,7 @@
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'zod';
-
-export const ProductManagerSimulationInputSchema = z.object({
-  targetAudience: z.string().describe("The user's choice for the target audience (e.g., 'Students', 'Working Professionals', 'Families')."),
-  features: z.string().describe("The user's choice for the primary feature focus (e.g., 'Fast Delivery', 'Discounts', 'Premium Restaurants')."),
-  businessModel: z.string().describe("The user's choice for the business model (e.g., 'Subscription', 'Ads', 'Pay-per-order')."),
-});
-export type ProductManagerSimulationInput = z.infer<typeof ProductManagerSimulationInputSchema>;
-
-export const ProductManagerSimulationOutputSchema = z.object({
-  summary: z.string().describe("A summary explaining how the user's choices would affect the product's growth, revenue, and customer satisfaction, highlighting trade-offs."),
-});
-export type ProductManagerSimulationOutput = z.infer<typeof ProductManagerSimulationOutputSchema>;
+import { ProductManagerSimulationInputSchema, ProductManagerSimulationOutputSchema, type ProductManagerSimulationInput } from './types';
 
 
 export async function getProductManagerSimulationResult(

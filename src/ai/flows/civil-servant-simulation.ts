@@ -6,18 +6,7 @@
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'zod';
-
-export const SimulationInputSchema = z.object({
-  decision: z.string().describe("The user's decision choice (e.g., 'A', 'B', or 'C')."),
-});
-export type SimulationInput = z.infer<typeof SimulationInputSchema>;
-
-export const SimulationOutputSchema = z.object({
-  consequence: z.string().describe("The direct consequence of the user's decision."),
-  explanation: z.string().describe("The explanation of the trade-offs and complexities involved."),
-});
-export type SimulationOutput = z.infer<typeof SimulationOutputSchema>;
+import { SimulationInputSchema, SimulationOutputSchema, type SimulationInput } from './types';
 
 
 export async function getSimulationConsequence(

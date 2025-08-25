@@ -15,6 +15,7 @@ import GraphicDesignerActivity from "@/components/career-compass/GraphicDesigner
 import type { QuizAnswer } from "@/lib/types";
 import AthleteActivity from "@/components/career-compass/AthleteActivity";
 import CivilServantActivity from "@/components/career-compass/CivilServantActivity";
+import ProductManagerActivity from "@/components/career-compass/ProductManagerActivity";
 
 
 type Step = "welcome" | "quiz" | "suggestions" | "details" | "activity";
@@ -144,6 +145,8 @@ export default function Home() {
               return <AthleteActivity onBack={handleBackToDetails} />
           case 'civilservant':
             return <CivilServantActivity onBack={handleBackToDetails} />;
+          case 'productmanager':
+            return <ProductManagerActivity onBack={handleBackToDetails} />;
           default:
             // Fallback or loading state while activity is being determined
             return null;

@@ -73,8 +73,14 @@ export default function ProductManagerIntro({ onBack, onProceed }: ProductManage
         </InfoCard>
 
       </CardContent>
+       {onProceed && (
+        <CardFooter>
+            <Button onClick={onProceed} className="w-full">
+                Try a hands-on activity
+                <ArrowRight />
+            </Button>
+        </CardFooter>
+        )}
     </Card>
   );
 }
-
-    

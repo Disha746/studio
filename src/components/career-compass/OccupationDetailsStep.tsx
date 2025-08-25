@@ -57,7 +57,7 @@ export default function OccupationDetailsStep({
   const activityName = occupation.toLowerCase().replace(/\s+/g, '');
 
   if (IntroComponent) {
-    const hasActivity = ['interiordesigner', 'doctor', 'contentcreator', 'graphicdesigner', 'athlete', 'civilservant'].includes(activityName);
+    const hasActivity = ['interiordesigner', 'doctor', 'contentcreator', 'graphicdesigner', 'athlete', 'civilservant', 'productmanager'].includes(activityName);
     return <IntroComponent onBack={onBack} onProceed={hasActivity ? () => onStartActivity(activityName) : undefined} />
   }
 

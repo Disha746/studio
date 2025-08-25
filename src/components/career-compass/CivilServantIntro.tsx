@@ -2,16 +2,17 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ArrowLeft, CheckCircle, XCircle, Rocket, DollarSign, Clock, Shield, Briefcase } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { ArrowLeft, CheckCircle, XCircle, Rocket, DollarSign, Clock, Shield, Briefcase, ArrowRight } from "lucide-react";
 import InfoCard from "./InfoCard";
 
 
 type CivilServantIntroProps = {
     onBack?: () => void;
+    onProceed?: () => void;
 };
 
-export default function CivilServantIntro({ onBack }: CivilServantIntroProps) {
+export default function CivilServantIntro({ onBack, onProceed }: CivilServantIntroProps) {
   return (
     <Card>
       <CardHeader>
@@ -69,8 +70,14 @@ export default function CivilServantIntro({ onBack }: CivilServantIntroProps) {
             </ul>
         </InfoCard>
       </CardContent>
+       {onProceed && (
+        <CardFooter>
+            <Button onClick={onProceed} className="w-full">
+                Try a hands-on activity
+                <ArrowRight />
+            </Button>
+        </CardFooter>
+        )}
     </Card>
   );
 }
-
-    

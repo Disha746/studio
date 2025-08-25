@@ -1,3 +1,4 @@
+
 // src/ai/flows/civil-servant-simulation.ts
 'use server';
 
@@ -6,47 +7,48 @@
  */
 
 import { ai } from '@/ai/genkit';
-import { SimulationInputSchema, SimulationOutputSchema, type SimulationInput } from './types';
+import { z } from 'zod';
+import { SimulationInputSchema, SimulationOutputSchema, type SimulationInput, type SimulationOutput } from './types';
 
 
 export async function getSimulationConsequence(
   input: SimulationInput
-) {
-  return simulationFlow(input);
-}
+): Promise<SimulationOutput> {
+  const simulationFlow = ai.defineFlow(
+    {
+      name: 'simulationFlow',
+      inputSchema: SimulationInputSchema,
+      outputSchema: SimulationOutputSchema,
+    },
+    async (input) => {
+      const prompt = ai.definePrompt({
+        name: 'civilServantSimulationPrompt',
+        input: { schema: SimulationInputSchema },
+        output: { schema: SimulationOutputSchema },
+        prompt: `You are a simulation engine for a career counseling app. A user is playing the role of a District Collector during a flood crisis.
 
-const prompt = ai.definePrompt({
-  name: 'civilServantSimulationPrompt',
-  input: { schema: SimulationInputSchema },
-  output: { schema: SimulationOutputSchema },
-  prompt: `You are a simulation engine for a career counseling app. A user is playing the role of a District Collector during a flood crisis.
+The Scenario: A severe flood has damaged houses and disrupted the community. You have limited funds available.
 
-  The Scenario: A severe flood has damaged houses and disrupted the community. You have limited funds available.
+The user made the following decision:
+- Choice A: Allocate all funds to immediate rescue operations.
+- Choice B: Focus resources on rebuilding essential public infrastructure like schools.
+- Choice C: Prioritize providing immediate food and shelter to those displaced.
 
-  The user made the following decision:
-  - Choice A: Allocate all funds to immediate rescue operations.
-  - Choice B: Focus resources on rebuilding essential public infrastructure like schools.
-  - Choice C: Prioritize providing immediate food and shelter to those displaced.
+User's Choice: {{{decision}}}
 
-  User's Choice: {{{decision}}}
-
-  Your Task:
-  1.  Generate a unique, non-judgmental consequence for the user's chosen action.
-  2.  Provide a brief explanation that highlights how a civil servant must balance urgency, fairness, and resources in real-world situations. Do not judge the user's choice, but explain the trade-offs.
-  `,
-});
-
-const simulationFlow = ai.defineFlow(
-  {
-    name: 'simulationFlow',
-    inputSchema: SimulationInputSchema,
-    outputSchema: SimulationOutputSchema,
-  },
-  async input => {
-    const { output } = await prompt(input);
-    if (!output) {
-        throw new Error("Failed to get simulation consequence from AI.");
+Your Task:
+1.  Generate a unique, non-judgmental consequence for the user's chosen action.
+2.  Provide a brief explanation that highlights how a civil servant must balance urgency, fairness, and resources in real-world situations. Do not judge the user's choice, but explain the trade-offs.
+`,
+      });
+      
+      const { output } = await prompt(input);
+      if (!output) {
+          throw new Error("Failed to get simulation consequence from AI.");
+      }
+      return output;
     }
-    return output;
-  }
-);
+  );
+
+  return await simulationFlow(input);
+}

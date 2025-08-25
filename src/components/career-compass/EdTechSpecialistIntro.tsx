@@ -1,17 +1,17 @@
-
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ArrowLeft, CheckCircle, XCircle, Rocket, DollarSign, Clock, BookOpen, Lightbulb } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { ArrowLeft, CheckCircle, XCircle, Rocket, DollarSign, Clock, BookOpen, Lightbulb, ArrowRight } from "lucide-react";
 import InfoCard from "./InfoCard";
 
 
 type EdTechSpecialistIntroProps = {
     onBack?: () => void;
+    onProceed?: () => void;
 };
 
-export default function EdTechSpecialistIntro({ onBack }: EdTechSpecialistIntroProps) {
+export default function EdTechSpecialistIntro({ onBack, onProceed }: EdTechSpecialistIntroProps) {
   return (
     <Card>
       <CardHeader>
@@ -78,6 +78,14 @@ export default function EdTechSpecialistIntro({ onBack }: EdTechSpecialistIntroP
             </ul>
         </InfoCard>
       </CardContent>
+      {onProceed && (
+        <CardFooter>
+            <Button onClick={onProceed} className="w-full">
+                Try a hands-on activity
+                <ArrowRight />
+            </Button>
+        </CardFooter>
+        )}
     </Card>
   );
 }

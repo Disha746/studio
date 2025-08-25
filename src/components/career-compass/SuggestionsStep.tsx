@@ -33,6 +33,7 @@ const occupationDisplayNames: Record<string, string> = {
     lawyer: "Lawyer",
     astrologer: "Astrologer",
     meteorologist: "Meteorologist",
+    edTechSpecialist: "Educational Technology Specialist",
 };
 
 export default function SuggestionsStep({

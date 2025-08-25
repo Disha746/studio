@@ -50,6 +50,7 @@ export default function Home() {
         lawyer: 0,
         astrologer: 0,
         meteorologist: 0,
+        edTechSpecialist: 0,
     };
 
     answers.forEach(answer => {

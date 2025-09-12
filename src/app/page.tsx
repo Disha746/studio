@@ -172,18 +172,20 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-background p-4 sm:p-8 md:p-12">
+    <main className="flex min-h-screen flex-col items-center bg-background p-4 sm:p-8 md:p-12">
       <div className="w-full max-w-2xl mx-auto">
-        <div className="flex flex-col items-center justify-center mb-8 text-center">
-            <div className="bg-primary/10 border border-primary/20 p-3 rounded-full mb-4">
-                <Compass className="h-8 w-8 text-primary" />
+        <div className="flex items-center gap-3 mb-8 text-left">
+            <div className="bg-primary text-primary-foreground p-3 rounded-xl">
+                <Compass className="h-8 w-8" />
             </div>
-            <h1 className="text-3xl sm:text-4xl font-headline font-bold text-foreground">
-            Career Compass
-            </h1>
-            <p className="mt-2 text-muted-foreground max-w-md">
-            Your AI-powered guide to a fulfilling career.
-            </p>
+            <div>
+              <h1 className="text-3xl sm:text-4xl font-headline font-bold text-foreground">
+                Career Compass
+              </h1>
+              <p className="mt-1 text-muted-foreground">
+                Your AI-powered guide to a fulfilling career.
+              </p>
+            </div>
         </div>
         <div className="relative">
           {renderStep()}

@@ -58,15 +58,15 @@ export default function SuggestionsStep({
         {suggestions.map((occupationKey) => (
           <Button
             key={occupationKey}
-            variant="secondary"
-            className="w-full h-auto justify-start p-4 text-left"
+            variant="outline"
+            className="w-full h-auto justify-start p-4 text-left border-2 border-transparent hover:border-accent hover:bg-accent/10 transition-colors duration-300"
             onClick={() => onSelectOccupation(occupationDisplayNames[occupationKey])}
           >
             <div className="flex items-center">
-              <div className="bg-accent/10 p-2 rounded-md mr-4">
-                  <Wand2 className="h-5 w-5 text-accent" />
+              <div className="bg-primary/10 p-3 rounded-lg mr-4">
+                  <Wand2 className="h-6 w-6 text-primary" />
               </div>
-              <span className="font-medium text-secondary-foreground">{occupationDisplayNames[occupationKey] || occupationKey}</span>
+              <span className="font-medium text-lg text-foreground">{occupationDisplayNames[occupationKey] || occupationKey}</span>
             </div>
           </Button>
         ))}

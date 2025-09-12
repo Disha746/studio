@@ -30,27 +30,27 @@ export type Question = {
 export const quizQuestions: Question[] = [
   {
     id: 1,
-    text: 'When faced with a complex problem, I prefer:',
+    text: 'When I face a problem, I enjoy:',
     type: 'mcq',
     options: [
       {
         value: 'logical_deduction',
-        label: 'A technical challenge requiring logical deduction and a precise, coded solution.',
+        label: 'Solving it with logic and coding.',
         scores: { softwareDeveloper: 3, interiorDesigner: 0, graphicDesigner: 0, doctor: 1, dataScientist: 2, contentCreator: 0, productManager: 1, athlete: 0, charteredAccountant: 1, civilServant: 1, mediaAndMassComm: 0, lawyer: 1, astrologer: 0, meteorologist: 2, edTechSpecialist: 1, pharmacist: 1 },
       },
       {
         value: 'data_interpretation',
-        label: 'An analytical challenge that involves interpreting data, finding patterns, and making predictions.',
+        label: 'Looking at data and patterns.',
         scores: { softwareDeveloper: 1, interiorDesigner: 1, graphicDesigner: 1, doctor: 2, dataScientist: 3, contentCreator: 1, productManager: 2, athlete: 0, charteredAccountant: 2, civilServant: 2, mediaAndMassComm: 1, lawyer: 2, astrologer: 2, meteorologist: 3, edTechSpecialist: 1, pharmacist: 1 },
       },
       {
         value: 'creative_ideation',
-        label: 'A creative challenge that requires brainstorming, visual aesthetics, and novel ideas.',
+        label: 'Coming up with creative ideas/designs.',
         scores: { softwareDeveloper: 0, interiorDesigner: 3, graphicDesigner: 3, doctor: 0, dataScientist: 0, contentCreator: 3, productManager: 1, athlete: 0, charteredAccountant: 0, civilServant: 0, mediaAndMassComm: 2, lawyer: 0, astrologer: 1, meteorologist: 0, edTechSpecialist: 2, pharmacist: 0 },
       },
       {
         value: 'interpersonal_dynamics',
-        label: 'An interpersonal challenge that involves negotiation, understanding different viewpoints, and guiding people.',
+        label: 'Talking with people to understand and guide them.',
         scores: { softwareDeveloper: 0, interiorDesigner: 1, graphicDesigner: 0, doctor: 3, dataScientist: 0, contentCreator: 1, productManager: 3, athlete: 1, charteredAccountant: 1, civilServant: 3, mediaAndMassComm: 2, lawyer: 3, astrologer: 3, meteorologist: 0, edTechSpecialist: 2, pharmacist: 3 },
       },
        {

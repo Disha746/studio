@@ -63,11 +63,11 @@ export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
   }
 
   return (
-    <Card className="border-2">
+    <Card>
       <CardHeader>
-        <CardTitle className="font-headline text-2xl">Welcome, Future Professional!</CardTitle>
+        <CardTitle className="font-headline text-2xl">Find Your Career Path with AI</CardTitle>
         <CardDescription>
-          Find the right career path with AI guidance. Let's start by getting to know you.
+          Discover careers, get guidance, and track your journey. Let's start by getting to know you.
         </CardDescription>
       </CardHeader>
       <Form {...form}>
@@ -140,7 +140,7 @@ export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
           </CardContent>
           <CardFooter>
             <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg">
-              Start Quiz
+              Get Started
               <ArrowRight />
             </Button>
           </CardFooter>

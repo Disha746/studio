@@ -175,7 +175,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center bg-background p-4 sm:p-8 md:p-12">
       <div className="w-full max-w-2xl mx-auto">
         <div className="flex items-center gap-3 mb-8 text-left">
-            <div className="bg-primary text-primary-foreground p-3 rounded-xl">
+            <div className="bg-primary text-primary-foreground p-3 rounded-xl shadow-sm">
                 <Compass className="h-8 w-8" />
             </div>
             <div>

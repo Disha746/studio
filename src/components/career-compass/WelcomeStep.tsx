@@ -1,151 +1,56 @@
 
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { ArrowRight } from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  education: z.string({
-    required_error: "Please select an education level.",
-  }),
-  country: z.string().min(2, {
-    message: "Country must be at least 2 characters.",
-  }),
-  age: z.coerce
-    .number()
-    .min(13, { message: "You must be at least 13 years old." })
-    .max(100, { message: "Age must be less than 100." }),
-});
+import { Compass, Book, GraduationCap, Rocket } from "lucide-react";
 
 type WelcomeStepProps = {
-  onSubmit: (name: string, education: string, country: string, age: number) => void;
+  onSubmit: () => void;
 };
 
 export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      country: "",
-      age: 0,
-    },
-  });
-
-  function handleSubmit(values: z.infer<typeof formSchema>) {
-    onSubmit(values.name, values.education, values.country, values.age);
-  }
-
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="font-headline text-2xl">Find Your Career Path with AI</CardTitle>
-        <CardDescription>
-          Discover careers, get guidance, and track your journey. Let's start by getting to know you.
-        </CardDescription>
-      </CardHeader>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)}>
-          <CardContent className="space-y-4">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="e.g. Jane Doe" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="education"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Highest Level of Education</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select your education level" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="High School Student">High School Student</SelectItem>
-                      <SelectItem value="Junior College">Junior College</SelectItem>
-                      <SelectItem value="Graduate">Graduate</SelectItem>
-                      <SelectItem value="Working Professional">Working Professional</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="country"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Country</FormLabel>
-                  <FormControl>
-                    <Input placeholder="e.g. United States" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="age"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Age</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="e.g. 25"
-                      {...field}
-                      value={field.value === 0 ? "" : field.value}
-                      onChange={(e) => field.onChange(e.target.valueAsNumber || 0)}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-          </CardContent>
-          <CardFooter>
-            <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg">
-              Get Started
-              <ArrowRight />
-            </Button>
-          </CardFooter>
-        </form>
-      </Form>
-    </Card>
+    <div className="flex flex-col items-center justify-center text-center p-4">
+      <div className="animate-fade-in mb-8">
+        <Compass className="h-24 w-24 text-primary" />
+      </div>
+
+      <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
+        <h1
+          className="text-3xl font-bold mb-2"
+          style={{ color: '#0D47A1', fontFamily: 'Poppins, sans-serif' }}
+        >
+          Find Your Career Path with AI
+        </h1>
+        <p className="text-base mb-8" style={{ color: '#455A64', fontFamily: 'Poppins, sans-serif' }}>
+          Discover careers, get guidance, and track your journey.
+        </p>
+      </div>
+      
+      <div className="animate-slide-up" style={{ animationDelay: '400ms' }}>
+        <Button
+          onClick={onSubmit}
+          className="text-lg font-semibold text-white rounded-full shadow-lg"
+          style={{
+            backgroundColor: '#26A69A',
+            padding: '14px 40px',
+            fontFamily: 'Poppins, sans-serif'
+          }}
+        >
+          Get Started
+        </Button>
+      </div>
+
+      <div className="mt-12 text-center animate-fade-in" style={{ animationDelay: '600ms' }}>
+        <div className="flex justify-center items-center gap-6 mb-2">
+            <GraduationCap className="h-6 w-6 text-gray-500" />
+            <Rocket className="h-6 w-6 text-gray-500" />
+            <Book className="h-6 w-6 text-gray-500" />
+        </div>
+        <p className="text-xs" style={{ color: '#607D8B', fontFamily: 'Poppins, sans-serif' }}>
+            Trusted by students to guide their future.
+        </p>
+      </div>
+    </div>
   );
 }

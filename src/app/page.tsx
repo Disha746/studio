@@ -6,7 +6,6 @@ import WelcomeStep from "@/components/career-compass/WelcomeStep";
 import QuizStep from "@/components/career-compass/QuizStep";
 import SuggestionsStep from "@/components/career-compass/SuggestionsStep";
 import OccupationDetailsStep from "@/components/career-compass/OccupationDetailsStep";
-import { Compass } from "lucide-react";
 import { quizQuestions } from "@/lib/quiz-questions";
 import ContentCreatorActivity from "@/components/career-compass/ContentCreatorActivity";
 import DoctorActivity from "@/components/career-compass/DoctorActivity";
@@ -39,8 +38,9 @@ export default function Home() {
   );
   const [activity, setActivity] = useState<string | null>(null);
 
-  const handleWelcomeSubmit = (name: string, education: string, country: string, age: number) => {
-    setUserData({ name, education, country, age });
+  const handleWelcomeSubmit = () => {
+    // This will be updated to collect user data in a future step
+    setUserData({ name: "Student", education: "High School", country: "USA", age: 18 });
     setStep("quiz");
   };
 
@@ -172,21 +172,8 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-background p-4 sm:p-8 md:p-12">
-      <div className="w-full max-w-2xl mx-auto">
-        <div className="flex items-center gap-3 mb-8 text-left">
-            <div className="bg-primary text-primary-foreground p-3 rounded-xl shadow-sm">
-                <Compass className="h-8 w-8" />
-            </div>
-            <div>
-              <h1 className="text-3xl sm:text-4xl font-headline font-bold text-foreground">
-                Career Compass
-              </h1>
-              <p className="mt-1 text-muted-foreground">
-                Your AI-powered guide to a fulfilling career.
-              </p>
-            </div>
-        </div>
+    <main className="flex min-h-screen flex-col items-center justify-center bg-transparent p-4 sm:p-8 md:p-12">
+      <div className="w-full max-w-md mx-auto">
         <div className="relative">
           {renderStep()}
         </div>

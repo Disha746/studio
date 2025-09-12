@@ -65,9 +65,9 @@ export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
   return (
     <Card className="border-2">
       <CardHeader>
-        <CardTitle className="font-headline text-2xl">Let's Get Started</CardTitle>
+        <CardTitle className="font-headline text-2xl">Welcome, Future Professional!</CardTitle>
         <CardDescription>
-          Tell us a little about yourself to personalize your career guidance.
+          Find the right career path with AI guidance. Let's start by getting to know you.
         </CardDescription>
       </CardHeader>
       <Form {...form}>

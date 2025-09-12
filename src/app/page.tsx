@@ -1,9 +1,9 @@
-
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import WelcomeStep from "@/components/career-compass/WelcomeStep";
 import UserDetailsStep from "@/components/career-compass/UserDetailsStep";
+import LoadingStep from "@/components/career-compass/LoadingStep";
 import QuizStep from "@/components/career-compass/QuizStep";
 import SuggestionsStep from "@/components/career-compass/SuggestionsStep";
 import OccupationDetailsStep from "@/components/career-compass/OccupationDetailsStep";
@@ -23,7 +23,7 @@ import PharmacistActivity from "@/components/career-compass/PharmacistActivity";
 import EdTechSpecialistActivity from "@/components/career-compass/EdTechSpecialistActivity";
 
 
-type Step = "welcome" | "userDetails" | "quiz" | "suggestions" | "details" | "activity";
+type Step = "welcome" | "userDetails" | "loading" | "quiz" | "suggestions" | "details" | "activity";
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
@@ -39,13 +39,23 @@ export default function Home() {
   );
   const [activity, setActivity] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (step === 'loading') {
+      const timer = setTimeout(() => {
+        setStep('quiz');
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [step]);
+
+
   const handleWelcomeSubmit = () => {
     setStep("userDetails");
   };
 
   const handleUserDetailsSubmit = (data: UserData) => {
     setUserData(data);
-    setStep("quiz");
+    setStep("loading");
   };
 
   const handleQuizComplete = (answers: QuizAnswer[]) => {
@@ -123,6 +133,8 @@ export default function Home() {
         return <WelcomeStep onSubmit={handleWelcomeSubmit} />;
       case "userDetails":
         return <UserDetailsStep onSubmit={handleUserDetailsSubmit} onBack={handleBackToWelcome} />;
+      case "loading":
+        return <LoadingStep />;
       case "quiz":
         return <QuizStep onComplete={handleQuizComplete} />;
       case "suggestions":

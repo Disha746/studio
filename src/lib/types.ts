@@ -1,3 +1,4 @@
+
 export type QuizAnswer = {
   questionId: number;
   value: string | string[];
@@ -16,4 +17,11 @@ export type OccupationDetails = {
     fees: string;
     timeInvestment: string;
     careerPath: CareerPathStep[];
+};
+
+export type UserData = {
+  name: string;
+  education: string;
+  country: string;
+  age: number;
 };

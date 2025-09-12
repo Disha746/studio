@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import WelcomeStep from "@/components/career-compass/WelcomeStep";
+import UserDetailsStep from "@/components/career-compass/UserDetailsStep";
 import QuizStep from "@/components/career-compass/QuizStep";
 import SuggestionsStep from "@/components/career-compass/SuggestionsStep";
 import OccupationDetailsStep from "@/components/career-compass/OccupationDetailsStep";
@@ -11,7 +12,7 @@ import ContentCreatorActivity from "@/components/career-compass/ContentCreatorAc
 import DoctorActivity from "@/components/career-compass/DoctorActivity";
 import InteriorDesignerActivity from "@/components/career-compass/InteriorDesignerActivity";
 import GraphicDesignerActivity from "@/components/career-compass/GraphicDesignerActivity";
-import type { QuizAnswer } from "@/lib/types";
+import type { QuizAnswer, UserData } from "@/lib/types";
 import AthleteActivity from "@/components/career-compass/AthleteActivity";
 import CivilServantActivity from "@/components/career-compass/CivilServantActivity";
 import ProductManagerActivity from "@/components/career-compass/ProductManagerActivity";
@@ -22,11 +23,11 @@ import PharmacistActivity from "@/components/career-compass/PharmacistActivity";
 import EdTechSpecialistActivity from "@/components/career-compass/EdTechSpecialistActivity";
 
 
-type Step = "welcome" | "quiz" | "suggestions" | "details" | "activity";
+type Step = "welcome" | "userDetails" | "quiz" | "suggestions" | "details" | "activity";
 
 export default function Home() {
   const [step, setStep] = useState<Step>("welcome");
-  const [userData, setUserData] = useState<{ name: string; education: string; country: string; age: number }>({
+  const [userData, setUserData] = useState<UserData>({
     name: "",
     education: "",
     country: "",
@@ -39,8 +40,11 @@ export default function Home() {
   const [activity, setActivity] = useState<string | null>(null);
 
   const handleWelcomeSubmit = () => {
-    // This will be updated to collect user data in a future step
-    setUserData({ name: "Student", education: "High School", country: "USA", age: 18 });
+    setStep("userDetails");
+  };
+
+  const handleUserDetailsSubmit = (data: UserData) => {
+    setUserData(data);
     setStep("quiz");
   };
 
@@ -117,6 +121,8 @@ export default function Home() {
     switch (step) {
       case "welcome":
         return <WelcomeStep onSubmit={handleWelcomeSubmit} />;
+      case "userDetails":
+        return <UserDetailsStep onSubmit={handleUserDetailsSubmit} onBack={handleBackToWelcome} />;
       case "quiz":
         return <QuizStep onComplete={handleQuizComplete} />;
       case "suggestions":

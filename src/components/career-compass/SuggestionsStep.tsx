@@ -58,7 +58,7 @@ export default function SuggestionsStep({
         {suggestions.map((occupationKey) => (
           <Button
             key={occupationKey}
-            variant="outline"
+            variant="secondary"
             className="w-full h-auto justify-start p-4 text-left"
             onClick={() => onSelectOccupation(occupationDisplayNames[occupationKey])}
           >
@@ -66,7 +66,7 @@ export default function SuggestionsStep({
               <div className="bg-accent/10 p-2 rounded-md mr-4">
                   <Wand2 className="h-5 w-5 text-accent" />
               </div>
-              <span className="font-medium">{occupationDisplayNames[occupationKey] || occupationKey}</span>
+              <span className="font-medium text-secondary-foreground">{occupationDisplayNames[occupationKey] || occupationKey}</span>
             </div>
           </Button>
         ))}

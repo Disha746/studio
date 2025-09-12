@@ -143,8 +143,8 @@ export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
               )}
             />
           </CardContent>
-          <CardFooter className="flex-col sm:flex-row gap-2">
-            <Button type="submit" className="w-full">
+          <CardFooter>
+            <Button type="submit" className="w-full" size="lg">
               Start Quiz
               <ArrowRight />
             </Button>

@@ -172,7 +172,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-8 md:p-12">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-background p-4 sm:p-8 md:p-12">
       <div className="w-full max-w-2xl mx-auto">
         <div className="flex flex-col items-center justify-center mb-8 text-center">
             <div className="bg-primary/10 border border-primary/20 p-3 rounded-full mb-4">

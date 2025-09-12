@@ -19,7 +19,6 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
@@ -83,7 +82,6 @@ export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
                   <FormControl>
                     <Input placeholder="e.g. Jane Doe" {...field} />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -106,7 +104,6 @@ export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
                       <SelectItem value="Working Professional">Working Professional</SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -119,7 +116,6 @@ export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
                   <FormControl>
                     <Input placeholder="e.g. United States" {...field} />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -138,7 +134,6 @@ export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
                       onChange={(e) => field.onChange(e.target.valueAsNumber || 0)}
                     />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />

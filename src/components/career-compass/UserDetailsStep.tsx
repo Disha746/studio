@@ -86,6 +86,7 @@ export default function UserDetailsStep({ onSubmit, onBack }: UserDetailsStepPro
                     </FormControl>
                     <SelectContent>
                       <SelectItem value="high-school">High School</SelectItem>
+                      <SelectItem value="junior-college">Junior College</SelectItem>
                       <SelectItem value="bachelors">Bachelor's Degree</SelectItem>
                       <SelectItem value="masters">Master's Degree</SelectItem>
                       <SelectItem value="phd">PhD</SelectItem>

@@ -119,49 +119,63 @@ export default function QuizStep({ onComplete }: QuizStepProps) {
         const isMulti = question.type === "mcq-multi";
         
         const handleCheckboxChange = (checked: boolean, value: string) => {
+          if (!isAnswering) return;
           const currentSelection = Array.isArray(currentAnswer) ? [...currentAnswer] : [];
           if (checked) {
-            if (currentSelection.length < (question.id === 2 ? 2 : 1)) {
-              setCurrentAnswer([...currentSelection, value]);
-            }
+            setCurrentAnswer([...currentSelection, value]);
           } else {
             setCurrentAnswer(currentSelection.filter(v => v !== value));
           }
         };
 
+        const maxSelections = question.id === 2 ? 2 : 1;
         const selectedCount = Array.isArray(currentAnswer) ? currentAnswer.length : 0;
         
+        if (isMulti) {
+           return (
+            <div className="space-y-3">
+              {question.options?.map((option) => {
+                const isChecked = Array.isArray(currentAnswer) && currentAnswer.includes(option.value);
+                const isDisabled = !isChecked && selectedCount >= maxSelections;
+                
+                return (
+                   <Label key={option.value} htmlFor={`q${question.id}-${option.value}`} className={`flex items-center space-x-3 p-4 rounded-full border-2 cursor-pointer transition-all ${isChecked ? 'bg-primary/10 border-primary shadow-md' : 'bg-secondary/50 border-secondary hover:border-primary/50'} ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                     <Checkbox
+                          id={`q${question.id}-${option.value}`}
+                          checked={isChecked}
+                          disabled={isDisabled || !isAnswering}
+                          onCheckedChange={(checked) => handleCheckboxChange(!!checked, option.value)}
+                          className="h-5 w-5 rounded-full"
+                      />
+                    <span>{option.label}</span>
+                  </Label>
+                )
+              })}
+            </div>
+           )
+        }
+        
         return (
-          <div className="space-y-3">
+          <RadioGroup 
+            className="space-y-3"
+            value={currentAnswer as string}
+            onValueChange={(val) => isAnswering && setCurrentAnswer(val)}
+            disabled={!isAnswering}
+          >
             {question.options?.map((option) => {
-              const isChecked = isMulti 
-                ? Array.isArray(currentAnswer) && currentAnswer.includes(option.value) 
-                : currentAnswer === option.value;
-              const isDisabled = (!isChecked && isMulti && selectedCount >= (question.id === 2 ? 2 : 1)) || !isAnswering;
-              
+              const isChecked = currentAnswer === option.value;
               return (
                  <Label key={option.value} htmlFor={`q${question.id}-${option.value}`} className={`flex items-center space-x-3 p-4 rounded-full border-2 cursor-pointer transition-all ${isChecked ? 'bg-primary/10 border-primary shadow-md' : 'bg-secondary/50 border-secondary hover:border-primary/50'}`}>
-                  {isMulti ? (
-                     <Checkbox
-                        id={`q${question.id}-${option.value}`}
-                        checked={isChecked}
-                        disabled={isDisabled}
-                        onCheckedChange={(checked) => isAnswering && handleCheckboxChange(!!checked, option.value)}
-                        className="h-5 w-5 rounded-full"
-                    />
-                  ) : (
                     <RadioGroupItem 
                         value={option.value} 
-                        id={`q${question.id}-${option.value}`} 
-                        onClick={() => isAnswering && setCurrentAnswer(option.value)}
+                        id={`q${question.id}-${option.value}`}
                         className="h-5 w-5"
                     />
-                  )}
                   <span>{option.label}</span>
                 </Label>
               )
             })}
-          </div>
+          </RadioGroup>
         )
       default:
         return null;

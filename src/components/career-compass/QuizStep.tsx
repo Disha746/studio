@@ -81,12 +81,13 @@ export default function QuizStep({ onComplete }: QuizStepProps) {
 
   const handlePrevious = () => {
     if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
-      const previousAnswer = answers[currentQuestionIndex - 1];
-      setCurrentAnswer(previousAnswer.value);
-      setAnswers(prev => prev.slice(0, -1));
       setFeedback("");
       setQuizStage("answering");
+      const previousAnswers = answers.slice(0, -1);
+      const lastAnswer = previousAnswers[previousAnswers.length - 1];
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
+      setCurrentAnswer(lastAnswer?.value || null);
+      setAnswers(previousAnswers);
     }
   };
 
@@ -114,49 +115,51 @@ export default function QuizStep({ onComplete }: QuizStepProps) {
           </RadioGroup>
         );
       case "mcq":
-        return (
-          <RadioGroup
-            value={typeof currentAnswer === 'string' ? currentAnswer : ''}
-            onValueChange={(val) => isAnswering && setCurrentAnswer(val)}
-            className="space-y-2"
-            disabled={!isAnswering}
-          >
-            {question.options?.map((option) => (
-              <div key={option.value} className="flex items-center space-x-2">
-                <RadioGroupItem value={option.value} id={`q${question.id}-${option.value}`} />
-                <Label htmlFor={`q${question.id}-${option.value}`}>{option.label}</Label>
-              </div>
-            ))}
-          </RadioGroup>
-        );
       case "mcq-multi":
+        const isMulti = question.type === "mcq-multi";
+        
         const handleCheckboxChange = (checked: boolean, value: string) => {
           const currentSelection = Array.isArray(currentAnswer) ? [...currentAnswer] : [];
           if (checked) {
-            if (currentSelection.length < 2) {
+            if (currentSelection.length < (question.id === 2 ? 2 : 1)) {
               setCurrentAnswer([...currentSelection, value]);
             }
           } else {
             setCurrentAnswer(currentSelection.filter(v => v !== value));
           }
         };
-        const selectedCount = Array.isArray(currentAnswer) ? currentAnswer.length : 0;
 
+        const selectedCount = Array.isArray(currentAnswer) ? currentAnswer.length : 0;
+        
         return (
-          <div className="space-y-2">
+          <div className="space-y-3">
             {question.options?.map((option) => {
-                const isChecked = Array.isArray(currentAnswer) && currentAnswer.includes(option.value);
-                return (
-                  <div key={option.value} className="flex items-center space-x-2">
-                    <Checkbox
+              const isChecked = isMulti 
+                ? Array.isArray(currentAnswer) && currentAnswer.includes(option.value) 
+                : currentAnswer === option.value;
+              const isDisabled = (!isChecked && isMulti && selectedCount >= (question.id === 2 ? 2 : 1)) || !isAnswering;
+              
+              return (
+                 <Label key={option.value} htmlFor={`q${question.id}-${option.value}`} className={`flex items-center space-x-3 p-4 rounded-full border-2 cursor-pointer transition-all ${isChecked ? 'bg-primary/10 border-primary shadow-md' : 'bg-secondary/50 border-secondary hover:border-primary/50'}`}>
+                  {isMulti ? (
+                     <Checkbox
                         id={`q${question.id}-${option.value}`}
                         checked={isChecked}
-                        disabled={(!isChecked && selectedCount >= 2) || !isAnswering}
+                        disabled={isDisabled}
                         onCheckedChange={(checked) => isAnswering && handleCheckboxChange(!!checked, option.value)}
+                        className="h-5 w-5 rounded-full"
                     />
-                    <Label htmlFor={`q${question.id}-${option.value}`}>{option.label}</Label>
-                  </div>
-                )
+                  ) : (
+                    <RadioGroupItem 
+                        value={option.value} 
+                        id={`q${question.id}-${option.value}`} 
+                        onClick={() => isAnswering && setCurrentAnswer(option.value)}
+                        className="h-5 w-5"
+                    />
+                  )}
+                  <span>{option.label}</span>
+                </Label>
+              )
             })}
           </div>
         )
@@ -168,21 +171,21 @@ export default function QuizStep({ onComplete }: QuizStepProps) {
   const hasSelection = currentAnswer !== null && (Array.isArray(currentAnswer) ? currentAnswer.length > 0 : true);
 
   return (
-    <Card>
+    <Card className="rounded-2xl shadow-lg">
       <CardHeader>
-        <CardTitle className="font-headline">Skills Assessment</CardTitle>
+        <CardTitle className="font-headline font-bold text-xl sm:text-2xl">Skills Assessment</CardTitle>
         <CardDescription>
           Question {currentQuestionIndex + 1} of {quizQuestions.length}
         </CardDescription>
-        <Progress value={progress} className="mt-2" />
+        <Progress value={progress} className="mt-2 h-2 [&>div]:bg-accent" />
       </CardHeader>
-      <CardContent className="min-h-[220px]">
-        <p className="font-medium mb-4 text-center">{currentQuestion.text}</p>
-        <div className="p-4 rounded-lg bg-secondary/50">
+      <CardContent className="min-h-[250px] sm:min-h-[300px]">
+        <p className="font-medium mb-6 text-center text-base sm:text-lg">{currentQuestion.text}</p>
+        <div className="p-1">
           {renderQuestionInput(currentQuestion)}
         </div>
          {quizStage === "feedback" && feedback && (
-            <InfoCard icon={<Sparkles className="w-5 h-5 text-accent"/>} title="Insight">
+            <InfoCard icon={<Sparkles className="w-5 h-5 text-primary"/>} title="Insight">
                 <p className="text-muted-foreground">{feedback}</p>
             </InfoCard>
          )}

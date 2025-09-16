@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -20,7 +21,7 @@ import CharteredAccountantActivity from "@/components/career-compass/CharteredAc
 import MediaAndMassCommActivity from "@/components/career-compass/MediaAndMassCommActivity";
 import LawyerActivity from "@/components/career-compass/LawyerActivity";
 import PharmacistActivity from "@/components/career-compass/PharmacistActivity";
-import EdTechSpecialistActivity from "@/components/career-compass/EdTechSpecialistActivity";
+import TeacherActivity from "@/components/career-compass/TeacherActivity";
 
 
 type Step = "welcome" | "userDetails" | "loading" | "quiz" | "suggestions" | "details" | "activity";
@@ -74,7 +75,7 @@ export default function Home() {
         lawyer: 0,
         astrologer: 0,
         meteorologist: 0,
-        edTechSpecialist: 0,
+        teacher: 0,
         pharmacist: 0,
     };
 
@@ -178,8 +179,8 @@ export default function Home() {
             return <LawyerActivity onBack={handleBackToDetails} />;
           case 'pharmacist':
             return <PharmacistActivity onBack={handleBackToDetails} />;
-          case 'educationaltechnologyspecialist':
-            return <EdTechSpecialistActivity onBack={handleBackToDetails} />;
+          case 'teacher':
+            return <TeacherActivity onBack={handleBackToDetails} />;
           default:
             // Fallback or loading state while activity is being determined
             return null;
@@ -199,3 +200,5 @@ export default function Home() {
     </main>
   );
 }
+
+    

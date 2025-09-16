@@ -18,7 +18,7 @@ import MediaAndMassCommIntro from "./MediaAndMassCommIntro";
 import LawyerIntro from "./LawyerIntro";
 import AstrologerIntro from "./AstrologerIntro";
 import MeteorologistIntro from "./MeteorologistIntro";
-import EdTechSpecialistIntro from "./EdTechSpecialistIntro";
+import TeacherIntro from "./TeacherIntro";
 import PharmacistIntro from "./PharmacistIntro";
 
 
@@ -43,7 +43,7 @@ const occupationComponentMap: Record<string, React.ComponentType<any>> = {
   "Lawyer": LawyerIntro,
   "Astrologer": AstrologerIntro,
   "Meteorologist": MeteorologistIntro,
-  "Educational Technology Specialist": EdTechSpecialistIntro,
+  "Teacher": TeacherIntro,
   "Pharmacist": PharmacistIntro,
 };
 
@@ -57,7 +57,7 @@ export default function OccupationDetailsStep({
   const activityName = occupation.toLowerCase().replace(/\s+/g, '');
 
   if (IntroComponent) {
-    const hasActivity = ['interiordesigner', 'doctor', 'contentcreator', 'graphicdesigner', 'athlete', 'civilservant', 'productmanager', 'charteredaccountant', 'mediaandmasscommunication', 'lawyer', 'pharmacist', 'educationaltechnologyspecialist'].includes(activityName);
+    const hasActivity = ['interiordesigner', 'doctor', 'contentcreator', 'graphicdesigner', 'athlete', 'civilservant', 'productmanager', 'charteredaccountant', 'mediaandmasscommunication', 'lawyer', 'pharmacist', 'teacher'].includes(activityName);
     return <IntroComponent onBack={onBack} onProceed={hasActivity ? () => onStartActivity(activityName) : undefined} />
   }
 
@@ -78,3 +78,5 @@ export default function OccupationDetailsStep({
     </Card>
   );
 }
+
+    

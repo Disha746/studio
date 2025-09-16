@@ -12,7 +12,7 @@ import InfoCard from "./InfoCard";
 
 type Stage = "intro" | "quiz" | "myth-busting" | "scenarios" | "results";
 
-interface EdTechSpecialistActivityProps {
+interface TeacherActivityProps {
     onBack: () => void;
 };
 
@@ -34,7 +34,7 @@ const classroomScenarios = [
     { id: 3, text: "Your planned tech tool for the lesson isn't working. What do you do?", options: ["Cancel the lesson", "Switch to a backup plan using the board or interactive discussion", "Spend the whole class trying to fix it"], answer: "Switch to a backup plan using the board or interactive discussion", explanation: "Teachers need to be adaptable and have backup plans to ensure learning continues." },
 ];
 
-export default function EdTechSpecialistActivity({ onBack }: EdTechSpecialistActivityProps) {
+export default function TeacherActivity({ onBack }: TeacherActivityProps) {
     const { toast } = useToast();
     const [stage, setStage] = useState<Stage>("intro");
     const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -50,7 +50,7 @@ export default function EdTechSpecialistActivity({ onBack }: EdTechSpecialistAct
                     <>
                     <CardHeader>
                         <CardTitle className="font-headline text-2xl sm:text-3xl flex items-center gap-2"><Lightbulb className="text-primary"/>The Digital Classroom Challenge</CardTitle>
-                        <CardDescription>Step into the shoes of an EdTech Specialist. This activity tests your pedagogical and technical problem-solving skills.</CardDescription>
+                        <CardDescription>Step into the shoes of a Teacher. This activity tests your pedagogical and technical problem-solving skills.</CardDescription>
                     </CardHeader>
                     <CardContent className="text-center space-y-4">
                         <p>Ready to blend technology with teaching to create amazing learning experiences? Let's begin.</p>
@@ -62,7 +62,7 @@ export default function EdTechSpecialistActivity({ onBack }: EdTechSpecialistAct
                 return (
                     <>
                     <CardHeader>
-                        <CardTitle>EdTech Foundations Quiz</CardTitle>
+                        <CardTitle>Teaching Foundations Quiz</CardTitle>
                         <CardDescription>Test your basic educational knowledge.</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
@@ -92,8 +92,8 @@ export default function EdTechSpecialistActivity({ onBack }: EdTechSpecialistAct
                  return (
                      <>
                     <CardHeader>
-                        <CardTitle>EdTech Myths: Fact or Fiction?</CardTitle>
-                        <CardDescription>Let's debunk some common myths about educational technology.</CardDescription>
+                        <CardTitle>Teaching Myths: Fact or Fiction?</CardTitle>
+                        <CardDescription>Let's debunk some common myths about the teaching profession.</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
                        {mythBustingQuestions.map(q => (
@@ -121,7 +121,7 @@ export default function EdTechSpecialistActivity({ onBack }: EdTechSpecialistAct
                     <>
                     <CardHeader>
                         <CardTitle>Classroom Choices</CardTitle>
-                        <CardDescription>As an EdTech Specialist, what would you advise the teacher to do?</CardDescription>
+                        <CardDescription>As a Teacher, what would you do?</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                         {classroomScenarios.map(s => (
@@ -150,15 +150,15 @@ export default function EdTechSpecialistActivity({ onBack }: EdTechSpecialistAct
                      <>
                     <CardHeader>
                         <CardTitle>Activity Complete!</CardTitle>
-                        <CardDescription>You've explored the responsibilities and knowledge required to be an EdTech Specialist.</CardDescription>
+                        <CardDescription>You've explored the responsibilities and knowledge required to be a Teacher.</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                         <div className="p-4 rounded-lg bg-green-100 dark:bg-green-900/50">
                             <h3 className="font-headline text-lg flex items-center gap-2 mb-2"><Lightbulb className="text-green-600"/>Key Takeaways</h3>
                             <ul className="list-disc list-inside text-green-800 dark:text-green-300 space-y-1">
-                                <li><strong>Pedagogy First, Technology Second:</strong> The best EdTech solutions are grounded in solid teaching and learning principles.</li>
+                                <li><strong>Pedagogy First, Technology Second:</strong> The best teaching solutions are grounded in solid teaching and learning principles.</li>
                                 <li><strong>Adaptability is Crucial:</strong> Technology changes, and so do classroom needs. Being flexible is key.</li>
-                                <li><strong>Empowering Others:</strong> A core role of an EdTech specialist is to empower teachers and students with new tools and skills.</li>
+                                <li><strong>Empowering Others:</strong> A core role of a teacher is to empower students with new tools and skills.</li>
                             </ul>
                         </div>
                     </CardContent>
@@ -191,3 +191,5 @@ export default function EdTechSpecialistActivity({ onBack }: EdTechSpecialistAct
         </Card>
     );
 }
+
+    

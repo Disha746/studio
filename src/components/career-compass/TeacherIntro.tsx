@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -6,12 +7,12 @@ import { ArrowLeft, CheckCircle, XCircle, Rocket, DollarSign, Clock, BookOpen, L
 import InfoCard from "./InfoCard";
 
 
-type EdTechSpecialistIntroProps = {
+type TeacherIntroProps = {
     onBack?: () => void;
     onProceed?: () => void;
 };
 
-export default function EdTechSpecialistIntro({ onBack, onProceed }: EdTechSpecialistIntroProps) {
+export default function TeacherIntro({ onBack, onProceed }: TeacherIntroProps) {
   return (
     <Card>
       <CardHeader>
@@ -21,16 +22,16 @@ export default function EdTechSpecialistIntro({ onBack, onProceed }: EdTechSpeci
                 Back
             </Button>
         )}
-        <CardTitle className="font-headline text-2xl sm:text-3xl flex items-center gap-2"><Lightbulb className="text-primary"/>A Career as an EdTech Specialist</CardTitle>
-        <CardDescription>An overview of becoming an Educational Technology Specialist.</CardDescription>
+        <CardTitle className="font-headline text-2xl sm:text-3xl flex items-center gap-2"><Lightbulb className="text-primary"/>A Career as a Teacher</CardTitle>
+        <CardDescription>An overview of becoming a Teacher.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div>
-            <p className="text-muted-foreground">Educational Technology Specialists bridge the gap between learning and technology. They design, implement, and support the use of digital tools to enhance teaching and learning experiences. They play a vital role in making education more engaging, accessible, and effective in the digital age.</p>
+            <p className="text-muted-foreground">Teachers bridge the gap between learning and technology. They design, implement, and support the use of digital tools to enhance teaching and learning experiences. They play a vital role in making education more engaging, accessible, and effective in the digital age.</p>
         </div>
 
         <InfoCard icon={<Rocket className="w-5 h-5 text-accent"/>} title="Career Scope & Roles">
-            <p className="text-muted-foreground mb-4">The scope is broad and growing. EdTech Specialists work in schools, districts, higher education, or for EdTech companies. Key roles include:</p>
+            <p className="text-muted-foreground mb-4">The scope is broad and growing. Teachers work in schools, districts, higher education, or for EdTech companies. Key roles include:</p>
             <ul className="list-disc list-inside text-muted-foreground mt-2 space-y-1">
                 <li><span className="font-semibold text-foreground/90">Instructional Designer:</span> Creating digital learning materials and online courses.</li>
                 <li><span className="font-semibold text-foreground/90">Teacher Trainer:</span> Leading professional development on using technology effectively.</li>
@@ -89,3 +90,5 @@ export default function EdTechSpecialistIntro({ onBack, onProceed }: EdTechSpeci
     </Card>
   );
 }
+
+    

@@ -96,7 +96,7 @@ Question: "I am most motivated by the opportunity to:"
   - Mapped Careers: "Civil Servant, Teacher"
 - Answer: "Uphold justice and advocate for others within a legal framework."
   - Mapped Feedback: "You’re motivated by justice and advocacy, which is central to a career in law."
-  - Mapped Careers: "Law"
+  - MappedeCareers: "Law"
 
 Question: "How comfortable are you with abstract concepts and logical systems?"
 - Answer: "I love creating and working within logical frameworks and abstract systems."
@@ -160,7 +160,7 @@ Question: "When accuracy is critical, such as in a medical prescription or finan
   - Mapped Careers: "Chartered Accountant, Pharmacist, Law"
 - Answer: "I use technology and systems to automate checks, but trust my own review."
   - Mapped Feedback: "Your approach of blending technology with personal oversight is smart and efficient, great for tech or product roles."
-  
+  - Mapped Careers: "Software Developer, Product Manager"
 - Answer: "I prefer to get a second opinion from a colleague to ensure nothing is missed."
   - Mapped Feedback: "You understand the power of collaboration to ensure accuracy, a vital skill in teaching and public service."
   - Mapped Careers: "Teacher, Civil Servant"

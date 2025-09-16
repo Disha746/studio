@@ -66,7 +66,7 @@ This database provides the specific feedback and career list for each possible a
 *   **"I excel when working with well-defined rule-based systems"**: Connects to precision and compliance. (Careers: Chartered Accountant, Pharmacist, Law)
 *   **"Processes are constantly evolving"**: Connects to adaptability and innovation. (Careers: Software Developer, Product Manager, Media)
 *   **"There is a clear structure, established protocols"**: Connects to stability and process-orientation. (Careers: Chartered Accountant, Civil Servant, Pharmacist)
-*   **"Collaboration and cross-functional teamwork"**: Connects to strong interpersonal skills. (Careers: Teacher, Product Manager, Interior Designer)
+*   **"Collaboration and cross-functional teamwork"**: Connects to strong interpersonal skills. (Careers: Teacher, ProductManager, Interior Designer)
 *   **"I can work independently with a high degree of autonomy"**: Connects to self-direction and independence. (Careers: Content Creator, Software Developer)
 *   **"I thrive under pressure"**: Connects to resilience and decisive action. (Careers: Doctor, Law, Athlete)
 *   **"I meticulously double-check my work"**: Connects to high attention to detail and accuracy. (Careers: Chartered Accountant, Pharmacist, Law)

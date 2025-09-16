@@ -3,7 +3,8 @@
 
 import { getOccupationDetails } from '@/ai/flows/get-occupation-details';
 import { getProductManagerSimulationResult } from '@/ai/flows/product-manager-simulation';
-import type { GetOccupationDetailsInput, ProductManagerSimulationInput } from '@/ai/flows/types';
+import { getQuizFeedback } from '@/ai/flows/get-quiz-feedback';
+import type { GetOccupationDetailsInput, ProductManagerSimulationInput, QuizFeedbackInput } from '@/ai/flows/types';
 
 export async function getDetailsAction(input: GetOccupationDetailsInput) {
     try {
@@ -22,5 +23,15 @@ export async function getProductManagerSimulationAction(input: ProductManagerSim
     } catch (error) {
         console.error(error);
         return { success: false, error: 'Failed to get simulation result. Please try again later.' };
+    }
+}
+
+export async function getQuizFeedbackAction(input: QuizFeedbackInput) {
+    try {
+        const result = await getQuizFeedback(input);
+        return { success: true, data: result };
+    } catch (error) {
+        console.error(error);
+        return { success: false, error: 'Failed to get quiz feedback. Please try again.' };
     }
 }

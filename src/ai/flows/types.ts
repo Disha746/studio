@@ -76,3 +76,14 @@ export const ProductManagerSimulationOutputSchema = z.object({
   summary: z.string().describe("A summary explaining how the user's choices would affect the product's growth, revenue, and customer satisfaction, highlighting trade-offs."),
 });
 export type ProductManagerSimulationOutput = z.infer<typeof ProductManagerSimulationOutputSchema>;
+
+export const QuizFeedbackInputSchema = z.object({
+    question: z.string().describe("The quiz question the user answered."),
+    answer: z.string().describe("The answer the user selected."),
+});
+export type QuizFeedbackInput = z.infer<typeof QuizFeedbackInputSchema>;
+
+export const QuizFeedbackOutputSchema = z.object({
+    feedback: z.string().describe("Short, encouraging micro-feedback for the user's answer."),
+});
+export type QuizFeedbackOutput = z.infer<typeof QuizFeedbackOutputSchema>;

@@ -6,7 +6,6 @@
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'zod';
 import {
   QuizFeedbackInputSchema,
   QuizFeedbackOutputSchema,
@@ -176,78 +175,22 @@ export async function getQuizFeedback(
   return getQuizFeedbackFlow(input);
 }
 
-const PolishedFeedbackSchema = z.object({
-  polishedFeedback: z.string().describe("The final, polished micro-feedback, adhering to all system rules."),
-});
-
-const getQuizFeedbackPrompt = ai.definePrompt({
-  name: 'getQuizFeedbackPrompt',
-  input: {
-    schema: z.object({
-      question: z.string(),
-      answer: z.string(),
-      baseFeedback: z.string(),
-      careers: z.array(z.string()),
-    })
-  },
-  output: { schema: PolishedFeedbackSchema },
-  prompt: `You are a Career Guidance AI. Your ONLY task is to provide precise micro-feedback on quiz answers.
-
-Rules:
-- NEVER use filler like "Quick thought", "Interesting choice", or "Next question".
-- ALWAYS write 2–4 sentences, professional and encouraging.
-- Start by reflecting the selected option.
-- Explain the skill/trait this reveals.
-- Connect the skill directly to the careers from Firebase.
-- ONLY mention careers provided from Firebase. Do not add others.
-
-User's Selection:
-- Question: {{{question}}}
-- Option Selected: "{{{answer}}}"
-- Base Feedback: "{{{baseFeedback}}}"
-- Mapped Careers: {{{careers}}}
-
-Generate the polished micro-feedback based on the data above.
-`,
-});
-
-
 const getQuizFeedbackFlow = ai.defineFlow(
   {
     name: 'getQuizFeedbackFlow',
     inputSchema: QuizFeedbackInputSchema,
     outputSchema: QuizFeedbackOutputSchema,
   },
-  async (input) => {
-    const { answer, question } = input;
+  async ({ answer }) => {
     const mapping = feedbackDatabase[answer];
 
     if (!mapping) {
-      // Fallback to a generic but still formatted AI response if no direct mapping is found
-      const { output } = await getQuizFeedbackPrompt({
-        question,
-        answer,
-        baseFeedback: `This choice suggests you have a unique perspective on this topic.`,
-        careers: [],
-      }, { model: 'googleai/gemini-1.5-flash', config: { temperature: 0.3 }});
-       if (!output) {
-         return { feedback: "That's an interesting perspective. Let's continue to the next question." };
-       }
-       return { feedback: output.polishedFeedback };
+      return { feedback: "That's an interesting perspective. Let's continue to the next question." };
     }
 
-    const { output } = await getQuizFeedbackPrompt({
-      question,
-      answer,
-      baseFeedback: mapping.feedback,
-      careers: mapping.careers,
-    }, { model: 'googleai/gemini-1.5-flash', config: { temperature: 0.3 }});
-
-    if (!output) {
-      // Fallback to the basic feedback if AI fails
-      return { feedback: `${mapping.feedback} This connects to careers like ${mapping.careers.join(', ')}.` };
-    }
+    const { feedback, careers } = mapping;
+    const careerText = careers.length > 0 ? ` This connects to careers like ${careers.join(', ')}.` : '';
     
-    return { feedback: output.polishedFeedback };
+    return { feedback: `${feedback}${careerText}` };
   }
 );

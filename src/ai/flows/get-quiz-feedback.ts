@@ -60,7 +60,7 @@ const feedbackDatabase: Record<string, { feedback: string; careers: string[] }> 
   },
   'Writing stories or creating content.': {
     feedback: "You enjoy storytelling and expression, which fits content, media, or education.",
-    careers: ["Content Creator", "Media and Mass Communication", "Teacher"]
+    careers: ["ContentCreator", "Media and Mass Communication", "Teacher"]
   },
   'Debating or solving legal/social issues.': {
     feedback: "You’re interested in fairness and social impact, a strong trait for law, policy, or journalism.",
@@ -83,7 +83,23 @@ const feedbackDatabase: Record<string, { feedback: string; careers: string[] }> 
     feedback: "You’re motivated by direct care, which aligns with healthcare professions.",
     careers: ["Doctor", "Pharmacist"]
   },
-   // Q4
+   'Compete at the highest level and push my physical limits.': {
+    feedback: "You thrive on competition and physical effort, core traits of an athlete.",
+    careers: ["Athlete"]
+  },
+  'Provide expert financial advice and ensure financial integrity.': {
+    feedback: "You’re motivated by financial accuracy and trust, essential for accounting careers.",
+    careers: ["Chartered Accountant"]
+  },
+  'Serve the nation and contribute to its governance and development.': {
+    feedback: "You’re inspired by public service and nation-building, which suits governance and teaching.",
+    careers: ["Civil Servant", "Teacher"]
+  },
+  'Uphold justice and advocate for others within a legal framework.': {
+    feedback: "You’re motivated by justice and advocacy, which is central to a career in law.",
+    careers: ["Lawyer"]
+  },
+  // Q4
   'I love creating and working within logical frameworks and abstract systems.': {
       feedback: "A love for 'creating and working within logical frameworks' indicates a strength in abstract and systematic thinking. This is foundational for careers that require building or interpreting complex systems.",
       careers: ["Software Developer", "Lawyer"]
@@ -103,11 +119,11 @@ const feedbackDatabase: Record<string, { feedback: string; careers: string[] }> 
   // Q5
   'Processes are constantly evolving and being redefined.': {
       feedback: "Thriving where 'processes are constantly evolving' shows you are adaptable and innovative. This mindset is crucial in dynamic fields like technology and media.",
-      careers: ["Software Developer", "Product Manager"]
+      careers: ["Software Developer", "Product Manager", "Content Creator", "Media and Mass Communication"]
   },
   'There is a clear structure, established protocols, and predictable workflow.': {
       feedback: "A preference for 'clear structure and established protocols' indicates a strength in process-oriented and stable environments. This is a key trait for professions that rely on accuracy and established procedures.",
-      careers: ["Chartered Accountant", "Pharmacist"]
+      careers: ["Chartered Accountant", "Pharmacist", "Doctor"]
   },
   'Collaboration and cross-functional teamwork are the primary focus.': {
       feedback: "A preference for 'collaboration and teamwork' highlights strong interpersonal and communication skills. This is essential for roles that require coordinating with diverse teams.",
@@ -115,17 +131,41 @@ const feedbackDatabase: Record<string, { feedback: string; careers: string[] }> 
   },
   'I can work independently with a high degree of autonomy.': {
       feedback: "Thriving with 'independent autonomy' shows you are self-directed and disciplined. This is ideal for roles that require self-motivation and personal accountability.",
-      careers: ["Content Creator", "Software Developer"]
+      careers: ["Content Creator", "Software Developer", "Lawyer"]
   },
   // Q7
   'I thrive under pressure and make clear, decisive decisions.': {
       feedback: "Thriving 'under pressure' demonstrates resilience and decisive action-making capabilities. This is a critical trait for high-stakes professions.",
-      careers: ["Doctor", "Lawyer", "Athlete"]
+      careers: ["Doctor", "Lawyer", "Athlete", "Civil Servant"]
+  },
+  'I can handle pressure but prefer a more stable, predictable environment.': {
+    feedback: "Your ability to handle pressure when needed, while preferring stability, is a balanced trait suitable for roles that have both routine and critical moments.",
+    careers: ["Chartered Accountant", "Pharmacist", "Teacher"]
+  },
+   'I prefer to avoid high-stakes, high-pressure situations and work at a steady pace.': {
+    feedback: "A preference for steady, low-pressure environments points to a strength in roles that require focus and creativity without the stress of constant emergencies.",
+    careers: ["Interior Designer", "Graphic Designer", "Content Creator"]
+  },
+  'It depends on the situation and the team I am working with.': {
+    feedback: "Being adaptable to pressure depending on the context shows you are a flexible and collaborative team player, which is valuable in many dynamic professions.",
+    careers: ["Doctor", "Product Manager", "Media and Mass Communication", "Teacher"]
   },
   // Q8
   'I meticulously double-check my work and follow a strict verification process.': {
       feedback: "Meticulously 'double-checking your work' reveals a high attention to detail and a commitment to accuracy. This is a non-negotiable skill in fields where errors have significant consequences.",
-      careers: ["Chartered Accountant", "Doctor", "Pharmacist"]
+      careers: ["Chartered Accountant", "Doctor", "Pharmacist", "Lawyer", "Civil Servant"]
+  },
+  'I use technology and systems to automate checks, but trust my own review.': {
+    feedback: "Your approach of leveraging technology for accuracy while maintaining personal oversight is highly efficient. This blend of tech-savviness and responsibility is key in modern analytical and product roles.",
+    careers: ["Software Developer", "Data Scientist", "Product Manager", "Chartered Accountant"]
+  },
+  'I prefer to get a second opinion from a colleague to ensure nothing is missed.': {
+    feedback: "Valuing a second opinion highlights your collaborative nature and commitment to thoroughness. This is a crucial trait in fields where teamwork and peer review lead to better outcomes.",
+    careers: ["Doctor", "Product Manager", "Teacher", "Pharmacist", "Lawyer"]
+  },
+  'I am confident in my abilities and trust my creative or strategic instincts.': {
+    feedback: "Trusting your creative and strategic instincts is a hallmark of an innovator and a leader. This confidence is essential in roles where vision and originality drive success.",
+    careers: ["Software Developer", "Interior Designer", "Graphic Designer", "Content Creator", "Product Manager", "Media and Mass Communication"]
   }
 };
 
@@ -193,7 +233,7 @@ const getQuizFeedbackFlow = ai.defineFlow(
       answer,
       baseFeedback: mapping.feedback,
       careers: mapping.careers,
-    }, { model: 'googleai/gemini-1.5-flash'});
+    }, { model: 'googleai/gemini-1.5-flash', config: { temperature: 0.3 }});
 
     if (!output) {
       // Fallback to the basic feedback if AI fails

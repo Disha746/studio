@@ -223,9 +223,17 @@ const getQuizFeedbackFlow = ai.defineFlow(
     const mapping = feedbackDatabase[answer];
 
     if (!mapping) {
-      return {
-        feedback: "That's an interesting perspective. Let's continue to the next question to find out more about you."
-      };
+      // Fallback to a generic but still formatted AI response if no direct mapping is found
+      const { output } = await getQuizFeedbackPrompt({
+        question,
+        answer,
+        baseFeedback: `This choice suggests you have a unique perspective on this topic.`,
+        careers: [],
+      }, { model: 'googleai/gemini-1.5-flash', config: { temperature: 0.3 }});
+       if (!output) {
+         return { feedback: "That's an interesting perspective. Let's continue to the next question." };
+       }
+       return { feedback: output.polishedFeedback };
     }
 
     const { output } = await getQuizFeedbackPrompt({

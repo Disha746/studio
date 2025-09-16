@@ -170,7 +170,7 @@ export default function QuizStep({ onComplete }: QuizStepProps) {
           {renderQuestionInput(currentQuestion)}
         </div>
          {quizStage === "feedback" && feedback && (
-            <InfoCard icon={<Sparkles className="w-5 h-5 text-accent"/>} title="A Quick Thought...">
+            <InfoCard icon={<Sparkles className="w-5 h-5 text-accent"/>} title="Insight">
                 <p className="text-muted-foreground">{feedback}</p>
             </InfoCard>
          )}

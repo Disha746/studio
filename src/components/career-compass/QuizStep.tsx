@@ -16,7 +16,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { ArrowRight, Check, Sparkles, Loader2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Sparkles, Loader2 } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { getQuizFeedbackAction } from "@/app/actions";
 import InfoCard from "./InfoCard";
@@ -79,7 +79,19 @@ export default function QuizStep({ onComplete }: QuizStepProps) {
     }
   };
 
+  const handlePrevious = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
+      const previousAnswer = answers[currentQuestionIndex - 1];
+      setCurrentAnswer(previousAnswer.value);
+      setAnswers(prev => prev.slice(0, -1));
+      setFeedback("");
+      setQuizStage("answering");
+    }
+  };
+
   const isLastQuestion = currentQuestionIndex === quizQuestions.length - 1;
+  const isFirstQuestion = currentQuestionIndex === 0;
 
   const renderQuestionInput = (question: Question) => {
     const isAnswering = quizStage === "answering";
@@ -181,14 +193,21 @@ export default function QuizStep({ onComplete }: QuizStepProps) {
             </div>
          )}
       </CardContent>
-      <CardFooter>
+      <CardFooter className="flex justify-between">
+        {(quizStage === 'answering' || quizStage === 'feedback') && (
+            <Button onClick={handlePrevious} variant="ghost" disabled={isFirstQuestion && quizStage !== 'feedback'}>
+                <ArrowLeft />
+                Previous
+            </Button>
+        )}
+        
         {quizStage === "answering" && (
-          <Button onClick={handleConfirmAnswer} disabled={!hasSelection} className="w-full">
+          <Button onClick={handleConfirmAnswer} disabled={!hasSelection}>
             OK <Check />
           </Button>
         )}
         {quizStage === "feedback" && (
-          <Button onClick={handleNext} className="w-full">
+          <Button onClick={handleNext}>
             {isLastQuestion ? (
               <>
                 Finish Quiz <Check />

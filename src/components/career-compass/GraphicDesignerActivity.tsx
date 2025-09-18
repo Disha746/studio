@@ -64,7 +64,6 @@ export default function GraphicDesignerActivity({ onBack }: GraphicDesignerActiv
                         <CardDescription>Graphic design is the art of visual communication. It’s about solving problems and creating memorable experiences. Ready to create your own visual solution?</CardDescription>
                     </CardHeader>
                     <CardContent className="text-center space-y-4">
-                        <Image src="https://placehold.co/600x300.png" alt="Collage of graphic design" width={600} height={300} className="rounded-lg" data-ai-hint="graphic design logos" />
                         <Button onClick={() => setStage("logo")}>Start Your First Logo Creation</Button>
                     </CardContent>
                     </>
@@ -236,5 +235,3 @@ export default function GraphicDesignerActivity({ onBack }: GraphicDesignerActiv
         </Card>
     );
 }
-
-    

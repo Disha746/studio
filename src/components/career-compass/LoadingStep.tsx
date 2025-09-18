@@ -1,9 +1,8 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
 import { Progress } from "@/components/ui/progress";
-import AnimatedRocket from "./AnimatedRocket";
+import { Compass } from "lucide-react";
 
 export default function LoadingStep() {
   const [progress, setProgress] = useState(0);
@@ -16,7 +15,7 @@ export default function LoadingStep() {
   return (
     <div className="flex flex-col items-center justify-center text-center p-4 min-h-[400px]">
       <div className="animate-pulse mb-8">
-        <AnimatedRocket className="h-24 w-24 text-primary" width={96} height={96}/>
+        <Compass className="h-24 w-24 text-primary" />
       </div>
 
       <div className="w-full max-w-xs space-y-4">

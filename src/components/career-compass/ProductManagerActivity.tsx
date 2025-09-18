@@ -77,7 +77,7 @@ export default function ProductManagerActivity({ onBack }: ProductManagerActivit
                             </RadioGroup>
                         </InfoCard>
                         <InfoCard icon={<Lightbulb className="w-5 h-5 text-accent"/>} title="Key Features">
-                            <RadioGroup value={simulationChoices.features} onValuecha2ge={(v) => handleSimulationChoiceChange('features', v)} className="flex flex-wrap gap-4">
+                            <RadioGroup value={simulationChoices.features} onValueChange={(v) => handleSimulationChoiceChange('features', v)} className="flex flex-wrap gap-4">
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Fast Delivery" id="feat-delivery" /><Label htmlFor="feat-delivery">Fast Delivery</Label></div>
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Discounts" id="feat-discounts" /><Label htmlFor="feat-discounts">Discounts</Label></div>
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Premium Restaurants" id="feat-premium" /><Label htmlFor="feat-premium">Premium Restaurants</Label></div>
@@ -226,5 +226,3 @@ export default function ProductManagerActivity({ onBack }: ProductManagerActivit
         </Card>
     );
 }
-
-    

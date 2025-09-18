@@ -1,9 +1,10 @@
 
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import { ArrowLeft, Code, CheckCircle, Rocket, Sparkles, GraduationCap } from "lucide-react";
+import { ArrowLeft, Code, CheckCircle, Rocket, Sparkles, GraduationCap, ArrowRight } from "lucide-react";
 import InfoCard from "./InfoCard";
 
 
@@ -11,9 +12,93 @@ type SoftwareDeveloperIntroProps = {
     onBack?: () => void;
 };
 
-export default function SoftwareDeveloperIntro({ onBack }: SoftwareDeveloperIntroProps) {
-  return (
-    <Card>
+const RoadmapContent = ({ onBack }: { onBack: () => void; }) => (
+    <>
+        <CardHeader>
+            <Button onClick={onBack} variant="ghost" className="justify-start p-0 h-auto mb-2 text-muted-foreground hover:text-foreground">
+                <ArrowLeft />
+                Back
+            </Button>
+            <CardTitle className="font-headline text-2xl sm:text-3xl flex items-center gap-2"><Rocket className="text-primary"/>Roadmap to a Software Career</CardTitle>
+            <CardDescription>A step-by-step guide to becoming a Software Developer in India.</CardDescription>
+        </CardHeader>
+        <CardContent>
+             <InfoCard icon={<Rocket className="w-5 h-5 text-accent" />} title="Step-by-Step Path">
+                <div className="space-y-4 text-muted-foreground">
+                    <div>
+                        <h4 className="font-semibold text-foreground/90">Step 1: Foundation (Class 11–12 / Early stage)</h4>
+                        <ul className="list-disc list-inside pl-2">
+                            <li>Focus on Maths + Logical Thinking.</li>
+                            <li>Start with a beginner-friendly language: Python.</li>
+                            <li>Learn basic programming concepts: variables, loops, functions, arrays, OOP.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground/90">Step 2: Core Computer Science Skills (1st–2nd Year of College or Self-study)</h4>
+                        <ul className="list-disc list-inside pl-2">
+                            <li>Languages: C++, Java, Python.</li>
+                            <li>DSA (Data Structures & Algorithms) – crucial for placements.</li>
+                            <li>CS Fundamentals: OS, DBMS, Networks, OOP.</li>
+                        </ul>
+                        <p className="font-semibold mt-1">Resources: GeeksforGeeks, CS50, NPTEL, LeetCode.</p>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground/90">Step 3: Development Skills (2nd–3rd Year)</h4>
+                        <ul className="list-disc list-inside pl-2">
+                            <li>Learn Web/App Development (e.g., HTML/CSS/JS, React, Node.js, Flutter).</li>
+                            <li>Understand Version Control (Git & GitHub).</li>
+                            <li>Work on projects (portfolio website, blog, to-do app).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground/90">Step 4: Specialization (3rd–4th Year or After Basics)</h4>
+                        <ul className="list-disc list-inside pl-2">
+                            <li>Choose a specialization: AI/ML, Full Stack, Data Engineering, Cybersecurity, etc.</li>
+                            <li>Build 2–3 strong projects (e.g., AI chatbot, SaaS product).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground/90">Step 5: Industry Preparation</h4>
+                        <ul className="list-disc list-inside pl-2">
+                            <li>Internships (start from 2nd/3rd year).</li>
+                            <li>Competitive programming (Codeforces, CodeChef, LeetCode).</li>
+                            <li>Participate in hackathons & build your LinkedIn/GitHub profile.</li>
+                            <li>Practice mock interviews.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground/90">Step 6: Placement / Job</h4>
+                        <p>Target service-based (Infosys, TCS), product-based (Google, Microsoft), or startups (CRED, Razorpay) based on your skills and preparation.</p>
+                    </div>
+                </div>
+            </InfoCard>
+            
+            <InfoCard icon={<GraduationCap className="w-5 h-5 text-accent"/>} title="Good Colleges in India for AI / Software Career">
+                <div className="space-y-3 text-muted-foreground">
+                    <div>
+                        <h4 className="font-semibold text-foreground/90">Tier 1 – Top IITs & IIITs</h4>
+                        <p>IIT Bombay, IIT Delhi, IIT Madras, IIIT Hyderabad.</p>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground/90">Tier 2 – NITs & BITS</h4>
+                        <p>NIT Trichy, NIT Surathkal, BITS Pilani.</p>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground/90">Tier 3 – Private Universities with Strong CS/AI</h4>
+                        <p>VIT Vellore, SRM University, PES University, Manipal Institute of Technology.</p>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground/90">Tier 4 – Rising AI-focused Colleges</h4>
+                        <p>Ashoka University, Shiv Nadar University, UPES Dehradun.</p>
+                    </div>
+                </div>
+            </InfoCard>
+        </CardContent>
+    </>
+);
+
+const IntroContent = ({ onBack, onProceed }: { onBack?: () => void; onProceed: () => void; }) => (
+     <>
       <CardHeader>
         {onBack && (
             <Button onClick={onBack} variant="ghost" className="justify-start p-0 h-auto mb-2 text-muted-foreground hover:text-foreground">
@@ -50,78 +135,31 @@ export default function SoftwareDeveloperIntro({ onBack }: SoftwareDeveloperIntr
             </ul>
         </InfoCard>
 
-        <InfoCard icon={<Rocket className="w-5 h-5 text-accent" />} title="Roadmap to Become a Software Developer in India">
-            <div className="space-y-4 text-muted-foreground">
-                <div>
-                    <h4 className="font-semibold text-foreground/90">Step 1: Foundation (Class 11–12 / Early stage)</h4>
-                    <ul className="list-disc list-inside pl-2">
-                        <li>Focus on Maths + Logical Thinking.</li>
-                        <li>Start with a beginner-friendly language: Python.</li>
-                        <li>Learn basic programming concepts: variables, loops, functions, arrays, OOP.</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 className="font-semibold text-foreground/90">Step 2: Core Computer Science Skills (1st–2nd Year of College or Self-study)</h4>
-                    <ul className="list-disc list-inside pl-2">
-                        <li>Languages: C++, Java, Python.</li>
-                        <li>DSA (Data Structures & Algorithms) – crucial for placements.</li>
-                        <li>CS Fundamentals: OS, DBMS, Networks, OOP.</li>
-                        <li><span className="font-semibold">Resources:</span> GeeksforGeeks, CS50, NPTEL, LeetCode.</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 className="font-semibold text-foreground/90">Step 3: Development Skills (2nd–3rd Year)</h4>
-                    <ul className="list-disc list-inside pl-2">
-                        <li>Learn Web/App Development (e.g., HTML/CSS/JS, React, Node.js, Flutter).</li>
-                        <li>Understand Version Control (Git & GitHub).</li>
-                        <li>Work on projects (portfolio website, blog, to-do app).</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 className="font-semibold text-foreground/90">Step 4: Specialization (3rd–4th Year or After Basics)</h4>
-                    <ul className="list-disc list-inside pl-2">
-                        <li>Choose a specialization: AI/ML, Full Stack, Data Engineering, Cybersecurity, etc.</li>
-                        <li>Build 2–3 strong projects (e.g., AI chatbot, SaaS product).</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 className="font-semibold text-foreground/90">Step 5: Industry Preparation</h4>
-                    <ul className="list-disc list-inside pl-2">
-                        <li>Internships (start from 2nd/3rd year).</li>
-                        <li>Competitive programming (Codeforces, CodeChef, LeetCode).</li>
-                        <li>Participate in hackathons & build your LinkedIn/GitHub profile.</li>
-                        <li>Practice mock interviews.</li>
-                    </ul>
-                </div>
-                 <div>
-                    <h4 className="font-semibold text-foreground/90">Step 6: Placement / Job</h4>
-                     <p>Target service-based (Infosys, TCS), product-based (Google, Microsoft), or startups (CRED, Razorpay) based on your skills and preparation.</p>
-                </div>
-            </div>
-        </InfoCard>
-        
-        <InfoCard icon={<GraduationCap className="w-5 h-5 text-accent"/>} title="Good Colleges in India for AI / Software Career">
-            <div className="space-y-3 text-muted-foreground">
-                <div>
-                    <h4 className="font-semibold text-foreground/90">Tier 1 – Top IITs & IIITs</h4>
-                    <p>IIT Bombay, IIT Delhi, IIT Madras, IIIT Hyderabad.</p>
-                </div>
-                 <div>
-                    <h4 className="font-semibold text-foreground/90">Tier 2 – NITs & BITS</h4>
-                    <p>NIT Trichy, NIT Surathkal, BITS Pilani.</p>
-                </div>
-                 <div>
-                    <h4 className="font-semibold text-foreground/90">Tier 3 – Private Universities with Strong CS/AI</h4>
-                    <p>VIT Vellore, SRM University, PES University, Manipal Institute of Technology.</p>
-                </div>
-                <div>
-                    <h4 className="font-semibold text-foreground/90">Tier 4 – Rising AI-focused Colleges</h4>
-                    <p>Ashoka University, Shiv Nadar University, UPES Dehradun.</p>
-                </div>
-            </div>
-        </InfoCard>
-
       </CardContent>
+       <CardFooter>
+            <Button onClick={onProceed} className="w-full">
+                View Roadmap
+                <ArrowRight />
+            </Button>
+        </CardFooter>
+    </>
+);
+
+
+export default function SoftwareDeveloperIntro({ onBack }: SoftwareDeveloperIntroProps) {
+  const [view, setView] = useState<'intro' | 'roadmap'>('intro');
+
+  if (view === 'roadmap') {
+    return (
+        <Card>
+            <RoadmapContent onBack={() => setView('intro')} />
+        </Card>
+    )
+  }
+
+  return (
+    <Card>
+      <IntroContent onBack={onBack} onProceed={() => setView('roadmap')} />
     </Card>
   );
 }

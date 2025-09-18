@@ -24,6 +24,7 @@ export default function ProductManagerActivity({ onBack }: ProductManagerActivit
     const [simulationChoices, setSimulationChoices] = useState({ targetAudience: '', features: '', businessModel: '' });
     const [simulationResult, setSimulationResult] = useState('');
     const [loading, setLoading] = useState(false);
+    const [feedbackChoice, setFeedbackChoice] = useState('');
     
     const handleSimulationChoiceChange = (field: keyof typeof simulationChoices, value: string) => {
         setSimulationChoices(prev => ({ ...prev, [field]: value }));
@@ -76,7 +77,7 @@ export default function ProductManagerActivity({ onBack }: ProductManagerActivit
                             </RadioGroup>
                         </InfoCard>
                         <InfoCard icon={<Lightbulb className="w-5 h-5 text-accent"/>} title="Key Features">
-                            <RadioGroup value={simulationChoices.features} onValueChange={(v) => handleSimulationChoiceChange('features', v)} className="flex flex-wrap gap-4">
+                            <RadioGroup value={simulationChoices.features} onValuecha2ge={(v) => handleSimulationChoiceChange('features', v)} className="flex flex-wrap gap-4">
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Fast Delivery" id="feat-delivery" /><Label htmlFor="feat-delivery">Fast Delivery</Label></div>
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Discounts" id="feat-discounts" /><Label htmlFor="feat-discounts">Discounts</Label></div>
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Premium Restaurants" id="feat-premium" /><Label htmlFor="feat-premium">Premium Restaurants</Label></div>
@@ -114,14 +115,16 @@ export default function ProductManagerActivity({ onBack }: ProductManagerActivit
                         <CardDescription>You've received three pieces of user feedback. Which do you act on first?</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                         <RadioGroup className="space-y-2">
+                         <RadioGroup className="space-y-2" value={feedbackChoice} onValueChange={setFeedbackChoice}>
                             <Label className="p-3 rounded-md border block cursor-pointer has-[:checked]:bg-primary/10 has-[:checked]:border-primary"><RadioGroupItem value="slow" className="sr-only" />"The app is too slow."</Label>
                             <Label className="p-3 rounded-md border block cursor-pointer has-[:checked]:bg-primary/10 has-[:checked]:border-primary"><RadioGroupItem value="dark" className="sr-only" />"The app needs a dark mode."</Label>
                             <Label className="p-3 rounded-md border block cursor-pointer has-[:checked]:bg-primary/10 has-[:checked]:border-primary"><RadioGroupItem value="ads" className="sr-only" />"There are too many ads."</Label>
                         </RadioGroup>
-                         <InfoCard icon={<Lightbulb className="w-5 h-5 text-accent"/>} title="The PM's Approach">
-                            <p className="text-muted-foreground">The best approach is to analyze impact vs. effort. A slow app (performance) often has the highest negative impact on user retention and should be prioritized. A feature like dark mode is lower impact, and too many ads relates to the business model, which is a strategic decision.</p>
-                        </InfoCard>
+                         {feedbackChoice && (
+                            <InfoCard icon={<Lightbulb className="w-5 h-5 text-accent"/>} title="The PM's Approach">
+                                <p className="text-muted-foreground">The best approach is to analyze impact vs. effort. A slow app (performance) often has the highest negative impact on user retention and should be prioritized. A feature like dark mode is lower impact, and too many ads relates to the business model, which is a strategic decision.</p>
+                            </InfoCard>
+                         )}
                     </CardContent>
                     <CardFooter>
                         <Button onClick={() => setStage("reflection")} className="w-full">Continue to Reflection</Button>
@@ -223,3 +226,5 @@ export default function ProductManagerActivity({ onBack }: ProductManagerActivit
         </Card>
     );
 }
+
+    

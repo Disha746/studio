@@ -81,6 +81,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: radial-gradient(ellipse at bottom left, #f3f8ff, #deecff, #c6cfff);
   }
 }

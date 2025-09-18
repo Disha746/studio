@@ -90,7 +90,7 @@ export default function ProductManagerActivity({ onBack }: ProductManagerActivit
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Pay-per-order" id="bm-ppo" /><Label htmlFor="bm-ppo">Pay-per-order</Label></div>
                             </RadioGroup>
                         </InfoCard>
-                        {simulationResult && (
+                        {simulationResult && !loading && (
                             <InfoCard icon={<AlertTriangle className="w-5 h-5 text-accent"/>} title="Strategy Outcome">
                                 <p className="text-muted-foreground">{simulationResult}</p>
                             </InfoCard>
@@ -101,7 +101,7 @@ export default function ProductManagerActivity({ onBack }: ProductManagerActivit
                             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                             {loading ? "Analyzing Strategy..." : "Analyze Strategy"}
                         </Button>
-                        {!!simulationResult && (
+                        {!!simulationResult && !loading && (
                             <Button onClick={() => setStage("feedback")} className="w-full">Continue to Next Challenge</Button>
                         )}
                     </CardFooter>
@@ -226,3 +226,5 @@ export default function ProductManagerActivity({ onBack }: ProductManagerActivit
         </Card>
     );
 }
+
+    

@@ -27,35 +27,8 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
-        <div
-          style={{
-            position: 'fixed',
-            width: '100%',
-            height: '100%',
-            overflow: 'hidden',
-            zIndex: -1,
-          }}
-        >
-          <svg
-            viewBox="0 0 500 150"
-            preserveAspectRatio="none"
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              width: '100%',
-              height: '150px',
-            }}
-          >
-            <path
-              d="M0.00,49.98 C150.00,150.00 350.00,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-              style={{
-                stroke: 'none',
-                fill: 'rgba(255,255,255,0.4)',
-              }}
-            ></path>
-          </svg>
-        </div>
+        <div className="wave"></div>
+        <div className="wave"></div>
         {children}
         <Toaster />
       </body>

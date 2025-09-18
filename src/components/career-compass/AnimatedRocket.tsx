@@ -1,8 +1,7 @@
 
 "use client";
 
-import type { Variants } from "motion";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, type Variants } from "motion";
 
 const variants: Variants = {
   normal: {

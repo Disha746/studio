@@ -44,7 +44,7 @@ export default function UserDetailsStep({ onSubmit, onBack }: UserDetailsStepPro
       name: "",
       education: "",
       country: "",
-      age: undefined,
+      age: '' as any,
     },
   });
 
@@ -104,7 +104,7 @@ export default function UserDetailsStep({ onSubmit, onBack }: UserDetailsStepPro
                 <FormItem>
                   <FormLabel>Age</FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="e.g., 21" {...field} onChange={e => field.onChange(e.target.value === '' ? undefined : e.target.value)} />
+                    <Input type="number" placeholder="e.g., 21" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

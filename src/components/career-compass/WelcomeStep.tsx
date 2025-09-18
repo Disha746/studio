@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Book, GraduationCap, Compass } from "lucide-react";
+import AnimatedRocket from "./AnimatedRocket";
 
 type WelcomeStepProps = {
   onSubmit: () => void;
@@ -11,7 +12,12 @@ export default function WelcomeStep({ onSubmit }: WelcomeStepProps) {
   return (
     <div className="flex flex-col items-center justify-center text-center p-4">
       <div className="animate-fade-in mb-8">
-        <Compass className="h-24 w-24 text-primary" />
+        <AnimatedRocket
+          width={96}
+          height={96}
+          strokeWidth={1.5}
+          className="text-primary"
+        />
       </div>
 
       <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>

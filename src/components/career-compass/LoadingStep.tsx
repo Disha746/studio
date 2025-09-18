@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Progress } from "@/components/ui/progress";
-import { Compass } from "lucide-react";
+import AnimatedRocket from "./AnimatedRocket";
 
 export default function LoadingStep() {
   const [progress, setProgress] = useState(0);
@@ -15,7 +15,12 @@ export default function LoadingStep() {
   return (
     <div className="flex flex-col items-center justify-center text-center p-4 min-h-[400px]">
       <div className="animate-pulse mb-8">
-        <Compass className="h-24 w-24 text-primary" />
+        <AnimatedRocket
+          width={96}
+          height={96}
+          strokeWidth={1.5}
+          className="text-primary"
+        />
       </div>
 
       <div className="w-full max-w-xs space-y-4">

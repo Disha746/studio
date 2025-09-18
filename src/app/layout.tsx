@@ -27,8 +27,6 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
-        <div className="wave"></div>
-        <div className="wave"></div>
         {children}
         <Toaster />
       </body>
